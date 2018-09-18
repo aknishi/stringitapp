@@ -40,13 +40,13 @@ body {
 }
 
 nav {
+  background: url("gradient.svg") fixed no-repeat;
   height: 60px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  display: fixed;
+  position: fixed;
   box-shadow: 10px 0px 10px 10px rgba(0,0,0,0.2);
-  position: relative;
   z-index: 5;
 }
 
@@ -67,7 +67,7 @@ nav {
   z-index: 1;
 }
 
-.navbar {
+.navbar-links {
   background-color: white;
   height: 60px;
   width: 500px;
@@ -96,12 +96,14 @@ nav {
 }
 
 .welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: white;
-  height: 30px;
+  height: 70px;
   position: relative;
   z-index: 2;
   box-shadow: 10px 0px 10px 10px rgba(0,0,0,0.2);
-  padding: 40px;
 }
 
 .welcome-text {
@@ -109,6 +111,7 @@ nav {
   align-items: center;
   justify-content: center;
   font-family: 'Lato';
+  margin: 15px;
 }
 
 .bottom-container {
@@ -153,7 +156,7 @@ figure img{
   position: relative;
 
   img {
-   margin:-10% 0 -10% 0;
+   margin: -5% 0 -10% 0;
    z-index: 1;
   }
 }
