@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  model: MyString
+  gauge: MyString
+  length: 1
+  composition: MyString
+  color: MyString
+
+two:
+  brand: MyString
+  model: MyString
+  gauge: MyString
+  length: 1
+  composition: MyString
+  color: MyString

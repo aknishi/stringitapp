@@ -12,61 +12,13 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script type="text/javascript">
-
+      window.tennisBallLogoURL = "<%= image_url('tennis-ball-logo.png') %>"
+      window.logoURL = "<%= image_url('logo.svg') %>"
+      window.whiteRacketURL = "<%= image_url('white-racket.png') %>"
     </script>
   </head>
-  <nav>
-    <div class="logo-container">
-      <img src="<%= image_url("tennis-ball-logo") %>" class="ball-logo">
-      <img src="<%= image_url("logo.svg") %>" class="logo">
-    </div>
-    <div>
-      <ul class="navbar-links">
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/contact-us">Contact</a></li>
-        <li><a href="/signup">Sign Up</a></li>
-        <li><a href="/login">Login</a></li>
-      </ul>
-    </div>
-  </nav>
+
   <body>
-    <div class="body">
-      <figure class="image-container">
-        <div class="dark-overlay"></div>
-        <img src="<%= image_url("http://cdnparap00.paragonrels.com/ParagonImages/Property/p0/SANDICOR/180019124/19/0/0/71c9bd96c6ff83fbfe8cf1de1a66fbca/1/0bea7bf626748fd210b40d0d6d0304b0/180019124-19.JPG")%>" class="courts-img">
-      </figure>
-      <div class="welcome-container">
-        <h1 class="welcome-text">
-          <!-- <i class="fas fa-store-alt"></i> -->
-          Welcome to our tennis store site!
-        </h1>
-      </div>
-      <div class="bottom-container">
-        <ul>
-          <li>
-            <img src="<%= image_url("white-racket") %>">
-            <div class="keynotes">
-              <h2>Check the status of your orders</h2>
-              <h3>Get updates on your rackets.</h3>
-            </div>
-          </li>
-          <li>
-            <i class="fas fa-store-alt"></i>
-            <div class="keynotes">
-              <h2>Check what's new</h2>
-              <h3>Our new arrivals!</h3>
-            </div>
-          </li>
-          <li>
-            <i class="fas fa-edit"></i>
-            <div class="keynotes">
-              <h2>Look up previous orders</h2>
-              <h3>See what you have order and compare</h3>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
     <%= yield %>
   </body>
 </html>

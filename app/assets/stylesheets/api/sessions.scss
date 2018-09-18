@@ -1,0 +1,102 @@
+// Place all the styles related to the api/sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+ @import "variables";
+
+
+ .nav-login-form {
+   display: flex;
+   align-items: center;
+   input {
+     margin: 5px;
+     height: 18px;
+   }
+   .button {
+     height: 22px;
+   }
+ }
+
+.spacing-container {
+  height: 60px;
+  margin-bottom: 60px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-form-box {
+  width: 250px;
+  padding: 20px;
+  border: 1px solid $light-grey;
+  text-align: center;
+  background-color: white;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 15px;
+}
+
+.form-title {
+  font-size: 18px;
+  font-family: 'Questrial', sans-serif;
+  color: black;
+  margin: 10px;
+  text-align: center;
+}
+
+.demo-login {
+  width: 250px;
+  padding: 20px;
+  margin-top: 10px;
+  border: 1px solid $light-grey;
+  text-align: center;
+  background-color: white;
+}
+
+.demo-login-button {
+  background-color: #3897f0;
+  color: white;
+  border-radius: 3px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 5px;
+  height: 30px;
+  width: 210px;
+
+  &:hover {
+    background-color: #348adb;
+  }
+
+  &:active {
+    background-color: #2d76bb;
+  }
+}
+
+.logout-button {
+  margin-left: 20px;
+  height: 22px;
+  font-size: 14px;
+  color: white;
+  background-color: #bcbcbc;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:active {
+    color: $light-grey;
+    border: 1px solid $light-grey;
+    background-color: #fafafa;
+    border-radius: 6px;
+  }
+
+  &:hover {
+    background-color: $grey;
+  }
+}

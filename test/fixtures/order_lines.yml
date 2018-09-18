@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  racket_id: 1
+  main_cord_id: 1
+  cross_cord_id: 1
+  main_tension: 1
+  cross_tension: 1
+
+two:
+  racket_id: 1
+  main_cord_id: 1
+  cross_cord_id: 1
+  main_tension: 1
+  cross_tension: 1
