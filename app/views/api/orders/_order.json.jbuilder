@@ -1,1 +1,1 @@
-json.extract! order, :id, :order_number, :customer_id, :status, :comments
+json.extract! order, :id, :order_number, :status, :comments

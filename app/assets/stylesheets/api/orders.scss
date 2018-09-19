@@ -1,3 +1,46 @@
 // Place all the styles related to the api/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Orders Index
+
+ @import "variables";
+
+// .orders-index-container {
+//   width: 100%;
+//   padding-left: 40px;
+// }
+//
+// .orders-index-list {
+//   width: 700px;
+//   margin: auto;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   background: #fafafa;
+// }
+//
+// .orders-index-item {
+//   display: flex;
+//   justify-content: flex-start;
+//   align-items: center;
+//   border-bottom: 1px solid $grey;
+//   cursor: pointer;
+//   h4 {
+//     padding: 10px 10px;
+//   }
+// }
+
+.table-container {
+  width: 100%;
+}
+
+.table-responsive {
+  display: flex;
+  justify-content: center;
+}
+
+.table {
+  width: 900px;
+  background-color: white;
+}

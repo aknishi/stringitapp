@@ -5,7 +5,7 @@ import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import WelcomePage from './session_form/welcome';
 import NavbarContainer from './session_form/navbar_container';
-import Orders from './orders/orders';
+import OrdersIndexContainer from './orders/orders_index_container';
 
 const App = () => (
   <div>
@@ -15,7 +15,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route exact path="/" component={WelcomePage} />
-      <ProtectedRoute exact path="/orders" component={Orders} />
+      <ProtectedRoute exact path="/orders" component={OrdersIndexContainer} />
   </div>
 );
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_18_233117) do
+ActiveRecord::Schema.define(version: 2018_09_19_221105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2018_09_18_233117) do
   create_table "order_lines", force: :cascade do |t|
     t.integer "order_id", null: false
     t.integer "racket_id", null: false
-    t.integer "main_cord_id", null: false
-    t.integer "cross_cord_id", null: false
+    t.integer "main_cord_id"
+    t.integer "cross_cord_id"
     t.integer "main_tension", null: false
     t.integer "cross_tension", null: false
     t.datetime "created_at", null: false
