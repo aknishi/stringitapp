@@ -19,9 +19,8 @@ class OrderLine < ApplicationRecord
 
   belongs_to :order
 
-  has_one :racket, foreign_key: :racket_id, class_name: 'Racket'
-
-  has_one :main_cord, class_name: 'Cord'
-  has_one :cross_cord, class_name: 'Cord'
+  belongs_to :racket
+  belongs_to :main_cord, class_name: 'Cord'
+  belongs_to :cross_cord, class_name: 'Cord'
 
 end

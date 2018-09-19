@@ -16,6 +16,7 @@
 class Cord < ApplicationRecord
   validates :gauge, :composition, presence: true
 
-  belongs_to :order_line, optional: true
+  has_many :order_lines1, foreign_key: :main_cord_id, class_name: 'OrderLine'
+  has_many :order_lines2, foreign_key: :cross_cord_id, class_name: 'OrderLine'
 
 end

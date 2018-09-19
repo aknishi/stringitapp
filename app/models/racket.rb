@@ -13,7 +13,7 @@
 class Racket < ApplicationRecord
   validates :brand, presence: true
 
-  belongs_to :order_line, optional: true
+  has_many :order_lines, foreign_key: :racket_id, class_name: 'OrderLine'
   has_and_belongs_to_many :users
 
 end
