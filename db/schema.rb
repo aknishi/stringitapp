@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_052817) do
+ActiveRecord::Schema.define(version: 2018_09_19_192552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,19 +24,16 @@ ActiveRecord::Schema.define(version: 2018_09_19_052817) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_line_id"
   end
 
   create_table "order_lines", force: :cascade do |t|
-    t.integer "racket_id", null: false
-    t.integer "main_cord_id", null: false
-    t.integer "cross_cord_id", null: false
     t.integer "main_tension", null: false
     t.integer "cross_tension", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order_id", null: false
     t.index ["order_id"], name: "index_order_lines_on_order_id"
-    t.index ["racket_id"], name: "index_order_lines_on_racket_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -57,6 +54,7 @@ ActiveRecord::Schema.define(version: 2018_09_19_052817) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_line_id"
     t.index ["brand"], name: "index_rackets_on_brand"
   end
 
