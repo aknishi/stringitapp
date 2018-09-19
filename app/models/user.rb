@@ -1,9 +1,30 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint(8)        not null, primary key
+#  name            :string           not null
+#  email           :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  phone_number    :string           not null
+#  address         :string
+#  comment         :text
+#  admin           :boolean          default(FALSE), not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
   validates :email, :session_token, presence: true, uniqueness: true
   validates :name, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :phone_number, format: { with: /\d{3}-\d{3}-\d{4}/, message: "bad format" }
   validates :admin, inclusion: { in: [true, false] }
+
+  has_many :orders
+  has_and_belongs_to_many :rackets
+  has_many :order_lines, through: :orders, source: :order_lines
 
   attr_reader :password
 

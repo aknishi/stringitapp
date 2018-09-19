@@ -1,9 +1,9 @@
 class Api::UsersController < ApplicationController
   before_action :require_login, only: [:index, :show]
-  before_filter :authorize_admin, only: :create
+  before_action :authorize_admin, only: :create
 
   def index
-    @customers = User.all_customers
+    @users = User.all_customers
   end
 
   def create

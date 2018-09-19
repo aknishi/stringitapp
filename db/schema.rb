@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_18_200114) do
+ActiveRecord::Schema.define(version: 2018_09_19_052817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2018_09_18_200114) do
     t.integer "cross_tension", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_id", null: false
+    t.index ["order_id"], name: "index_order_lines_on_order_id"
     t.index ["racket_id"], name: "index_order_lines_on_racket_id"
   end
 
@@ -43,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_200114) do
     t.string "status", default: "Pending", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "comments"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["order_number"], name: "index_orders_on_order_number", unique: true
     t.index ["status"], name: "index_orders_on_status"
@@ -55,6 +58,13 @@ ActiveRecord::Schema.define(version: 2018_09_18_200114) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand"], name: "index_rackets_on_brand"
+  end
+
+  create_table "rackets_users", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "racket_id"
+    t.index ["racket_id"], name: "index_rackets_users_on_racket_id"
+    t.index ["user_id"], name: "index_rackets_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
