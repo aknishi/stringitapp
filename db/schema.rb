@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_192552) do
+ActiveRecord::Schema.define(version: 2018_09_18_233117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,25 +24,32 @@ ActiveRecord::Schema.define(version: 2018_09_19_192552) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "order_line_id"
+    t.index ["brand"], name: "index_cords_on_brand"
+    t.index ["gauge"], name: "index_cords_on_gauge"
+    t.index ["length"], name: "index_cords_on_length"
+    t.index ["model"], name: "index_cords_on_model"
   end
 
   create_table "order_lines", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "racket_id", null: false
+    t.integer "main_cord_id", null: false
+    t.integer "cross_cord_id", null: false
     t.integer "main_tension", null: false
     t.integer "cross_tension", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "order_id", null: false
     t.index ["order_id"], name: "index_order_lines_on_order_id"
+    t.index ["racket_id"], name: "index_order_lines_on_racket_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "order_number", null: false
     t.integer "customer_id", null: false
     t.string "status", default: "Pending", null: false
+    t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "comments"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["order_number"], name: "index_orders_on_order_number", unique: true
     t.index ["status"], name: "index_orders_on_status"
@@ -54,8 +61,8 @@ ActiveRecord::Schema.define(version: 2018_09_19_192552) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "order_line_id"
     t.index ["brand"], name: "index_rackets_on_brand"
+    t.index ["model"], name: "index_rackets_on_model"
   end
 
   create_table "rackets_users", id: false, force: :cascade do |t|

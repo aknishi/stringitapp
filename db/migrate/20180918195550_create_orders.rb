@@ -4,7 +4,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :order_number, null:false
       t.integer :customer_id, null: false
       t.string :status, null: false, default: "Pending"
-
+      t.text :comments
+      
       t.timestamps
     end
     add_index :orders, :order_number, unique: true

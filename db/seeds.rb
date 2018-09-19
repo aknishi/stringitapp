@@ -117,7 +117,7 @@ order_line1 = OrderLine.create!(
 )
 
 order_line2 = OrderLine.create!(
-  order_id: order2.id,
+  order_id: order1.id,
   racket_id: racket2.id,
   main_cord_id: string3.id,
   main_tension: 55,

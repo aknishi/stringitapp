@@ -10,5 +10,9 @@ class CreateCords < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :cords, :brand
+    add_index :cords, :model
+    add_index :cords, :gauge
+    add_index :cords, :length
   end
 end

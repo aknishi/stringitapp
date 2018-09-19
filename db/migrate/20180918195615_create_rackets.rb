@@ -8,5 +8,6 @@ class CreateRackets < ActiveRecord::Migration[5.2]
       t.timestamps
     end
     add_index :rackets, :brand
+    add_index :rackets, :model
   end
 end
