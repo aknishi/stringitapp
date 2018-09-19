@@ -14,16 +14,9 @@ export const updateOrderLine = order_line => (
   })
 );
 
-export const fetchOrderLines = () => (
+export const fetchOrderLines = orderId => (
   $.ajax({
     method: 'GET',
-    url: 'api/order_lines'
-  })
-);
-
-export const fetchOrderLine = id => (
-  $.ajax({
-    method: 'GET',
-    url: `api/order_lines/${id}`
+    url: `api/orders/${orderId}/order_lines`
   })
 );

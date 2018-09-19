@@ -38,7 +38,7 @@ const receiveOrder = order => ({
   order
 })
 
-const receiveErrors = error => ({
+const receiveErrors = errors => ({
   type: RECEIVE_ORDER_ERRORS,
-  error
+  errors
 })

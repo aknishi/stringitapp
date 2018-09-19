@@ -2,7 +2,7 @@ class Api::OrderLinesController < ApplicationController
   before_action :require_login
 
   def index
-    @order_lines = OrderLine.all
+    @order_lines = Order.find(params[:order_id]).order_lines
   end
 
   def create

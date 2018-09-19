@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import { fetchOrders, fetchOrder } from './actions/order_actions';
+import { fetchCords, fetchCord } from './actions/cord_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       store = configureStore();
     }
-  window.fetchOrder = fetchOrder;
+  window.fetchCord = fetchCord;
+  window.fetchCords = fetchCords;
   window.dispatch = store.dispatch;
   window.getState = store.getState;
   const root = document.getElementById('root');
