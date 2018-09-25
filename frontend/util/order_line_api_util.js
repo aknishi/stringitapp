@@ -1,8 +1,8 @@
-export const createOrderLine = order_line => (
+export const createOrderLine = (orderId, order_line) => (
   $.ajax({
     method: 'POST',
-    url: `api/orders/${order_line.order_id}/order_lines`,
-    data: order_line
+    url: `api/orders/${orderId}/order_lines`,
+    data: { order_line }
   })
 );
 
@@ -18,5 +18,12 @@ export const fetchOrderLines = orderId => (
   $.ajax({
     method: 'GET',
     url: `api/orders/${orderId}/order_lines`
+  })
+);
+
+export const destroyOrderLine = orderLine => (
+$.ajax({
+    method: 'DELETE',
+    url: `/api/order_lines/${orderLine.id}`
   })
 );

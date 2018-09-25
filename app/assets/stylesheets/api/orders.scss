@@ -32,7 +32,9 @@
 // }
 
 .table-container {
-  width: 100%;
+  width: 1000px;
+  background: white;
+  margin: auto;
 }
 
 .table-responsive {
@@ -43,4 +45,8 @@
 .table {
   width: 900px;
   background-color: white;
+}
+
+#center {
+  text-align: center;
 }

@@ -2,10 +2,10 @@ import React from 'react'
 
 const WelcomePage = () => {
   return(
-    <div className="body">
-      <figure className="image-container">
-        <div className="overlay"></div>
-        <img src="http://cdnparap00.paragonrels.com/ParagonImages/Property/p0/SANDICOR/180019124/19/0/0/71c9bd96c6ff83fbfe8cf1de1a66fbca/1/0bea7bf626748fd210b40d0d6d0304b0/180019124-19.JPG" className="courts-img" />
+    <div>
+      <figure className="court-image-container">
+        <div className="image-overlay"></div>
+        <img src="https://images-cdn.torchx.com/property-images/19/2018-07-21t11:44/1820-avenida-del-mundo-1408-coronado_180040070-23-full.jpg" className="courts-img" />
       </figure>
       <div className="welcome-container">
         <h1 className="welcome-text">
