@@ -49,6 +49,18 @@ class Navbar extends React.Component {
       } else {
         return(
           <div className="nav-login-form">
+            <Link to="/orders">
+              <img src={window.ordersIconURL} className="icon" alt="orders"/>
+            </Link>
+            <Link to="/rackets">
+              <img src={window.racketIconURL} className="icon" alt="rackets"/>
+            </Link>
+            <Link to="/strings">
+              <img src={window.stringIconURL} className="icon" alt="strings"/>
+            </Link>
+            <Link to="/profile">
+              <img src={window.profileIconURL} className="icon" alt="profile"/>
+            </Link>
             <button
                 onClick={this.handleLogout}
                 className="logout-button">

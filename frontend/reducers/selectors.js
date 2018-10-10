@@ -1,9 +1,11 @@
-export const orderLinesByOrder = (state, orderId) => {
-  const orderLines = state.entities.orderLines;
-  const orderLinesByOrderId = [];
-  Object.keys(orderLines).forEach(orderLineId => {
-    const orderLine = orderLines[orderLineId];
-    if (orderLines[orderLineId].order_id === orderId) orderLinesByOrderId.push(orderLine)
-  })
-  return orderLinesByOrderId;
-};
+import values from 'lodash/values';
+
+export const selectOrderLines = (state, orderId) => {
+  const allOrderLines = values(state.entities.orderLines);
+  return allOrderLines.filter(ol => ol.order_id === orderId)
+}
+
+export const selectCustomers = (users) => {
+  const customers = values(users).filter(user => user.admin === false)
+  return customers;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class OrderLineForm extends React.Component {
+class EditOrderForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -24,11 +24,6 @@ class OrderLineForm extends React.Component {
     this.updateModels = this.updateModels.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.processNewOrderLine = this.processNewOrderLine.bind(this);
-  }
-
-  componentDidMount(){
-    this.props.fetchRackets();
-    this.props.fetchCords();
   }
 
   updateModels(e) {
@@ -78,8 +73,8 @@ class OrderLineForm extends React.Component {
   }
 
   hideOrderLineForm(orderId) {
-    $(`#ol-form`).addClass('hidden');
-    $(`#add-line-button`).removeClass('hidden');
+    $(`#add-button-${orderId}`).removeClass('hidden');
+    $(`#ol-form-${orderId}`).addClass('hidden');
   }
 
   handleSubmit() {
@@ -95,7 +90,7 @@ class OrderLineForm extends React.Component {
     delete orderLine.main_composition;
     delete orderLine.cross_composition;
     delete orderLine.cross_gauge;
-    createOrderLine(orderLine).then(this.hideOrderLineForm(orderId));
+    createOrderLine(orderLine).then((response) => {this.props.onLineSubmit(response.orderLine)}).then(this.hideOrderLineForm(orderId));
   }
 
   render() {
@@ -108,7 +103,7 @@ class OrderLineForm extends React.Component {
     const compositionOptions = uniqueCompositions.map(
       (composition, idx) => <option key={idx} value={composition}>{composition}</option>);
     return(
-      <div id={"ol-form"} className="ol-form-container">
+      <div id={`ol-form-${orderId}`} className="ol-form-container hidden">
         <h4>New Order Line</h4>
         <br />
         <div className="order-line-form" onSubmit={this.handleSubmit}>
@@ -185,4 +180,4 @@ class OrderLineForm extends React.Component {
   }
 }
 
-export default OrderLineForm;
+export default EditOrderForm;

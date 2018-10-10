@@ -2,7 +2,7 @@ export const createOrder = order => (
   $.ajax({
     method: 'POST',
     url: 'api/orders',
-    data: order
+    data: { order }
   })
 );
 
@@ -27,3 +27,10 @@ export const fetchOrder = id => (
     url: `api/orders/${id}`
   })
 );
+
+export const deleteOrder = id => (
+  $.ajax({
+    method: 'DELETE',
+    url: `api/orders/${id}`
+  })
+)

@@ -11,7 +11,7 @@ const orderLinesReducer = (state = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_ORDER_LINES:
-      return action.orderLines;
+      return merge({}, state, action.orderLines)
     case RECEIVE_ORDER_LINE:
       return merge({}, state, {[action.orderLine.id]: action.orderLine});
     case REMOVE_ORDER_LINE:

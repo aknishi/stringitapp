@@ -2,6 +2,7 @@ class Api::OrderLinesController < ApplicationController
   before_action :require_login
 
   def index
+    sleep 0.5
     @order_lines = Order.find(params[:order_id]).order_lines
   end
 
@@ -9,7 +10,6 @@ class Api::OrderLinesController < ApplicationController
     @order_line = OrderLine.new(order_line_params)
 
     if @order_line.save
-      login(@order_line)
       render "api/order_lines/show"
     else
       render json: @order_line.errors.full_messages, status: 422

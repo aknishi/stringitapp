@@ -3,6 +3,7 @@ import * as APIUtil  from '../util/order_api_util';
 export const RECEIVE_ORDERS = "RECEIVE_ORDERS";
 export const RECEIVE_ORDER = "RECEIVE_ORDER";
 export const RECEIVE_ORDER_ERRORS = "RECEIVE_ORDER_ERRORS";
+export const REMOVE_ORDER = "REMOVE_ORDER";
 
 export const createOrder = order => dispatch => (
   APIUtil.createOrder(order).then(
@@ -11,7 +12,7 @@ export const createOrder = order => dispatch => (
 );
 
 export const updateOrder = order => dispatch => (
-  APIUtil.udpateOrder(order).then(
+  APIUtil.updateOrder(order).then(
     order => dispatch(receiveOrder(order)),
     err => dispatch(receiveErrors(err.responseJSON)))
 );
@@ -28,6 +29,12 @@ export const fetchOrder = id => dispatch => (
     err => dispatch(receiveErrors(err.responseJSON)))
 );
 
+export const deleteOrder = id => dispatch => (
+  APIUtil.deleteOrder(id).then(
+    () => dispatch(removeOrder(id)),
+    err => dispatch(receiveErrors(err.responseJSON)))
+);
+
 const receiveOrders = orders => ({
   type: RECEIVE_ORDERS,
   orders
@@ -36,6 +43,11 @@ const receiveOrders = orders => ({
 const receiveOrder = order => ({
   type: RECEIVE_ORDER,
   order
+})
+
+const removeOrder = id => ({
+  type: REMOVE_ORDER,
+  id
 })
 
 const receiveErrors = errors => ({

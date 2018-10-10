@@ -9,7 +9,6 @@ class Api::OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
-      login(@order)
       render "api/orders/show"
     else
       render json: @order.errors.full_messages, status: 422

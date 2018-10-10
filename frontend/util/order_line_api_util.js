@@ -1,7 +1,7 @@
-export const createOrderLine = (orderId, order_line) => (
+export const createOrderLine = order_line => (
   $.ajax({
     method: 'POST',
-    url: `api/orders/${orderId}/order_lines`,
+    url: `api/orders/${order_line.order_id}/order_lines`,
     data: { order_line }
   })
 );

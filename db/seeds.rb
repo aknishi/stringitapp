@@ -15,7 +15,7 @@ admin = User.create!(
   name: "Adrian K.",
   email: "adrian@example.com",
   password: "123456",
-  phone_number: "111-111-1111",
+  phone_number: "000-000-0000",
   address: "",
   comment: "",
   admin: true
@@ -25,7 +25,7 @@ user1 = User.create!(
   name: "Jordan B.",
   email: "jordan8@example.com",
   password: "123456",
-  phone_number: "555-555-5555",
+  phone_number: "111-111-1111",
   address: "555 2nd Street, San Francisco, CA 94101",
   comment: "great customer",
   admin: false
@@ -35,9 +35,39 @@ user2 = User.create!(
   name: "John T.",
   email: "john99@example.com",
   password: "123456",
-  phone_number: "333-333-3333",
+  phone_number: "222-222-2222",
   address: "555 3rd Street, Sunnyvale, CA 94085",
   comment: "Always wants orders delivered.",
+  admin: false
+)
+
+user3 = User.create!(
+  name: "David D.",
+  email: "david@example.com",
+  password: "123456",
+  phone_number: "333-333-3333",
+  address: "363 Bush Street, San Diego, CA 92100",
+  comment: "important customer",
+  admin: false
+)
+
+user4 = User.create!(
+  name: "Lucas H.",
+  email: "lucas@example.com",
+  password: "123456",
+  phone_number: "444-444-4444",
+  address: "465 Violet Ave., Mendocino, CA 94223",
+  comment: "",
+  admin: false
+)
+
+user5 = User.create!(
+  name: "Bill B.",
+  email: "billy@example.com",
+  password: "123456",
+  phone_number: "555-555-5555",
+  address: "320 Main Street, Orinda, CA 93322",
+  comment: "Bad customer",
   admin: false
 )
 
