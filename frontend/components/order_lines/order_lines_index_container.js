@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import OrderLinesIndex from './order_lines_index';
-import { fetchOrderLines } from '../../actions/order_line_actions';
+import { fetchOrderLines, destroyOrderLine } from '../../actions/order_line_actions';
 import { fetchOrders } from '../../actions/order_actions';
 import { fetchRackets } from '../../actions/racket_actions';
 import { fetchCords } from '../../actions/cord_actions';
@@ -23,6 +23,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchRackets: () => dispatch(fetchRackets()),
   fetchCords: () => dispatch(fetchCords()),
   fetchOrders: () => dispatch(fetchOrders()),
+  destroyOrderLine: orderLine => dispatch(destroyOrderLine(orderLine))
 });
 
 export default connect(

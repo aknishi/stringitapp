@@ -32,6 +32,7 @@ class Api::OrderLinesController < ApplicationController
   def destroy
     @order_line = OrderLine.find(params[:id])
     @order_line.destroy
+    render :show
   end
 
   private

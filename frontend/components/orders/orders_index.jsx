@@ -143,13 +143,8 @@ class OrdersIndex extends React.Component {
     super(props);
 
     this.navigateToOrderForm = this.navigateToOrderForm.bind(this)
-    // this.fetchLines = this.fetchLines.bind(this);
+    this.changeStatus = this.changeStatus.bind(this);
   }
-
-  // fetchLines() {
-  //   const { orders } = this.props;
-  //   orders.map(order => this.props.fetchOrderLines(order.id))
-  // }
 
   componentWillMount() {
      this.props.fetchOrders()
@@ -162,6 +157,13 @@ class OrdersIndex extends React.Component {
   showOrderLineForm(orderId) {
     $(`#add-button-${orderId}`).addClass('hidden');
     $(`#ol-form-${orderId}`).removeClass('hidden');
+  }
+
+  changeStatus(order, status) {
+    const { updateOrder } = this.props;
+    const updatedOrder = Object.assign({}, order)
+    updatedOrder.status = status;
+    updateOrder(updatedOrder);
   }
 
   render() {
@@ -190,9 +192,63 @@ class OrdersIndex extends React.Component {
                 defaultPageSize={10}
                 className="-striped -highlight"
                 SubComponent = {row => {
-                  const items = orderLines.filter(od => od.order_id === row.original.id)
+                  const items = orderLines.filter(ol => ol.order_id === row.original.id)
+                  $(".status-option").prop("checked", false);
+                  $(`#${row.original.status}-${row.original.id}`).prop("checked", true);
                   return (
                     <div className="order-detail-container">
+                      <h4>Order Status:</h4>
+                      <div className="status-options">
+                        <div className="status-option-container">
+                          Pending
+                          <input
+                            type="radio"
+                            value="Pending"
+                            id={`Pending-${row.original.id}`}
+                            className="status-option"
+                            onClick={this.changeStatus.bind(this, row.original, "Pending")}/>
+                        </div>
+                        <div className="status-option-container">
+                          In Progress
+                          <input
+                            type="radio"
+                            value="In_Progress"
+                            id={`In_Progress-${row.original.id}`}
+                            className="status-option"
+                            onClick={this.changeStatus.bind(this, row.original, "In_Progress")}/>
+                        </div>
+                        <div className="status-option-container">
+                          Ready
+                          <input
+                            type="radio"
+                            value="Ready"
+                            id={`Ready-${row.original.id}`}
+                            className="status-option"
+                            onClick={this.changeStatus.bind(this, row.original, "Ready")}/>
+                        </div>
+                        <div className="status-option-container">
+                          Picked Up
+                          <input
+                            type="radio"
+                            value="Picked_up"
+                            id={`Picked_up-${row.original.id}`}
+                            className="status-option"
+                            onClick={this.changeStatus.bind(this, row.original, "Picked_up")}/>
+                        </div>
+                        <div className="status-option-container">
+                          Cancelled
+                          <input
+                            type="radio"
+                            value="Cancelled"
+                            id={`Cancelled-${row.original.id}`}
+                            className="status-option"
+                            onClick={this.changeStatus.bind(this, row.original, "Cancelled")}/>
+                        </div>
+                      </div>
+                      <br />
+                      <h4>Order Comments:</h4>
+                      <span className="red">{row.original.comments}</span>
+                      <br />
                       <OrderLinesIndexContainer data={items} orderId={row.original.id}/>
                       <br />
                     </div>
@@ -200,7 +256,6 @@ class OrdersIndex extends React.Component {
                 }}
                 collapseOnDataChange={false}
               />
-              <br />
             </div>
           </div>
         </div>

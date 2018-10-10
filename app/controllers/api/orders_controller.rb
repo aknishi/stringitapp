@@ -36,6 +36,6 @@ class Api::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:customer_id, :status, :comment)
+    params.require(:order).permit(:customer_id, :status, :comments)
   end
 end

@@ -30,7 +30,7 @@
 
 .order-detail-container {
   padding: 20px;
-  background: $light-grey;
+  background: $mid-light-grey;
 }
 
 .table-container {
@@ -147,7 +147,7 @@
 //Order Detail form
 
 .order-detail-form {
-  width: 900px;
+  width: 940px;
   background: #fafafa;
   padding: 20px;
   h5 {
@@ -185,6 +185,24 @@
 
 .cancel-button {
   border-radius: 5px;
+}
+
+.red {
+  color: red;
+}
+
+.status-options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.status-option-container {
+  display: flex;
+  align-items: center;
+  input {
+    margin-left: 8px;
+  }
 }
 
 #create-order-button {

@@ -26,7 +26,7 @@
 }
 
 .ol-form-container {
-  background: $light-blue;
+  background: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,6 +73,11 @@
 
 .ReactTable .rt-noData {
   display: none;
+}
+
+.trash-icon {
+  height: 18px;
+  width: 18px;
 }
 
 #green-button {

@@ -29,7 +29,7 @@ export const fetchOrderLines = orderId => dispatch => {
 };
 
 export const destroyOrderLine = orderLine => dispatch => (
-  OrderLineAPIUtil.destroyOrderLine(orderLine).then(
+  APIUtil.destroyOrderLine(orderLine).then(
     orderLine => dispatch(removeOrderLine(orderLine)))
 );
 
