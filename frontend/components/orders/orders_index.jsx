@@ -144,6 +144,7 @@ class OrdersIndex extends React.Component {
 
     this.navigateToOrderForm = this.navigateToOrderForm.bind(this)
     this.changeStatus = this.changeStatus.bind(this);
+    this.handleComment = this.handleComment.bind(this);
   }
 
   componentWillMount() {
@@ -164,6 +165,65 @@ class OrdersIndex extends React.Component {
     const updatedOrder = Object.assign({}, order)
     updatedOrder.status = status;
     updateOrder(updatedOrder);
+  }
+
+  showTextbox(order) {
+    $(`#textbox-${order.id}`).removeClass("hidden");
+    $(`#comment-button-${order.id}`).addClass("hidden");
+    $(`#red-comment-${order.id}`).addClass("hidden");
+  }
+
+  hideTextbox(order) {
+    $(`#textbox-${order.id}`).addClass("hidden");
+    $(`#comment-button-${order.id}`).removeClass("hidden");
+    $(`#red-comment-${order.id}`).removeClass("hidden");
+  }
+
+  handleComment(order, e) {
+    const { updateOrder } = this.props;
+    if (e.keyCode == 13) {
+      const updatedOrder = Object.assign({}, order);
+      updatedOrder.comments = e.currentTarget.value
+      updateOrder(updatedOrder).then(this.hideTextbox(order));
+    }
+  }
+
+  orderComments(order) {
+    if (order.comments === "") {
+      return (
+        <div>
+          <textarea
+            id={`textbox-${order.id}`}
+            className="textbox hidden"
+            placeholder="Comment here"
+            onKeyDown={e => this.handleComment(order, e)}>
+          </textarea>
+          <button
+            id={`comment-button-${order.id}`}
+            className="add-comment-button green-button"
+            onClick={this.showTextbox.bind(this, order)}>
+            Add Comment
+          </button>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <span id={`red-comment-${order.id}`} className="red">{order.comments}</span>
+          <textarea
+            id={`textbox-${order.id}`}
+            className="textbox hidden"
+            placeholder={order.comments}
+            onKeyDown={e => this.handleComment(order, e)}>
+          </textarea>
+          <button
+            id={`comment-button-${order.id}`}
+            onClick={this.showTextbox.bind(this, order)}>
+            Edit Comment
+          </button>
+        </div>
+      )
+    }
   }
 
   render() {
@@ -247,7 +307,7 @@ class OrdersIndex extends React.Component {
                       </div>
                       <br />
                       <h4>Order Comments:</h4>
-                      <span className="red">{row.original.comments}</span>
+                      {this.orderComments(row.original)}
                       <br />
                       <OrderLinesIndexContainer data={items} orderId={row.original.id}/>
                       <br />

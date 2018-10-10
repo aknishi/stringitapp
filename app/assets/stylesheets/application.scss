@@ -107,6 +107,9 @@ input {
   &:active {
     background-color: $dark-green;
   }
+  &:focus {
+    outline: 0;
+  }
 }
 
 .logo-link {
