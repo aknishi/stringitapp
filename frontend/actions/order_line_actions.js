@@ -5,8 +5,7 @@ export const RECEIVE_ORDER_LINES = "RECEIVE_ORDER_LINES";
 export const RECEIVE_ORDER_LINE = "RECEIVE_ORDER_LINE";
 export const RECEIVE_ORDER_LINE_ERRORS = "RECEIVE_ORDER_LINE_ERRORS";
 export const REMOVE_ORDER_LINE = "REMOVE_ORDER_LINE";
-export const START_LOADING_ORDER_LINE = "START_LOADING_ORDER_LINE";
-export const START_LOADING_ORDER_LINES = "START_LOADING_ORDER_LINES";
+export const START_LOADING = "START_LOADING";
 
 export const createOrderLine = orderLine => dispatch => {
   dispatch(startLoadingLine());
@@ -34,11 +33,11 @@ export const destroyOrderLine = orderLine => dispatch => (
 );
 
 export const startLoadingLines = () => ({
-  type: START_LOADING_ORDER_LINES
+  type: START_LOADING
 });
 
 export const startLoadingLine = () => ({
-  type: START_LOADING_ORDER_LINE
+  type: START_LOADING
 });
 
 const receiveOrderLines = orderLines => ({

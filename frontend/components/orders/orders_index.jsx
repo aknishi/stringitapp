@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 import OrderLinesIndexContainer from '../order_lines/order_lines_index_container';
 import EditOrderContainer from './edit_order_container';
 import { withRouter, Link } from 'react-router';

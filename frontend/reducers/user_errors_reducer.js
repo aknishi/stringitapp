@@ -1,16 +1,17 @@
 import {
-  RECEIVE_RACKET_ERRORS,
-  RECEIVE_RACKET,
-  CLEAR_RACKET_ERRORS } from '../actions/racket_actions';
+  RECEIVE_USER_ERRORS,
+  RECEIVE_USER,
+  CLEAR_USER_ERRORS
+} from '../actions/user_actions';
 
 export default (state = [], action) => {
   Object.freeze(state);
   switch (action.type) {
-    case RECEIVE_RACKET_ERRORS:
+    case RECEIVE_USER_ERRORS:
       return action.errors;
-    case RECEIVE_RACKET:
+    case CLEAR_USER_ERRORS:
       return [];
-    case CLEAR_RACKET_ERRORS:
+    case RECEIVE_USER:
       return [];
     default:
       return state;

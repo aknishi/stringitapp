@@ -11,9 +11,15 @@
 #
 
 class Racket < ApplicationRecord
-  validates :brand, presence: true
+  validates :brand, :model, presence: true
 
   has_many :order_lines, foreign_key: :racket_id, class_name: 'OrderLine'
   has_and_belongs_to_many :users
+
+  after_initialize :set_defaults
+
+  def set_defaults
+    self.image ||= ""
+  end
 
 end

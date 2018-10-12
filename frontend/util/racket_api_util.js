@@ -2,7 +2,7 @@ export const createRacket = racket => (
   $.ajax({
     method: 'POST',
     url: 'api/rackets',
-    data: racket
+    data: { racket }
   })
 );
 

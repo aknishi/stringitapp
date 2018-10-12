@@ -2,7 +2,7 @@ export const createCord = cord => (
   $.ajax({
     method: 'POST',
     url: 'api/cords',
-    data: cord
+    data: { cord }
   })
 );
 

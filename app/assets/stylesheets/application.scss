@@ -39,7 +39,11 @@ h4 {
 }
 
 h5 {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+h6 {
+  font-size: 14px;
 }
 
 body {
@@ -70,8 +74,17 @@ input {
   border: 1px solid $light-grey;
 }
 
+textarea {
+  padding: 10px;
+}
+
 .hidden {
   display: none;
+}
+
+.errors {
+  color: red;
+  text-align: center;
 }
 
 .button {

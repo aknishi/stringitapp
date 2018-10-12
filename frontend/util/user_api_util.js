@@ -22,3 +22,11 @@ export const updateUser = ({ formData, userId }) => (
     processData: false
   })
 );
+
+export const createUser = user => (
+  $.ajax({
+    method: 'POST',
+    url: 'api/users',
+    data: { user }
+  })
+);

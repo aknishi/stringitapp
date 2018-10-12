@@ -3,6 +3,8 @@ import * as APIUtil  from '../util/cord_api_util';
 export const RECEIVE_CORDS = "RECEIVE_CORDS";
 export const RECEIVE_CORD = "RECEIVE_CORD";
 export const RECEIVE_CORD_ERRORS = "RECEIVE_CORD_ERRORS";
+export const START_LOADING_CORDS = "START_LOADING_CORDS";
+export const CLEAR_CORD_ERRORS = "CLEAR_CORD_ERRORS";
 
 export const createCord = cord => dispatch => (
   APIUtil.createCord(cord).then(
@@ -16,11 +18,13 @@ export const updateCord = cord => dispatch => (
     err => dispatch(receiveErrors(err.responseJSON)))
 );
 
-export const fetchCords = () => dispatch => (
-  APIUtil.fetchCords().then(
+export const fetchCords = () => dispatch => {
+  dispatch(startLoading());
+  return APIUtil.fetchCords().then(
     cords => dispatch(receiveCords(cords)),
-    err => dispatch(receiveErrors(err.responseJSON)))
-);
+    err => dispatch(receiveErrors(err.responseJSON))
+  )
+};
 
 export const fetchCord = id => dispatch => (
   APIUtil.fetchCord(id).then(
@@ -36,6 +40,14 @@ const receiveCords = cords => ({
 const receiveCord = cord => ({
   type: RECEIVE_CORD,
   cord
+})
+
+export const startLoading = () => ({
+  type: START_LOADING_CORDS
+});
+
+export const clearErrors = () => ({
+  type: CLEAR_CORD_ERRORS
 })
 
 const receiveErrors = errors => ({

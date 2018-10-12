@@ -7,6 +7,11 @@ import WelcomePage from './session_form/welcome';
 import NavbarContainer from './session_form/navbar_container';
 import OrdersIndexContainer from './orders/orders_index_container';
 import OrderFormContainer from './orders/order_form_container';
+import CustomerFormContainer from './session_form/customer_form_container';
+import RacketIndexContainer from './rackets/racket_index_container';
+import RacketFormContainer from './rackets/racket_form_container';
+import CordIndexContainer from './cords/cord_index_container';
+import CordFormContainer from './cords/cord_form_container';
 
 const App = () => (
   <div>
@@ -18,6 +23,11 @@ const App = () => (
       <Route exact path="/" component={WelcomePage} />
       <ProtectedRoute exact path="/orders" component={OrdersIndexContainer} />
       <ProtectedRoute exact path="/orderform" component={OrderFormContainer} />
+      <ProtectedRoute exact path="/customer-form" component={CustomerFormContainer} />
+      <ProtectedRoute exact path="/rackets" component={RacketIndexContainer} />
+      <ProtectedRoute exact path="/racket-form" component={RacketFormContainer} />
+      <ProtectedRoute exact path="/strings" component={CordIndexContainer} />
+      <ProtectedRoute exact path="/strings-form" component={CordFormContainer} />
   </div>
 );
 

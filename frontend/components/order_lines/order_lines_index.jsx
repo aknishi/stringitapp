@@ -1,6 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
-import LoadingIcon from './loading_icon';
+import LoadingIcon from '../loading_icon';
 import EditOrderContainer from '../orders/edit_order_container';
 
 // Import React Table

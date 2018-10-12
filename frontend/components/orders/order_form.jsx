@@ -18,11 +18,17 @@ class OrderForm extends React.Component {
     this.showOrderLinesIndex = this.showOrderLinesIndex.bind(this);
     this.finishOrder = this.finishOrder.bind(this);
     this.cancelOrder = this.cancelOrder.bind(this);
+    this.navigateToCustomerForm = this.navigateToCustomerForm.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUsers();
     this.props.fetchOrders();
+  }
+
+  navigateToCustomerForm(e) {
+    e.preventDefault();
+    this.props.history.push("/customer-form");
   }
 
   setupCustomer(callback) {
@@ -55,7 +61,8 @@ class OrderForm extends React.Component {
     $("#order-buttons").removeClass('hidden');
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault()
     this.setupCustomer(() => this.beginOrder(() => this.showOrderDetailForm))
   }
 
@@ -93,7 +100,8 @@ class OrderForm extends React.Component {
             <UserSearch customers={customers}/>
           </div>
           <h5>or</h5>
-          <button id="green-button" className="new-customer-button">Create New Customer</button>
+          <button id="green-button" className="new-customer-button"
+            onClick={this.navigateToCustomerForm}>Create New Customer</button>
           <div id="customer-fields" className="customer-fields hidden">
             <input id="customer-id" type="hidden" disabled value="" onChange={this.setupCustomer}/>
             <input id="customer-name" type="text" disabled placeholder="Full Name" value={this.state.customer_name}/>

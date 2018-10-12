@@ -1,1 +1,1 @@
-json.extract! racket, :id, :brand, :model, :color
+json.extract! racket, :id, :brand, :model, :color, :image

@@ -90,13 +90,22 @@ class EditOrderForm extends React.Component {
     delete orderLine.main_composition;
     delete orderLine.cross_composition;
     delete orderLine.cross_gauge;
-    createOrderLine(orderLine).then((response) => {this.props.onLineSubmit(response.orderLine)}).then(this.hideOrderLineForm(orderId));
+    createOrderLine(orderLine).then(
+      (response) => {this.props.onLineSubmit(response.orderLine)}).then(
+        this.hideOrderLineForm(orderId));
   }
 
   render() {
     const { rackets, cords, orderId } = this.props;
-    const racketBrands = rackets.map(
-      racket => <option key={racket.id} value={racket.brand}>{racket.brand}</option>);
+
+    const uniqueRacketBrands = []
+    rackets.forEach(racket => {
+      if (!uniqueRacketBrands.includes(racket.brand)) {
+        uniqueRacketBrands.push(racket.brand)
+      }})
+    const racketBrandItems = uniqueRacketBrands.map(
+      (brand, idx) => <option key={idx} value={brand}>{brand}</option>);
+
     const racketModels = this.updateModels();
     const cordCompositions = cords.map(cord => cord.composition);
     const uniqueCompositions = Array.from(new Set(cordCompositions))
@@ -116,7 +125,7 @@ class EditOrderForm extends React.Component {
             <div className="racket-form">
               <select onChange={this.update('racket_brand')} id="racket-brand">
                 <option>-- Select a Brand --</option>
-                { racketBrands }
+                { racketBrandItems }
               </select>
               <select onChange={this.update('racket_model')} onClick={this.updateModels}>
                 <option>-- Select a Model --</option>

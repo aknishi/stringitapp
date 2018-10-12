@@ -2,6 +2,7 @@ class Api::RacketsController < ApplicationController
   before_action :require_login
 
   def index
+    sleep 1
     @rackets = Racket.all
   end
 
@@ -9,7 +10,6 @@ class Api::RacketsController < ApplicationController
     @racket = Racket.new(racket_params)
 
     if @racket.save
-      login(@racket)
       render "api/rackets/show"
     else
       render json: @racket.errors.full_messages, status: 422
@@ -37,6 +37,6 @@ class Api::RacketsController < ApplicationController
   private
 
   def racket_params
-    params.require(:racket).permit(:order_line_id, :brand, :model, :color)
+    params.require(:racket).permit(:order_line_id, :brand, :model, :color, :image)
   end
 end
