@@ -88,6 +88,15 @@ textarea {
 }
 
 .button {
+  &:hover {
+    background-color: $light-grey;
+  }
+  &:active {
+    background-color: $mid-grey;
+  }
+}
+
+.login-button {
   background-color: #3897f0;
   color: white;
   border-radius: 3px;
@@ -95,15 +104,12 @@ textarea {
   font-weight: bold;
   font-size: 14px;
   margin: 5px;
-
   &:hover {
     background-color: #348adb;
   }
-
   &:active {
     background-color: #2d76bb;
   }
-
   &:focus {
     background-color: $light-grey;
   }

@@ -24,8 +24,7 @@ class CordIndexItem extends React.Component {
           { this.cordImage() }
         </div>
         <div className="cord-info">
-          <h6><b>{cord.brand} {cord.model}</b></h6>
-          <h6>Gauge: {cord.gauge}</h6>
+          <h6><b>{cord.brand} {cord.model} {cord.gauge} {cord.color}</b></h6>
           <h6>{cord.composition}</h6>
         </div>
       </div>

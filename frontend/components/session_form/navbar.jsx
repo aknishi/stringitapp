@@ -43,7 +43,7 @@ class Navbar extends React.Component {
               placeholder="Password"
               onChange={this.update('password')}
               />
-            <input type="submit" value="Log In" className="button"/>
+            <input type="submit" value="Log In" className="login-button"/>
           </form>
         )
       } else {

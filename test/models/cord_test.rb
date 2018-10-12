@@ -3,14 +3,15 @@
 # Table name: cords
 #
 #  id          :bigint(8)        not null, primary key
-#  brand       :string
-#  model       :string
+#  brand       :string           not null
+#  model       :string           not null
 #  gauge       :string           not null
 #  length      :integer
 #  composition :string           not null
-#  color       :string
+#  color       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  image       :string           default("")
 #
 
 require 'test_helper'

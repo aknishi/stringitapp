@@ -66,7 +66,7 @@ class LoginForm extends React.Component {
               onChange={this.update('password')}
               />
             <br/>
-            <input type="submit" value="Log In" className="button"/>
+            <input type="submit" value="Log In" className="login-button"/>
           </div>
         </form>
         <div className="demo-login">

@@ -86,19 +86,19 @@ order2 = Order.create!(
 racket1 = Racket.create!(
   brand: "Yonex",
   model: "Vcore Pro 100",
-  color: "navy / orange"
+  color: "Navy / Orange"
 )
 
 racket2 = Racket.create!(
   brand: "Wilson",
   model: "Blade Team 99 Lite",
-  color: "black / yellow"
+  color: "Black / Yellow"
 )
 
 racket3 = Racket.create!(
   brand: "Prince",
   model: "Phantom Pro 100",
-  color: "black"
+  color: "Black"
 )
 
 string1 = Cord.create!(
@@ -107,7 +107,7 @@ string1 = Cord.create!(
   gauge: "16",
   length: 40,
   composition: "Poly-Ether",
-  color: "green"
+  color: "Green"
 )
 
 string2 = Cord.create!(
@@ -116,7 +116,7 @@ string2 = Cord.create!(
   gauge: "17",
   length: 40,
   composition: "Multifilament",
-  color: "natural"
+  color: "Natural"
 )
 
 string3 = Cord.create!(
@@ -125,7 +125,7 @@ string3 = Cord.create!(
   gauge: "16",
   length: 39,
   composition: "Multifilament",
-  color: "natural"
+  color: "Natural"
 )
 
 string4 = Cord.create!(
@@ -134,7 +134,7 @@ string4 = Cord.create!(
   gauge: "16L",
   length: 39,
   composition: "Polyester Monofilament",
-  color: "black"
+  color: "Black"
 )
 
 order_line1 = OrderLine.create!(

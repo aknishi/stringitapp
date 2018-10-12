@@ -4,10 +4,11 @@
 #
 #  id         :bigint(8)        not null, primary key
 #  brand      :string           not null
-#  model      :string
+#  model      :string           not null
 #  color      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  image      :string
 #
 
 class Racket < ApplicationRecord

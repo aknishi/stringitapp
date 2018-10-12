@@ -40,9 +40,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  * {
-    margin: 5px;
-  }
 }
 
 .labels {
@@ -59,6 +56,30 @@
 .items-forms {
   display: flex;
   flex-direction: column;
+  width: 500px;
+}
+
+.section-title {
+  text-align: center;
+  background-color: $mid-grey;
+  width: 500px;
+  margin-top: 15px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background-color: $light-grey;
+  margin-bottom: 15px;
+  padding: 10px 40px;
+  * {
+    margin: 5px;
+  }
 }
 
 .ol-button {
