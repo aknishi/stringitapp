@@ -2,6 +2,7 @@ import React from "react";
 import OrderLinesIndexContainer from '../order_lines/order_lines_index_container';
 import EditOrderContainer from './edit_order_container';
 import { withRouter, Link } from 'react-router';
+
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table";
@@ -12,18 +13,9 @@ const orderColumns = [
     Header: "Order Number",
     id: "order-number",
     accessor: "order_number",
-    width: 120,
+    width: 150,
     filterMethod: (filter, rows) =>
       matchSorter(rows, filter.value, { keys: ["order-number"] }),
-    filterAll: true
-  },
-  {
-    Header: "Date",
-    id: "order-date",
-    accessor: "order_date",
-    width: 120,
-    filterMethod: (filter, rows) =>
-      matchSorter(rows, filter.value, { keys: ["order-date"] }),
     filterAll: true
   },
   {
@@ -269,59 +261,54 @@ class OrdersIndex extends React.Component {
                       <h4>Order Comments:</h4>
                       {this.orderComments(row.original)}
                       <br />
-                      <div className="status-options">
-                        <h4 className="status-title">Order Status:</h4>
-                        <div className="status-option"
-                          onClick={this.changeStatus.bind(this, row.original, "Pending")}>
-                          <input
-                            type="radio"
-                            name="status"
-                            value="Pending"
-                            id={`Pending-${row.original.id}`}
-                            />
-                          <label id="pending-label">Pending</label>
+                        <h4>Order Status:</h4>
+                        <div className="status-options">
+                          <div className="status-option-container button">
+                            Pending
+                            <input
+                              type="radio"
+                              value="Pending"
+                              id={`Pending-${row.original.id}`}
+                              className="status-option"
+                              onClick={this.changeStatus.bind(this, row.original, "Pending")}/>
+                          </div>
+                          <div className="status-option-container button">
+                            In Progress
+                            <input
+                              type="radio"
+                              value="In_Progress"
+                              id={`In_Progress-${row.original.id}`}
+                              className="status-option"
+                              onClick={this.changeStatus.bind(this, row.original, "In_Progress")}/>
+                          </div>
+                          <div className="status-option-container button">
+                            Ready
+                            <input
+                              type="radio"
+                              value="Ready"
+                              id={`Ready-${row.original.id}`}
+                              className="status-option"
+                              onClick={this.changeStatus.bind(this, row.original, "Ready")}/>
+                          </div>
+                          <div className="status-option-container button">
+                            Picked Up
+                            <input
+                              type="radio"
+                              value="Picked_up"
+                              id={`Picked_up-${row.original.id}`}
+                              className="status-option"
+                              onClick={this.changeStatus.bind(this, row.original, "Picked_up")}/>
+                          </div>
+                          <div className="status-option-container button">
+                            Cancelled
+                            <input
+                              type="radio"
+                              value="Cancelled"
+                              id={`Cancelled-${row.original.id}`}
+                              className="status-option"
+                              onClick={this.changeStatus.bind(this, row.original, "Cancelled")}/>
+                          </div>
                         </div>
-                        <div className="status-option"
-                          onClick={this.changeStatus.bind(this, row.original, "In_Progress")}>
-                          <input
-                            type="radio"
-                            name="status"
-                            value="In_Progress"
-                            id={`In_Progress-${row.original.id}`}
-                            />
-                          <label id="in-progress-label">In Progress</label>
-                        </div>
-                        <div className="status-option"
-                          onClick={this.changeStatus.bind(this, row.original, "Ready")}>
-                          <input
-                            type="radio"
-                            name="status"
-                            value="Ready"
-                            id={`Ready-${row.original.id}`}
-                            />
-                          <label id="ready-label">Ready</label>
-                        </div>
-                        <div className="status-option"
-                          onClick={this.changeStatus.bind(this, row.original, "Picked_up")}>
-                          <input
-                            type="radio"
-                            name="status"
-                            value="Picked_up"
-                            id={`Picked_up-${row.original.id}`}
-                            />
-                          <label id="picked-up-label">Picked Up</label>
-                        </div>
-                        <div className="status-option"
-                          onClick={this.changeStatus.bind(this, row.original, "Cancelled")}>
-                          <input
-                            type="radio"
-                            name="status"
-                            value="Cancelled"
-                            id={`Cancelled-${row.original.id}`}
-                            />
-                          <label id="cancelled-label">Cancelled</label>
-                        </div>
-                      </div>
                     </div>
                   );
                 }}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from "react-router"
 
 class EditOrderForm extends React.Component {
   constructor(props){
@@ -8,6 +9,7 @@ class EditOrderForm extends React.Component {
       racket_id: "",
       racket_brand: "",
       racket_model: "",
+      racket_image: "",
       main_cord_id: "",
       main_tension: "",
       main_brand: "",
@@ -17,6 +19,9 @@ class EditOrderForm extends React.Component {
       cross_brand: "",
       cross_model: ""
     }
+    this.racketImage = this.racketImage.bind(this);
+    this.navigateToRacketForm = this.navigateToRacketForm.bind(this);
+    this.navigateToStringForm = this.navigateToStringForm.bind(this);
     this.updateRacketId = this.updateRacketId.bind(this);
     this.updateMainId = this.updateMainId.bind(this);
     this.updateCrossId = this.updateCrossId.bind(this);
@@ -27,13 +32,32 @@ class EditOrderForm extends React.Component {
     this.processNewOrderLine = this.processNewOrderLine.bind(this);
   }
 
+  racketImage() {
+    if (this.state.racket_image !== "") {
+      return (
+        <div id="racket-order-image" className="racket-image">
+          <img src={this.state.racket_image} />
+        </div>
+      )
+    }
+  }
+
+  navigateToRacketForm() {
+    this.props.history.push("/racket-form")
+  }
+
+  navigateToStringForm() {
+    this.props.history.push("/string-form")
+  }
+
   updateRacketModels(e) {
     const { rackets } = this.props;
     const racketModels = rackets.filter(racket => racket.brand === this.state.racket_brand).map(
       racket => ( <option
                     key={racket.id}
                     value={racket.model}
-                    data={racket.id}>
+                    data-racketid={racket.id}
+                    data-image={racket.image}>
                     {racket.model}
                   </option> ));
     return racketModels;
@@ -66,23 +90,27 @@ class EditOrderForm extends React.Component {
   updateRacketId(e) {
     var sel = $('#racket-model');
     var selected = sel[0].options[sel[0].options.selectedIndex]
-    const racketId = selected.getAttribute('data');
+    const racketId = selected.getAttribute('data-racketid');
+    const imageUrl = selected.getAttribute('data-image');
     this.setState({ ["racket_model"]: e.currentTarget.value });
+    this.setState({ ["racket_image"]: imageUrl });
     this.setState({ ["racket_id"]: racketId });
   }
 
   updateMainId(e) {
-    var sel = $('#racket-model');
+    var sel = $('#main-model');
     var selected = sel[0].options[sel[0].options.selectedIndex]
     const cordId = selected.getAttribute('data');
+    console.log(selected);
     this.setState({ ["main_model"]: e.currentTarget.value });
     this.setState({ ["main_cord_id"]: cordId });
   }
 
   updateCrossId(e) {
-    var sel = $('#racket-model');
+    var sel = $('#cross-model');
     var selected = sel[0].options[sel[0].options.selectedIndex]
     const cordId = selected.getAttribute('data');
+    console.log(selected);
     this.setState({ ["cross_model"]: e.currentTarget.value });
     this.setState({ ["cross_cord_id"]: cordId });
   }
@@ -105,6 +133,7 @@ class EditOrderForm extends React.Component {
     let orderLine = Object.assign({}, this.state);
     delete orderLine.racket_model;
     delete orderLine.racket_brand;
+    delete orderLine.racket_image;
     delete orderLine.main_brand;
     delete orderLine.main_model;
     delete orderLine.cross_brand;
@@ -137,12 +166,7 @@ class EditOrderForm extends React.Component {
       (brand, idx) => <option key={idx} value={brand}>{brand}</option>);
 
     const crossModelItems = this.updateCrossModels();
-
-    // const cordCompositions = cords.map(cord => cord.composition);
-    // const uniqueCompositions = Array.from(new Set(cordCompositions))
-    // const compositionOptions = uniqueCompositions.map(
-    //   (composition, idx) => <option key={idx} value={composition}>{composition}</option>);
-
+    
     return(
       <div id={`ol-form-${orderId}`} className="ol-form-container hidden">
         <h4>New Order Line</h4>
@@ -150,17 +174,25 @@ class EditOrderForm extends React.Component {
         <div className="order-line-form" onSubmit={this.handleSubmit}>
           <div className="item-forms">
             <h4 className="section-title">Racket</h4>
-            <div className="racket-order section">
-              <select onChange={this.update('racket_brand')} id="racket-brand">
-                <option>-- Select a Brand --</option>
-                { racketBrandItems }
-              </select>
-              <select onChange={this.updateRacketId} id="racket-model">
-                <option>-- Select a Model --</option>
-                { racketModelItems }
-              </select>
-              <h6> OR </h6>
-              <button className="button">Create New Racket</button>
+            <div className="section">
+              <div className="racket-order">
+                { this.racketImage() }
+                <div className="racket-dropdowns">
+                  <select onChange={this.update('racket_brand')} id="racket-brand">
+                    <option>-- Select a Brand --</option>
+                    { racketBrandItems }
+                  </select>
+                  <select onChange={this.updateRacketId} id="racket-model">
+                    <option>-- Select a Model --</option>
+                    { racketModelItems }
+                  </select>
+                </div>
+              </div>
+              <div className="lower-section">
+                <h6> OR </h6>
+                <button className="button" onClick={this.navigateToRacketForm}>
+                  Create New Racket</button>
+              </div>
             </div>
             <h4 className="section-title">Main String</h4>
             <div className="main-order section">
@@ -178,8 +210,11 @@ class EditOrderForm extends React.Component {
                 <option>-- Select a Model --</option>
                 { mainModelItems }
               </select>
-              <h6> OR </h6>
-              <button className="button">Create New String</button>
+              <div className="lower-section">
+                <h6> OR </h6>
+                <button className="button" onClick={this.navigateToStringForm}>
+                  Create New String</button>
+              </div>
             </div>
             <h4 className="section-title">Cross String</h4>
             <div className="cross-order section">
@@ -197,8 +232,11 @@ class EditOrderForm extends React.Component {
                 <option>-- Select a Model --</option>
                 { crossModelItems }
               </select>
-              <h6> OR </h6>
-              <button className="button">Create New String</button>
+              <div className="lower-section">
+                <h6> OR </h6>
+                <button className="button" onClick={this.navigateToStringForm}>
+                  Create New String</button>
+              </div>
             </div>
           </div>
         </div>
@@ -221,4 +259,4 @@ class EditOrderForm extends React.Component {
   }
 }
 
-export default EditOrderForm;
+export default withRouter(EditOrderForm);

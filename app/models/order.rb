@@ -45,10 +45,15 @@ class Order < ApplicationRecord
     return order_number
   end
 
+  def order_date
+    # format date in abbr. month, day, yr (eg. Jul 10 2018)
+    self.created_at.strftime("%b %d %Y")
+
+  end
+
   private
 
   def ensure_order_number
     self.order_number ||= Order.generate_order_number
   end
-
 end

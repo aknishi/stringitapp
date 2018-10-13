@@ -14,7 +14,7 @@ class CordIndex extends React.Component {
   }
 
   navigateToCordForm() {
-    this.props.history.push("/strings-form")
+    this.props.history.push("/string-form")
   }
 
   render() {

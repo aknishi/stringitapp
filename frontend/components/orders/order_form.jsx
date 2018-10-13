@@ -1,6 +1,5 @@
 import React from "react";
 import UserSearch from "./user_search";
-import OrderLineFormContainer from '../order_lines/order_line_form_container';
 import OrderLinesIndexContainer from '../order_lines/order_lines_index_container';
 import { withRouter } from 'react-router-dom';
 

@@ -193,16 +193,83 @@
 
 .status-options {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  margin-bottom: 20px;
+}
+
+#pending-label {
+  position: absolute;
+  left: 180px;
+  z-index: 5;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#in-progress-label {
+  top: 12px;
+  left: 280px;
+  z-index: 4;
+}
+
+#ready-label {
+  top: 12px;
+  left: 280px;
+  z-index: 3;
+}
+
+#picked-up-label {
+  top: 12px;
+  left: 280px;
+  z-index: 2;
+}
+
+#cancelled-label {
+  top: 12px;
+  left: 280px;
+  z-index: 1;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+
+.status-option {
+  label {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 24px;
+    border-radius: 1px solid $mid-grey;
+  }
+  input + label {
+    background-color: $light-blue;
+  }
+  input {
+    visibility: hidden;
+    width: 0;
+    background-color: $light-blue;
+  }
+  input:checked + label {
+    font-weight: bold;
+    color: white;
+    background-color: $blue;
+    z-index: 6;
+  }
+  label:hover {
+    font-weight: bold;
+    color: white;
+    background-color: $mid-blue;
+  }
+}
+
+.status-title {
+  position: absolute;
 }
 
 .status-option-container {
   display: flex;
   align-items: center;
-  input {
-    margin-left: 8px;
-  }
 }
 
 .add-comment-button {

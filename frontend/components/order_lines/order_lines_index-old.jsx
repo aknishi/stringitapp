@@ -1,7 +1,7 @@
 import React from "react";
 import LoadingIcon from '../loading_icon';
 import EditOrderContainer from '../orders/edit_order_container';
-import OrderLinesIndexItem from './order_lines_index_item'
+
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table";
@@ -50,14 +50,7 @@ class OrderLinesIndex extends React.Component {
   }
 
   render() {
-    const { orderId, data, loading, destroyOrderLine } = this.props
-
-    const items = data.map( ol =>
-      <OrderLinesIndexItem
-        key={ol.id}
-        orderLine={ol} 
-        destroyOrderLine={destroyOrderLine}/>
-    )
+    const { orderId, data, loading } = this.props
 
     const orderLineColumns = [
       {
@@ -147,7 +140,16 @@ class OrderLinesIndex extends React.Component {
         <div>
           <h4>Order Detail:</h4>
           <br />
-          { items }
+          <ReactTable
+            loading={this.state.loading}
+            data={this.state.data}
+            columns={orderLineColumns}
+            defaultPageSize={this.state.data.length}
+            showPagination={false}
+            style={{ textAlign: "center" }}
+            className="order-lines-table"
+            manual
+          />
           <button
             id={`add-button-${orderId}`}
             className="add-button green-button"

@@ -27,7 +27,7 @@ const App = () => (
       <ProtectedRoute exact path="/rackets" component={RacketIndexContainer} />
       <ProtectedRoute exact path="/racket-form" component={RacketFormContainer} />
       <ProtectedRoute exact path="/strings" component={CordIndexContainer} />
-      <ProtectedRoute exact path="/strings-form" component={CordFormContainer} />
+      <ProtectedRoute exact path="/string-form" component={CordFormContainer} />
   </div>
 );
 

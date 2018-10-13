@@ -56,13 +56,13 @@
 .items-forms {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 800px;
 }
 
 .section-title {
   text-align: center;
   background-color: $mid-grey;
-  width: 500px;
+  width: 100%;
   margin-top: 15px;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
@@ -71,7 +71,7 @@
 .section {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 500px;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
   background-color: $light-grey;
@@ -80,6 +80,32 @@
   * {
     margin: 5px;
   }
+}
+
+.lower-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.racket-order {
+  display: flex;
+  flex-direction: row;
+}
+
+.racket-dropdowns {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#racket-order-image {
+  background-color: white;
+  width: 200px;
+  * {
+    margin: 0;
+  }
+
 }
 
 .ol-button {
@@ -99,6 +125,58 @@
 .trash-icon {
   height: 18px;
   width: 18px;
+}
+
+.ol-index-item {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid $mid-light-grey;
+  padding: 5px 20px;
+}
+
+.racket-info-container {
+  width: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.racket-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.ol-racket-title {
+  text-align: center;
+}
+
+.ol-racket-image {
+  height: 120px;
+}
+
+.string-info {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  margin: 5px 0 5px 40px;
+  background-color: $light-grey;
+  border-radius: 6px;
+  padding: 10px 20px;
+  h4 {
+    margin-bottom: 5px;
+  }
+  h6 {
+    margin: 2px 0;
+  }
+}
+
+.delete-line-button {
+  margin-left: 20px;
+  height: 26px;
+  border-radius: 5px;
 }
 
 #green-button {
