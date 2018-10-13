@@ -1,7 +1,5 @@
 import React from "react";
-import OrderLinesIndexContainer from '../order_lines/order_lines_index_container';
-import EditOrderContainer from './edit_order_container';
-import { withRouter, Link } from 'react-router';
+import OrderDetail from './order_detail';
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table";
@@ -72,169 +70,17 @@ const orderColumns = [
   }
 ];
 
-const orderLineColumns = [
-  {
-    Header: "#",
-    id: "row",
-    maxWidth: 50,
-    Cell: (row) => row.index+1
-  },
-  {
-    Header: "Racket",
-    columns: [
-      {
-        Header: "Brand",
-        id: "racketbrand",
-        accessor: d => d.racket.brand
-      },
-      {
-        Header: "Model",
-        id: "racketmodel",
-        accessor: d => d.racket.model
-      }
-    ],
-    width: 200
-  },
-  {
-    Header: "Main String",
-    columns: [
-      {
-        Header: "Tension",
-        id: "maintension",
-        accessor: d => d.main_tension,
-        width: 100
-      },
-      {
-        Header: "Gauge",
-        id: "maingauge",
-        accessor: d => d.main_cord.gauge,
-        width: 100
-      },
-      {
-        Header: "Composition",
-        id: "main-composition",
-        accessor: d => d.main_cord.composition,
-        width: 100
-      }
-    ],
-    width: 100
-  },
-  {
-    Header: "Cross String",
-    columns: [
-      {
-        Header: "Tension",
-        id: "cross-tension",
-        accessor: d => d.cross_tension,
-        width: 100
-      },
-      {
-        Header: "Gauge",
-        id: "cross-gauge",
-        accessor: d => d.cross_cord.gauge,
-        width: 100
-      },
-      {
-        Header: "Composition",
-        id: "cross-composition",
-        accessor: d => d.cross_cord.composition,
-        width: 100
-      }
-    ],
-    width: 100
-  }
-];
-
 class OrdersIndex extends React.Component {
   constructor(props) {
     super(props);
-
-    this.navigateToOrderForm = this.navigateToOrderForm.bind(this)
-    this.changeStatus = this.changeStatus.bind(this);
-    this.handleComment = this.handleComment.bind(this);
   }
 
   componentWillMount() {
      this.props.fetchOrders()
   }
 
-  navigateToOrderForm() {
-    this.props.history.push("/orderform")
-  }
-
-  showOrderLineForm(orderId) {
-    $(`#add-button-${orderId}`).addClass('hidden');
-    $(`#ol-form-${orderId}`).removeClass('hidden');
-  }
-
-  changeStatus(order, status) {
-    const { updateOrder } = this.props;
-    const updatedOrder = Object.assign({}, order)
-    updatedOrder.status = status;
-    updateOrder(updatedOrder);
-  }
-
-  showTextbox(order) {
-    $(`#textbox-${order.id}`).removeClass("hidden");
-    $(`#comment-button-${order.id}`).addClass("hidden");
-    $(`#red-comment-${order.id}`).addClass("hidden");
-  }
-
-  hideTextbox(order) {
-    $(`#textbox-${order.id}`).addClass("hidden");
-    $(`#comment-button-${order.id}`).removeClass("hidden");
-    $(`#red-comment-${order.id}`).removeClass("hidden");
-  }
-
-  handleComment(order, e) {
-    const { updateOrder } = this.props;
-    if (e.keyCode == 13) {
-      const updatedOrder = Object.assign({}, order);
-      updatedOrder.comments = e.currentTarget.value
-      updateOrder(updatedOrder).then(this.hideTextbox(order));
-    }
-  }
-
-  orderComments(order) {
-    if (order.comments === "") {
-      return (
-        <div>
-          <textarea
-            id={`textbox-${order.id}`}
-            className="textbox hidden"
-            placeholder="Comment here"
-            onKeyDown={e => this.handleComment(order, e)}>
-          </textarea>
-          <button
-            id={`comment-button-${order.id}`}
-            className="add-comment-button green-button"
-            onClick={this.showTextbox.bind(this, order)}>
-            Add Comment
-          </button>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <span id={`red-comment-${order.id}`} className="red">{order.comments}</span>
-          <textarea
-            id={`textbox-${order.id}`}
-            className="textbox hidden"
-            placeholder={order.comments}
-            onKeyDown={e => this.handleComment(order, e)}>
-          </textarea>
-          <button
-            id={`comment-button-${order.id}`}
-            onClick={this.showTextbox.bind(this, order)}>
-            Edit Comment
-          </button>
-        </div>
-      )
-    }
-  }
-
   render() {
-    const { orders, orderLines, fetchOrderLines } = this.props;
+    const { orders, orderLines, fetchOrderLines, updateOrder } = this.props;
     if (orders.length > 0) {
       return (
         <div>
@@ -259,69 +105,15 @@ class OrdersIndex extends React.Component {
                 defaultPageSize={10}
                 className="-striped -highlight"
                 SubComponent = {row => {
-                  const items = orderLines.filter(ol => ol.order_id === row.original.id)
-                  $(".status-option").prop("checked", false);
-                  $(`#${row.original.status}-${row.original.id}`).prop("checked", true);
+                  const data = orderLines.filter(ol => ol.order_id === row.original.id)
                   return (
                     <div className="order-detail-container">
-                      <OrderLinesIndexContainer data={items} orderId={row.original.id}/>
-                      <br />
-                      <h4>Order Comments:</h4>
-                      {this.orderComments(row.original)}
-                      <br />
-                      <div className="status-options">
-                        <h4 className="status-title">Order Status:</h4>
-                        <div className="status-option"
-                          onClick={this.changeStatus.bind(this, row.original, "Pending")}>
-                          <input
-                            type="radio"
-                            name="status"
-                            value="Pending"
-                            id={`Pending-${row.original.id}`}
-                            />
-                          <label id="pending-label">Pending</label>
-                        </div>
-                        <div className="status-option"
-                          onClick={this.changeStatus.bind(this, row.original, "In_Progress")}>
-                          <input
-                            type="radio"
-                            name="status"
-                            value="In_Progress"
-                            id={`In_Progress-${row.original.id}`}
-                            />
-                          <label id="in-progress-label">In Progress</label>
-                        </div>
-                        <div className="status-option"
-                          onClick={this.changeStatus.bind(this, row.original, "Ready")}>
-                          <input
-                            type="radio"
-                            name="status"
-                            value="Ready"
-                            id={`Ready-${row.original.id}`}
-                            />
-                          <label id="ready-label">Ready</label>
-                        </div>
-                        <div className="status-option"
-                          onClick={this.changeStatus.bind(this, row.original, "Picked_up")}>
-                          <input
-                            type="radio"
-                            name="status"
-                            value="Picked_up"
-                            id={`Picked_up-${row.original.id}`}
-                            />
-                          <label id="picked-up-label">Picked Up</label>
-                        </div>
-                        <div className="status-option"
-                          onClick={this.changeStatus.bind(this, row.original, "Cancelled")}>
-                          <input
-                            type="radio"
-                            name="status"
-                            value="Cancelled"
-                            id={`Cancelled-${row.original.id}`}
-                            />
-                          <label id="cancelled-label">Cancelled</label>
-                        </div>
-                      </div>
+                      <OrderDetail
+                        data={data}
+                        orderId={row.original.id}
+                        order={row.original}
+                        changeStatus={this.changeStatus}
+                        updateOrder={updateOrder}/>
                     </div>
                   );
                 }}
@@ -337,4 +129,4 @@ class OrdersIndex extends React.Component {
   }
 }
 
-export default withRouter(OrdersIndex);
+export default OrdersIndex;

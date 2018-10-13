@@ -177,6 +177,9 @@
   margin-left: 20px;
   height: 26px;
   border-radius: 5px;
+  &:focus {
+    outline: 0;
+  }
 }
 
 #green-button {
