@@ -272,16 +272,47 @@
   align-items: center;
 }
 
-.add-comment-button {
-  margin: 11px;
+.comments-info {
+  display: flex;
+  align-items: center;
+  button {
+    margin-left: 15px;
+  }
 }
 
 .textbox {
-  width: 600px;
-  height: 50px;
+  width: 300px;
+  min-height: 35px;
   border: 1px solid $light-grey;
   border-radius: 6px;
   padding: 10px;
+  margin-left: 15px;
+  resize: none;
+}
+
+.greybox {
+  color: black;
+  background: $mid-light-grey;
+  border: none;
+}
+
+.udpate-comment-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.customer-info {
+  display: flex;
+  flex-direction: column;
+  h6 {
+    margin: 2px 0 2px 15px;
+  }
+}
+
+.detail-title {
+  margin: 5px 0;
 }
 
 #create-order-button {

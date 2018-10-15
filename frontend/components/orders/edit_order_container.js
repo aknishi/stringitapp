@@ -9,10 +9,12 @@ import values from 'lodash/values';
 const mapStateToProps = (state, { orderId }) => {
   const rackets = values(state.entities.rackets);
   const cords = values(state.entities.cords);
+  const errors = values(state.errors.orderLine);
   return({
     rackets,
     cords,
-    orderId
+    orderId,
+    errors
   })
 };
 

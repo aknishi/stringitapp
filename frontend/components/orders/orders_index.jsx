@@ -73,10 +73,16 @@ const orderColumns = [
 class OrdersIndex extends React.Component {
   constructor(props) {
     super(props);
+
+    this.navigateToOrderForm = this.navigateToOrderForm.bind(this)
   }
 
   componentWillMount() {
      this.props.fetchOrders()
+  }
+
+  navigateToOrderForm() {
+    this.props.history.push("/orderform")
   }
 
   render() {

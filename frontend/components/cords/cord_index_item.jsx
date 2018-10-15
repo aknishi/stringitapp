@@ -8,7 +8,6 @@ class CordIndexItem extends React.Component {
 
   cordImage() {
     const { cord } = this.props;
-    console.log(cord.image);
     if (cord.image !== "") {
       return <img src={cord.image} alt="cord image"/>
     } else {

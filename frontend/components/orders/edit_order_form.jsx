@@ -35,9 +35,13 @@ class EditOrderForm extends React.Component {
   racketImage() {
     if (this.state.racket_image !== "") {
       return (
-        <div id="racket-order-image" className="racket-image">
+        <div className="racket-order-image">
           <img src={this.state.racket_image} />
         </div>
+      )
+    } else {
+      return (
+        <div className="racket-order-image"></div>
       )
     }
   }
@@ -101,7 +105,6 @@ class EditOrderForm extends React.Component {
     var sel = $('#main-model');
     var selected = sel[0].options[sel[0].options.selectedIndex]
     const cordId = selected.getAttribute('data');
-    console.log(selected);
     this.setState({ ["main_model"]: e.currentTarget.value });
     this.setState({ ["main_cord_id"]: cordId });
   }
@@ -110,7 +113,6 @@ class EditOrderForm extends React.Component {
     var sel = $('#cross-model');
     var selected = sel[0].options[sel[0].options.selectedIndex]
     const cordId = selected.getAttribute('data');
-    console.log(selected);
     this.setState({ ["cross_model"]: e.currentTarget.value });
     this.setState({ ["cross_cord_id"]: cordId });
   }
@@ -143,6 +145,14 @@ class EditOrderForm extends React.Component {
         this.hideOrderLineForm(orderId));
   }
 
+  errors() {
+    if (this.props.errors) {
+      return (
+        this.props.errors.map(error => <li className='errors' key={error}>{error}</li>)
+      );
+    }
+  }
+
   render() {
     const { rackets, cords, orderId } = this.props;
 
@@ -166,16 +176,19 @@ class EditOrderForm extends React.Component {
       (brand, idx) => <option key={idx} value={brand}>{brand}</option>);
 
     const crossModelItems = this.updateCrossModels();
-    
+
     return(
       <div id={`ol-form-${orderId}`} className="ol-form-container hidden">
         <h4>New Order Line</h4>
         <br />
+        <ul>
+          {this.errors()}
+        </ul>
         <div className="order-line-form" onSubmit={this.handleSubmit}>
-          <div className="item-forms">
-            <h4 className="section-title">Racket</h4>
-            <div className="section">
-              <div className="racket-order">
+          <div className="section-container">
+            <div className="racket-section">
+              <h4 className="racket-section-title section-title">Racket</h4>
+              <div className="racket-order section">
                 { this.racketImage() }
                 <div className="racket-dropdowns">
                   <select onChange={this.update('racket_brand')} id="racket-brand">
@@ -187,60 +200,62 @@ class EditOrderForm extends React.Component {
                     { racketModelItems }
                   </select>
                 </div>
-              </div>
-              <div className="lower-section">
-                <h6> OR </h6>
-                <button className="button" onClick={this.navigateToRacketForm}>
-                  Create New Racket</button>
-              </div>
-            </div>
-            <h4 className="section-title">Main String</h4>
-            <div className="main-order section">
-              <input
-                type="number"
-                value={this.state.main_tension}
-                placeholder="Main Tension"
-                onChange={this.update('main_tension')}
-                />
-              <select onChange={this.update('main_brand')} id="main-brand">
-                <option>-- Select a Brand --</option>
-                { mainBrandItems }
-              </select>
-              <select onChange={this.updateMainId} id="main-model">
-                <option>-- Select a Model --</option>
-                { mainModelItems }
-              </select>
-              <div className="lower-section">
-                <h6> OR </h6>
-                <button className="button" onClick={this.navigateToStringForm}>
-                  Create New String</button>
+                <div className="lower-section">
+                  <h6> OR </h6>
+                  <button className="button" onClick={this.navigateToRacketForm}>
+                    Create New Racket</button>
+                </div>
               </div>
             </div>
-            <h4 className="section-title">Cross String</h4>
-            <div className="cross-order section">
-              <input
-                type="number"
-                value={this.state.cross_tension}
-                placeholder="Cross Tension"
-                onChange={this.update('cross_tension')}
-                />
-              <select onChange={this.update('cross_brand')} id="cross-brand">
-                <option>-- Select a Brand --</option>
-                { crossBrandItems }
-              </select>
-              <select onChange={this.updateCrossId} id="cross-model">
-                <option>-- Select a Model --</option>
-                { crossModelItems }
-              </select>
-              <div className="lower-section">
-                <h6> OR </h6>
-                <button className="button" onClick={this.navigateToStringForm}>
-                  Create New String</button>
+            <div className="strings-sections">
+              <h4 className="section-title">Main String</h4>
+              <div className="main-order section">
+                <select onChange={this.update('main_brand')} id="main-brand">
+                  <option>-- Select a Brand --</option>
+                  { mainBrandItems }
+                </select>
+                <select onChange={this.updateMainId} id="main-model">
+                  <option>-- Select a Model --</option>
+                  { mainModelItems }
+                </select>
+                <div className="lower-section">
+                <input
+                  type="number"
+                  value={this.state.main_tension}
+                  placeholder="Main Tension (lbs.)"
+                  onChange={this.update('main_tension')}
+                  />
+                  <h6> OR </h6>
+                  <button className="button" onClick={this.navigateToStringForm}>
+                    Create New String</button>
+                </div>
+              </div>
+              <h4 className="section-title">Cross String</h4>
+              <div className="cross-order section">
+                <select onChange={this.update('cross_brand')} id="cross-brand">
+                  <option>-- Select a Brand --</option>
+                  { crossBrandItems }
+                </select>
+                <select onChange={this.updateCrossId} id="cross-model">
+                  <option>-- Select a Model --</option>
+                  { crossModelItems }
+                </select>
+                <input
+                  type="number"
+                  value={this.state.cross_tension}
+                  placeholder="Cross Tension (lbs.)"
+                  onChange={this.update('cross_tension')}
+                  />
+                <div className="lower-section">
+                  <h6> OR </h6>
+                  <button className="button" onClick={this.navigateToStringForm}>
+                    Create New String</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div>
+        <div className="order-line-buttons">
           <button
             id="green-button"
             className="ol-button"

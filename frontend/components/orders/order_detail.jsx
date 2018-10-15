@@ -5,14 +5,15 @@ import { withRouter } from 'react-router';
 class OrderDetail extends React.Component {
   constructor(props){
     super(props)
+    this.state = {
+      comments: this.props.order.comments,
+      commentDisabled: true
+    }
 
-    this.navigateToOrderForm = this.navigateToOrderForm.bind(this)
     this.changeStatus = this.changeStatus.bind(this);
     this.handleComment = this.handleComment.bind(this);
-  }
-
-  navigateToOrderForm() {
-    this.props.history.push("/orderform")
+    this.editComment = this.editComment.bind(this);
+    this.cancelEdit = this.cancelEdit.bind(this);
   }
 
   changeStatus(order, status) {
@@ -34,51 +35,38 @@ class OrderDetail extends React.Component {
     $(`#red-comment-${order.id}`).removeClass("hidden");
   }
 
-  handleComment(order, e) {
-    const { updateOrder } = this.props;
-    if (e.keyCode == 13) {
-      const updatedOrder = Object.assign({}, order);
-      updatedOrder.comments = e.currentTarget.value
-      updateOrder(updatedOrder).then(this.hideTextbox(order));
-    }
+  editComment() {
+    this.setState({commentDisabled: false});
+    $("#comment-textbox").removeClass("hidden");
+    $("#update-comment-button").removeClass("hidden");
+    $("#edit-cancel-button").removeClass("hidden");
+    $("#edit-comment-button").addClass("hidden");
+    $("#comment-textbox").removeClass("greybox")
   }
 
-  orderComments(order) {
-    if (order.comments === "") {
-      return (
-        <div>
-          <textarea
-            id={`textbox-${order.id}`}
-            className="textbox hidden"
-            placeholder="Comment here"
-            onKeyDown={e => this.handleComment(order, e)}>
-          </textarea>
-          <button
-            id={`comment-button-${order.id}`}
-            className="add-comment-button green-button"
-            onClick={this.showTextbox.bind(this, order)}>
-            Add Comment
-          </button>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <span id={`red-comment-${order.id}`} className="red">{order.comments}</span>
-          <textarea
-            id={`textbox-${order.id}`}
-            className="textbox hidden"
-            placeholder={order.comments}
-            onKeyDown={e => this.handleComment(order, e)}>
-          </textarea>
-          <button
-            id={`comment-button-${order.id}`}
-            onClick={this.showTextbox.bind(this, order)}>
-            Edit Comment
-          </button>
-        </div>
-      )
-    }
+  cancelEdit() {
+    $("#update-comment-button").addClass("hidden");
+    $("#edit-cancel-button").addClass("hidden");
+    $("#edit-comment-button").removeClass("hidden");
+    $("#comment-textbox").addClass("greybox");
+  }
+
+  handleComment() {
+    const { updateOrder, order } = this.props;
+    const updatedOrder = Object.assign({}, order);
+    updatedOrder.comments = this.state.comments;
+    updateOrder(updatedOrder).then( () => {
+      $("#update-comment-button").addClass("hidden");
+      $("#edit-cancel-button").addClass("hidden");
+      $("#edit-comment-button").removeClass("hidden");
+      $("#comment-textbox").addClass("greybox");
+      this.setState({commentDisabled: true});
+      }
+    );
+  }
+
+  update(field) {
+    return e => this.setState({ [field]: e.currentTarget.value });
   }
 
   render() {
@@ -89,13 +77,51 @@ class OrderDetail extends React.Component {
 
     return (
       <div>
+        <h4 className="detail-title">Order Detail:</h4>
+        <br />
         <OrderLinesIndexContainer data={data} orderId={order.id}/>
         <br />
-        <h4>Order Comments:</h4>
-        {this.orderComments(order)}
+        <div>
+          <h4 className="detail-title">Order Comments:</h4>
+          <div className="comments-info">
+            <textarea
+              id="comment-textbox"
+              className="textbox greybox"
+              value={this.state.comments}
+              placeholder="No comments"
+              onChange={this.update('comments')}
+              disabled={this.state.commentDisabled}>
+            </textarea>
+            <button
+              id="edit-comment-button"
+              className="button"
+              onClick={this.editComment}>
+              Edit Comments
+            </button>
+            <button
+              id="update-comment-button"
+              className="button hidden"
+              onClick={this.handleComment}>
+              Update Comments
+            </button>
+            <button
+              id="edit-cancel-button"
+              className="button hidden"
+              onClick={this.cancelEdit}>
+              Cancel
+            </button>
+          </div>
+        </div>
+        <div className="customer-info">
+          <h4 className="detail-title">Customer:</h4>
+          <h6><b>Name: </b>{order.customer.name}</h6>
+          <h6><b>Phone: </b>{order.customer.phone_number}</h6>
+          <h6><b>Address: </b>{order.customer.address}</h6>
+          <h6><b>Comment: </b>{order.customer.comment}</h6>
+        </div>
         <br />
         <div className="status-options">
-          <h4 className="status-title">Order Status:</h4>
+          <h4 className="detail-title status-title">Order Status:</h4>
           <div className="status-option"
             onClick={this.changeStatus.bind(this, order, "Pending")}>
             <input

@@ -46,8 +46,6 @@ class OrderLinesIndex extends React.Component {
     } else {
       return (
         <div>
-          <h4>Order Detail:</h4>
-          <br />
           { items }
           <button
             id={`add-button-${orderId}`}

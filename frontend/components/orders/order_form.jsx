@@ -52,7 +52,6 @@ class OrderForm extends React.Component {
 
   showOrderDetailForm() {
     this.setState({ orderLinesIndex: true })
-    console.log(this.state);
     $("#customer-fields").addClass("hidden");
     $("#order-form").addClass("hidden");
     $("#order-detail-form").removeClass('hidden');
