@@ -1,7 +1,7 @@
 import React from 'react'
 
 const OrderLinesIndexItem = (props) => {
-  const { orderLine, deleteLine } = props
+  const { orderLine, deleteLine, showEditOrderLineForm } = props
   const racket = orderLine.racket;
   const main = orderLine.main_cord;
   const cross = orderLine.cross_cord;
@@ -28,9 +28,14 @@ const OrderLinesIndexItem = (props) => {
         <h6><b>Composition:</b> {cross.composition}</h6>
         <h6><b>Color:</b> {cross.color}</h6>
       </div>
-      <button className="delete-line-button button" onClick={() => deleteLine(orderLine)}>
-        Delete
-      </button>
+      <div className="ol-edit-buttons">
+        <button className="delete-line-button button" onClick={() => showEditOrderLineForm(orderLine.id)}>
+          Edit
+        </button>
+        <button className="delete-line-button button" onClick={() => deleteLine(orderLine)}>
+          Delete
+        </button>
+      </div>
     </div>
   )
 }

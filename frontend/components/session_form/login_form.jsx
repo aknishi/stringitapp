@@ -10,7 +10,7 @@ class LoginForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleGuestLogin = this.handleGuestLogin.bind(this);
+    this.handleAdminDemoLogin = this.handleAdminDemoLogin.bind(this);
   }
 
   componentWillUnmount() {
@@ -23,9 +23,9 @@ class LoginForm extends React.Component {
     this.props.login(user);
   }
 
-  handleGuestLogin(e) {
+  handleAdminDemoLogin(e) {
     e.preventDefault();
-    const guest = {email:"adrian@example.com", password: "123456"};
+    const guest = {email:"admin@example.com", password: "123456"};
     this.props.login(guest)
   }
 
@@ -72,9 +72,9 @@ class LoginForm extends React.Component {
         <div className="demo-login">
           <button
             type="submit"
-            onClick={this.handleGuestLogin}
+            onClick={this.handleAdminDemoLogin}
             className="demo-login-button">
-            Admin Login
+            Admin Demo Login
           </button>
         </div>
       </div>

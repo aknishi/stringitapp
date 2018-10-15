@@ -9,7 +9,7 @@ const WelcomePage = () => {
       </figure>
       <div className="welcome-container">
         <h1 className="welcome-text">
-          Welcome to our tennis store site!
+          Welcome to the String It App!
         </h1>
       </div>
       <div className="bottom-container">
@@ -17,22 +17,24 @@ const WelcomePage = () => {
           <li>
             <img src={window.whiteRacketURL} />
             <div className="keynotes">
-              <h2>Check the status of your orders</h2>
-              <h3>Get updates on your rackets.</h3>
+              <h2>Manage stringing racket orders</h2>
+              <h3>Send order status notifications to your clients</h3>
             </div>
           </li>
           <li>
             <i className="fas fa-store-alt"></i>
             <div className="keynotes">
-              <h2>Check what's new</h2>
-              <h3>Our new arrivals!</h3>
+              <h2>Manage your tennis store</h2>
+              <h3>Add new rackets and strings to your inventory</h3>
             </div>
           </li>
+          <br/>
           <li>
             <i className="fas fa-edit"></i>
             <div className="keynotes">
               <h2>Look up previous orders</h2>
-              <h3>See what you have order and compare</h3>
+              <h3>See clients previous stringing orders to compare</h3>
+              <h3>and improve their game on the court.</h3>
             </div>
           </li>
         </ul>

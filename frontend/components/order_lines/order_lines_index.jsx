@@ -1,6 +1,7 @@
 import React from "react";
 import LoadingIcon from '../loading_icon';
-import EditOrderContainer from '../orders/edit_order_container';
+import OrderLineFormContainer from './order_line_form_container';
+import EditOrderLineFormContainer from './edit_order_line_form_container';
 import OrderLinesIndexItem from './order_lines_index_item'
 // Import React Table
 import ReactTable from "react-table";
@@ -31,14 +32,21 @@ class OrderLinesIndex extends React.Component {
     $(`#ol-form-${orderId}`).removeClass('hidden');
   }
 
+  showEditOrderLineForm(orderLineId) {
+    $(`#edit-form-${orderLineId}`).removeClass('hidden');
+  }
+
   render() {
     const { orderId, data, loading } = this.props
 
     const items = data.map( ol =>
-      <OrderLinesIndexItem
-        key={ol.id}
-        orderLine={ol}
-        deleteLine={this.deleteLine}/>
+      <div key={ol.id}>
+        <OrderLinesIndexItem
+          orderLine={ol}
+          deleteLine={this.deleteLine}
+          showEditOrderLineForm={this.showEditOrderLineForm}/>
+        <EditOrderLineFormContainer orderLine={ol}/>
+      </div>
     )
 
     if (loading) {
@@ -52,7 +60,7 @@ class OrderLinesIndex extends React.Component {
             className="add-button blue-button"
             onClick={this.showOrderLineForm.bind(this, orderId)}
             >Add Line</button>
-          <EditOrderContainer orderId={orderId} onLineSubmit={this.addNewRow}/>
+          <OrderLineFormContainer orderId={orderId}/>
         </div>
       )
     }

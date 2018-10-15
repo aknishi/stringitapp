@@ -85,7 +85,6 @@ class Navbar extends React.Component {
       <nav>
         <div className="logo-container">
           <Link to="/" className="logo-link">
-            <img className="ball-logo" src={window.tennisBallLogoURL}></img>
             <img className="logo" src={window.logoURL}></img>
           </Link>
         </div>

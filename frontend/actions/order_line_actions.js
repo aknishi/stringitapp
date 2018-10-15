@@ -6,6 +6,7 @@ export const RECEIVE_ORDER_LINE = "RECEIVE_ORDER_LINE";
 export const RECEIVE_ORDER_LINE_ERRORS = "RECEIVE_ORDER_LINE_ERRORS";
 export const REMOVE_ORDER_LINE = "REMOVE_ORDER_LINE";
 export const START_LOADING = "START_LOADING";
+export const CLEAR_ORDER_LINE_ERRORS = "CLEAR_ORDER_LINE_ERRORS";
 
 export const createOrderLine = orderLine => dispatch => {
   dispatch(startLoadingLine());
@@ -15,7 +16,7 @@ export const createOrderLine = orderLine => dispatch => {
 };
 
 export const updateOrderLine = orderLine => dispatch => (
-  APIUtil.udpateOrderLine(orderLine).then(
+  APIUtil.updateOrderLine(orderLine).then(
     orderLine => dispatch(receiveOrderLine(orderLine)),
     err => dispatch(receiveErrors(err.responseJSON)))
 );
@@ -58,4 +59,8 @@ export const removeOrderLine = orderLine => ({
 const receiveErrors = errors => ({
   type: RECEIVE_ORDER_LINE_ERRORS,
   errors
+})
+
+export const clearErrors = () => ({
+  type: CLEAR_ORDER_LINE_ERRORS
 })

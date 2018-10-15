@@ -14,19 +14,10 @@
 
 .ol-form-container {
   background: white;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
   padding: 20px;
-}
-
-.order-line-form {
-  // width: 800px;
-  // border-radius: 5px;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
+  > h4 {
+    text-align: center;
+  }
 }
 
 .labels {
@@ -93,6 +84,14 @@
   align-items: center;
 }
 
+.edit-racket-order {
+  width: 340px;
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .main-order .cross-order {
 
 }
@@ -113,7 +112,18 @@
     height: 100%;
     margin: 0;
   }
+}
 
+.edit-racket-order-image {
+  background-color: white;
+  height: 180px;
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  img {
+    height: 100%;
+    margin: 0;
+  }
 }
 
 .ol-button {
@@ -191,7 +201,17 @@
   }
 }
 
-.order-line-buttons {
+.ol-edit-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  button {
+    margin: 5px 20px;
+  }
+}
+
+.ol-form-buttons {
   display: flex;
   justify-content: center;
 }

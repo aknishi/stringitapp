@@ -1,27 +1,28 @@
 import React from 'react';
 import { withRouter } from "react-router"
 
-class EditOrderForm extends React.Component {
+class EditOrderLineForm extends React.Component {
   constructor(props){
     super(props)
+    const { racket, cross_cord, main_cord } = this.props.orderLine;
+    const { orderLine } = this.props;
     this.state = {
-      order_id: this.props.orderId,
-      racket_id: "",
-      racket_brand: "",
-      racket_model: "",
-      racket_image: "",
-      main_cord_id: "",
-      main_tension: "",
-      main_brand: "",
-      main_model: "",
-      cross_cord_id: "",
-      cross_tension: "",
-      cross_brand: "",
-      cross_model: ""
+      id: orderLine.id,
+      order_id: orderLine.order_id,
+      racket_id: racket.id,
+      racket_brand: racket.brand,
+      racket_model: racket.model,
+      racket_image: racket.image,
+      main_cord_id: main_cord.id,
+      main_tension: orderLine.main_tension,
+      main_brand: main_cord.brand,
+      main_model: main_cord.model,
+      cross_cord_id: cross_cord.id,
+      cross_tension: orderLine.cross_tension,
+      cross_brand: cross_cord.brand,
+      cross_model: cross_cord.model
     }
     this.racketImage = this.racketImage.bind(this);
-    this.navigateToRacketForm = this.navigateToRacketForm.bind(this);
-    this.navigateToStringForm = this.navigateToStringForm.bind(this);
     this.updateRacketId = this.updateRacketId.bind(this);
     this.updateMainId = this.updateMainId.bind(this);
     this.updateCrossId = this.updateCrossId.bind(this);
@@ -29,13 +30,12 @@ class EditOrderForm extends React.Component {
     this.updateMainModels = this.updateMainModels.bind(this);
     this.updateCrossModels = this.updateCrossModels.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.processNewOrderLine = this.processNewOrderLine.bind(this);
   }
 
   racketImage() {
     if (this.state.racket_image !== "") {
       return (
-        <div className="racket-order-image">
+        <div className="edit-racket-order-image">
           <img src={this.state.racket_image} />
         </div>
       )
@@ -46,14 +46,6 @@ class EditOrderForm extends React.Component {
     }
   }
 
-  navigateToRacketForm() {
-    this.props.history.push("/racket-form")
-  }
-
-  navigateToStringForm() {
-    this.props.history.push("/string-form")
-  }
-
   updateRacketModels(e) {
     const { rackets } = this.props;
     const racketModels = rackets.filter(racket => racket.brand === this.state.racket_brand).map(
@@ -61,7 +53,8 @@ class EditOrderForm extends React.Component {
                     key={racket.id}
                     value={racket.model}
                     data-racketid={racket.id}
-                    data-image={racket.image}>
+                    data-image={racket.image}
+                    selected={this.state.racket_model === racket.model}>
                     {racket.model}
                   </option> ));
     return racketModels;
@@ -73,7 +66,8 @@ class EditOrderForm extends React.Component {
       cord => <option
                 key={cord.id}
                 value={cord.model}
-                data={cord.id}>
+                data={cord.id}
+                selected={this.state.main_model === cord.model}>
                 {cord.model} {cord.gauge} {cord.composition} {cord.color}
               </option>);
     return mainModels;
@@ -85,14 +79,16 @@ class EditOrderForm extends React.Component {
       cord => <option
                 key={cord.id}
                 value={cord.model}
-                data={cord.id}>
+                data={cord.id}
+                selected={this.state.cross_model === cord.model}>
                 {cord.model} {cord.gauge} {cord.composition} {cord.color}
               </option>);
     return crossModels;
   }
 
   updateRacketId(e) {
-    var sel = $('#racket-model');
+    const { orderLine } = this.props;
+    var sel = $(`#racket-model-${orderLine.id}`);
     var selected = sel[0].options[sel[0].options.selectedIndex]
     const racketId = selected.getAttribute('data-racketid');
     const imageUrl = selected.getAttribute('data-image');
@@ -102,7 +98,8 @@ class EditOrderForm extends React.Component {
   }
 
   updateMainId(e) {
-    var sel = $('#main-model');
+    const { orderLine } = this.props;
+    var sel = $(`#main-model-${orderLine.id}`);
     var selected = sel[0].options[sel[0].options.selectedIndex]
     const cordId = selected.getAttribute('data');
     this.setState({ ["main_model"]: e.currentTarget.value });
@@ -110,7 +107,8 @@ class EditOrderForm extends React.Component {
   }
 
   updateCrossId(e) {
-    var sel = $('#cross-model');
+    const { orderLine } = this.props;
+    var sel = $(`#cross-model-${orderLine.id}`);
     var selected = sel[0].options[sel[0].options.selectedIndex]
     const cordId = selected.getAttribute('data');
     this.setState({ ["cross_model"]: e.currentTarget.value });
@@ -121,28 +119,22 @@ class EditOrderForm extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
-  hideOrderLineForm(orderId) {
-    $(`#add-button-${orderId}`).removeClass('hidden');
-    $(`#ol-form-${orderId}`).addClass('hidden');
+  hideEditOrderLineForm(orderLineId) {
+    $(`#edit-form-${orderLineId}`).addClass('hidden');
   }
 
   handleSubmit() {
-    this.processNewOrderLine();
-  }
-
-  processNewOrderLine() {
-    const { createOrderLine, orderId } = this.props;
-    let orderLine = Object.assign({}, this.state);
-    delete orderLine.racket_model;
-    delete orderLine.racket_brand;
-    delete orderLine.racket_image;
-    delete orderLine.main_brand;
-    delete orderLine.main_model;
-    delete orderLine.cross_brand;
-    delete orderLine.cross_model;
-    createOrderLine(orderLine).then(
-      (response) => {this.props.onLineSubmit(response.orderLine)}).then(
-        this.hideOrderLineForm(orderId));
+    const { updateOrderLine, orderLine } = this.props;
+    let updatedOrderLine = Object.assign({}, this.state);
+    delete updatedOrderLine.racket_model;
+    delete updatedOrderLine.racket_brand;
+    delete updatedOrderLine.racket_image;
+    delete updatedOrderLine.main_brand;
+    delete updatedOrderLine.main_model;
+    delete updatedOrderLine.cross_brand;
+    delete updatedOrderLine.cross_model;
+    updateOrderLine(updatedOrderLine).then(
+        () => this.hideEditOrderLineForm(orderLine.id));
   }
 
   errors() {
@@ -154,32 +146,37 @@ class EditOrderForm extends React.Component {
   }
 
   render() {
-    const { rackets, cords, orderId } = this.props;
-
+    const { rackets, cords, orderLine } = this.props;
     const racketBrands = rackets.map(racket => racket.brand);
     const uniqueRacketBrands = Array.from(new Set(racketBrands))
     const racketBrandItems = uniqueRacketBrands.map(
-      (brand, idx) => <option key={idx} value={brand}>{brand}</option>);
+      (brand, idx) => (
+        <option key={idx} value={brand} selected={this.state.racket_brand == brand}>{brand}</option>
+      ));
 
     const racketModelItems = this.updateRacketModels();
 
     const mainBrands = cords.map(cord => cord.brand);
     const uniqueMainBrands = Array.from(new Set(mainBrands))
     const mainBrandItems = uniqueMainBrands.map(
-      (brand, idx) => <option key={idx} value={brand}>{brand}</option>);
+      (brand, idx) => (
+        <option key={idx} value={brand} selected={this.state.main_brand === brand}>{brand}</option>
+      ));
 
     const mainModelItems = this.updateMainModels();
 
     const crossBrands = cords.map(cord => cord.brand);
     const uniqueCrossBrands = Array.from(new Set(crossBrands))
     const crossBrandItems = uniqueCrossBrands.map(
-      (brand, idx) => <option key={idx} value={brand}>{brand}</option>);
+      (brand, idx) => (
+        <option key={idx} value={brand} selected={this.state.cross_brand === brand}>{brand}</option>
+      ));
 
     const crossModelItems = this.updateCrossModels();
 
     return(
-      <div id={`ol-form-${orderId}`} className="ol-form-container hidden">
-        <h4>New Order Line</h4>
+      <div id={`edit-form-${orderLine.id}`} className="ol-form-container hidden">
+        <h4>Edit Order Line</h4>
         <br />
         <ul>
           {this.errors()}
@@ -188,55 +185,45 @@ class EditOrderForm extends React.Component {
           <div className="section-container">
             <div className="racket-section">
               <h4 className="racket-section-title section-title">Racket</h4>
-              <div className="racket-order section">
+              <div className="edit-racket-order section">
                 { this.racketImage() }
                 <div className="racket-dropdowns">
-                  <select onChange={this.update('racket_brand')} id="racket-brand">
+                  <select onChange={this.update('racket_brand')}>
                     <option>-- Select a Brand --</option>
                     { racketBrandItems }
                   </select>
-                  <select onChange={this.updateRacketId} id="racket-model">
+                  <select onChange={this.updateRacketId} id={`racket-model-${orderLine.id}`}>
                     <option>-- Select a Model --</option>
                     { racketModelItems }
                   </select>
-                </div>
-                <div className="lower-section">
-                  <h6> OR </h6>
-                  <button className="button" onClick={this.navigateToRacketForm}>
-                    Create New Racket</button>
                 </div>
               </div>
             </div>
             <div className="strings-sections">
               <h4 className="section-title">Main String</h4>
               <div className="main-order section">
-                <select onChange={this.update('main_brand')} id="main-brand">
+                <select onChange={this.update('main_brand')}>
                   <option>-- Select a Brand --</option>
                   { mainBrandItems }
                 </select>
-                <select onChange={this.updateMainId} id="main-model">
+                <select onChange={this.updateMainId} id={`main-model-${orderLine.id}`}>
                   <option>-- Select a Model --</option>
                   { mainModelItems }
                 </select>
-                <div className="lower-section">
                 <input
                   type="number"
                   value={this.state.main_tension}
                   placeholder="Main Tension (lbs.)"
                   onChange={this.update('main_tension')}
                   />
-                  <h6> OR </h6>
-                  <button className="button" onClick={this.navigateToStringForm}>
-                    Create New String</button>
-                </div>
               </div>
               <h4 className="section-title">Cross String</h4>
               <div className="cross-order section">
-                <select onChange={this.update('cross_brand')} id="cross-brand">
+                <select onChange={this.update('cross_brand')}>
                   <option>-- Select a Brand --</option>
                   { crossBrandItems }
                 </select>
-                <select onChange={this.updateCrossId} id="cross-model">
+                <select onChange={this.updateCrossId} id={`cross-model-${orderLine.id}`}>
                   <option>-- Select a Model --</option>
                   { crossModelItems }
                 </select>
@@ -246,26 +233,20 @@ class EditOrderForm extends React.Component {
                   placeholder="Cross Tension (lbs.)"
                   onChange={this.update('cross_tension')}
                   />
-                <div className="lower-section">
-                  <h6> OR </h6>
-                  <button className="button" onClick={this.navigateToStringForm}>
-                    Create New String</button>
-                </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="order-line-buttons">
+        <div className="ol-form-buttons">
           <button
-            id="green-button"
-            className="ol-button"
+            className="ol-button blue-button"
             onClick={this.handleSubmit}>
-            Create New Order Line
+            Update Order Line
           </button>
           <button
             id="cancel-button"
             className="ol-button"
-            onClick={this.hideOrderLineForm.bind(this, orderId)}>
+            onClick={this.hideEditOrderLineForm.bind(this, orderLine.id)}>
             Cancel
           </button>
         </div>
@@ -274,4 +255,4 @@ class EditOrderForm extends React.Component {
   }
 }
 
-export default withRouter(EditOrderForm);
+export default withRouter(EditOrderLineForm);
