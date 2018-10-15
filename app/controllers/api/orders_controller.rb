@@ -22,6 +22,9 @@ class Api::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
+      if @order.status == "Ready"
+         PickupMailer.with(user: @order.customer).pickup_email.deliver_now
+       end
       render :show
     else
       render json: @order.errors.full_messages, status: 422

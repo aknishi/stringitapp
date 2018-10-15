@@ -114,7 +114,7 @@ class OrderLineForm extends React.Component {
     delete orderLine.cross_brand;
     delete orderLine.cross_model;
     createOrderLine(orderLine).then(
-      (response) => {this.props.onLineSubmit(response.orderLine)}).then(
+      (response) => {this.props.addRow(response.orderLine)}).then(
         this.hideOrderLineForm(orderId));
   }
 

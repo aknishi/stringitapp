@@ -155,7 +155,7 @@ class OrderLinesIndex extends React.Component {
             className="add-button green-button"
             onClick={this.showOrderLineForm.bind(this, orderId)}
             >Add Line</button>
-          <EditOrderContainer orderId={orderId} onLineSubmit={this.addNewRow}/>
+          <EditOrderContainer orderId={orderId} addRow={this.addNewRow}/>
         </div>
       )
     }
