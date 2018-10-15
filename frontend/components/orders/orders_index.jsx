@@ -52,7 +52,11 @@ const orderColumns = [
   },
   {
     Header: 'Status',
-    accessor: "status",
+    id: "status",
+    accessor: order => {
+      if (order.status == "In_Progress") { return "In Progress" }
+      else return order.status
+    },
     width: 130,
     Filter: ({ filter, onChange }) =>
       <select

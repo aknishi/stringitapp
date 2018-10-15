@@ -49,7 +49,7 @@ class OrderLinesIndex extends React.Component {
           { items }
           <button
             id={`add-button-${orderId}`}
-            className="add-button green-button"
+            className="add-button blue-button"
             onClick={this.showOrderLineForm.bind(this, orderId)}
             >Add Line</button>
           <EditOrderContainer orderId={orderId} onLineSubmit={this.addNewRow}/>

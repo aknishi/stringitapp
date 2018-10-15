@@ -77,51 +77,8 @@ class OrderDetail extends React.Component {
 
     return (
       <div>
-        <h4 className="detail-title">Order Detail:</h4>
-        <br />
-        <OrderLinesIndexContainer data={data} orderId={order.id}/>
-        <br />
-        <div>
-          <h4 className="detail-title">Order Comments:</h4>
-          <div className="comments-info">
-            <textarea
-              id="comment-textbox"
-              className="textbox greybox"
-              value={this.state.comments}
-              placeholder="No comments"
-              onChange={this.update('comments')}
-              disabled={this.state.commentDisabled}>
-            </textarea>
-            <button
-              id="edit-comment-button"
-              className="button"
-              onClick={this.editComment}>
-              Edit Comments
-            </button>
-            <button
-              id="update-comment-button"
-              className="button hidden"
-              onClick={this.handleComment}>
-              Update Comments
-            </button>
-            <button
-              id="edit-cancel-button"
-              className="button hidden"
-              onClick={this.cancelEdit}>
-              Cancel
-            </button>
-          </div>
-        </div>
-        <div className="customer-info">
-          <h4 className="detail-title">Customer:</h4>
-          <h6><b>Name: </b>{order.customer.name}</h6>
-          <h6><b>Phone: </b>{order.customer.phone_number}</h6>
-          <h6><b>Address: </b>{order.customer.address}</h6>
-          <h6><b>Comment: </b>{order.customer.comment}</h6>
-        </div>
-        <br />
         <div className="status-options">
-          <h4 className="detail-title status-title">Order Status:</h4>
+          <h4 className="detail-title status-title">Status:</h4>
           <div className="status-option"
             onClick={this.changeStatus.bind(this, order, "Pending")}>
             <input
@@ -173,6 +130,49 @@ class OrderDetail extends React.Component {
             <label id="cancelled-label">Cancelled</label>
           </div>
         </div>
+        <br />
+        <OrderLinesIndexContainer data={data} orderId={order.id}/>
+        <br />
+        <div>
+          <h4 className="detail-title">Comments:</h4>
+          <div className="comments-info">
+            <textarea
+              id="comment-textbox"
+              className="textbox greybox"
+              value={this.state.comments}
+              placeholder="No comments"
+              onChange={this.update('comments')}
+              disabled={this.state.commentDisabled}>
+            </textarea>
+            <button
+              id="edit-comment-button"
+              className="button"
+              onClick={this.editComment}>
+              Edit Comments
+            </button>
+            <button
+              id="update-comment-button"
+              className="button hidden"
+              onClick={this.handleComment}>
+              Update Comments
+            </button>
+            <button
+              id="edit-cancel-button"
+              className="button hidden"
+              onClick={this.cancelEdit}>
+              Cancel
+            </button>
+          </div>
+        </div>
+        <div className="customer-info">
+          <h4 className="detail-title">Customer:</h4>
+          <h6><b>Name: </b>{order.customer.name}</h6>
+          <h6><b>Phone: </b>{order.customer.phone_number}</h6>
+          <h6><b>Address: </b>{order.customer.address}</h6>
+          <h6><b>Comment: </b>{order.customer.comment}</h6>
+        </div>
+        <br />
+
       </div>
     )
   }

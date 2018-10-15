@@ -15,19 +15,15 @@ const OrderLinesIndexItem = (props) => {
         </div>
       </div>
       <div className="string-info">
-        <h4>Main String</h4>
-        <h6><b>Tension:</b> {orderLine.main_tension}</h6>
-        <h6><b>Brand:</b> {main.brand}</h6>
-        <h6><b>Model:</b> {main.model}</h6>
+        <h4>Main Tension: {orderLine.main_tension} lbs.</h4>
+        <h5>{main.brand} {main.model} {main.gauge}</h5>
         <h6><b>Gauge:</b> {main.gauge}</h6>
         <h6><b>Composition:</b> {main.composition}</h6>
         <h6><b>Color:</b> {main.color}</h6>
       </div>
       <div className="string-info">
-        <h4>Cross String</h4>
-        <h6><b>Tension:</b> {orderLine.main_tension}</h6>
-        <h6><b>Brand:</b> {cross.brand}</h6>
-        <h6><b>Model:</b> {cross.model}</h6>
+        <h4>Cross Tension: {orderLine.cross_tension} lbs.</h4>
+        <h5>{cross.brand} {cross.model} {cross.gauge}</h5>
         <h6><b>Gauge:</b> {cross.gauge}</h6>
         <h6><b>Composition:</b> {cross.composition}</h6>
         <h6><b>Color:</b> {cross.color}</h6>
