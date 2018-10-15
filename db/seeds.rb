@@ -12,8 +12,8 @@ Racket.delete_all
 Cord.delete_all
 
 admin = User.create!(
-  name: "Adrian K.",
-  email: "adrian@example.com",
+  name: "Administrator",
+  email: "admin@example.com",
   password: "123456",
   phone_number: "000-000-0000",
   address: "",
@@ -86,28 +86,32 @@ order2 = Order.create!(
 racket1 = Racket.create!(
   brand: "Yonex",
   model: "Vcore Pro 100",
-  color: "Navy / Orange"
+  color: "Navy / Orange",
+  image: "https://img.tennis-warehouse.com/watermark/rs.php?path=VPRO1H-1.jpg&nw=350"
 )
 
 racket2 = Racket.create!(
   brand: "Wilson",
   model: "Blade Team 99 Lite",
-  color: "Black / Yellow"
+  color: "Black / Yellow",
+  image: "https://img.tennis-warehouse.com/watermark/rs.php?path=BT99L-1.jpg&nw=350"
 )
 
 racket3 = Racket.create!(
   brand: "Prince",
   model: "Phantom Pro 100",
-  color: "Black"
+  color: "Black",
+  image: "https://img.tennis-warehouse.com/watermark/rs.php?path=TPP100-1.jpg&nw=350"
 )
 
 string1 = Cord.create!(
   brand: "Wilson",
-  model: "Duo Power Hybrid",
+  model: "Syntheric Gut Power",
   gauge: "16",
   length: 40,
   composition: "Poly-Ether",
-  color: "Green"
+  color: "Green",
+  image: "https://img.tennis-warehouse.com/watermark/rs.php?path=WSGP16-GN-1.jpg&nw=300"
 )
 
 string2 = Cord.create!(
@@ -116,7 +120,8 @@ string2 = Cord.create!(
   gauge: "17",
   length: 40,
   composition: "Multifilament",
-  color: "Natural"
+  color: "Natural",
+  image: "https://img.tennis-warehouse.com/watermark/rs.php?path=BADD17-1.jpg&nw=300"
 )
 
 string3 = Cord.create!(
@@ -125,7 +130,8 @@ string3 = Cord.create!(
   gauge: "16",
   length: 39,
   composition: "Multifilament",
-  color: "Natural"
+  color: "Natural",
+  image: "https://img.tennis-warehouse.com/watermark/rs.php?path=YREX160-1.jpg&nw=300"
 )
 
 string4 = Cord.create!(
@@ -134,7 +140,9 @@ string4 = Cord.create!(
   gauge: "16L",
   length: 39,
   composition: "Polyester Monofilament",
-  color: "Black"
+  color: "Black",
+  image:"https://img.tennis-warehouse.com/watermark/rs.php?path=YPTS16L-1.jpg&nw=300"
+
 )
 
 order_line1 = OrderLine.create!(
