@@ -141,7 +141,7 @@ string4 = Cord.create!(
   length: 39,
   composition: "Polyester Monofilament",
   color: "Black",
-  image:"https://img.tennis-warehouse.com/watermark/rs.php?path=YPTS16L-1.jpg&nw=300"
+  image: "https://img.tennis-warehouse.com/watermark/rs.php?path=YPTS16L-1.jpg&nw=300"
 
 )
 
