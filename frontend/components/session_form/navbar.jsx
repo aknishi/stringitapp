@@ -58,7 +58,7 @@ class Navbar extends React.Component {
             <Link to="/strings">
               <img src={window.stringIconURL} className="icon" alt="strings"/>
             </Link>
-            <Link to="/profile">
+            <Link to={`/users/${currentUserId}`}>
               <img src={window.profileIconURL} className="icon" alt="profile"/>
             </Link>
             <button

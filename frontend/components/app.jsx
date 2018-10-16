@@ -5,6 +5,7 @@ import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import WelcomePage from './session_form/welcome';
 import NavbarContainer from './session_form/navbar_container';
+import UserShowContainer from './session_form/user_show_container';
 import OrdersIndexContainer from './orders/orders_index_container';
 import OrderFormContainer from './orders/order_form_container';
 import CustomerFormContainer from './session_form/customer_form_container';
@@ -28,6 +29,7 @@ const App = () => (
       <ProtectedRoute exact path="/racket-form" component={RacketFormContainer} />
       <ProtectedRoute exact path="/strings" component={CordIndexContainer} />
       <ProtectedRoute exact path="/string-form" component={CordFormContainer} />
+      <ProtectedRoute exact path="/users/:userId" component={UserShowContainer} />
   </div>
 );
 

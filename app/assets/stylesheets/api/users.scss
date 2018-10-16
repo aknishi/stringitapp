@@ -4,8 +4,118 @@
 
 // Customer Form
 
+
+@import "variables";
+
 .customer-form-box {
   background-color: white;
   width: 500px;
   padding: 20px;
+}
+
+.user-profile-container {
+  margin: auto;
+ font-size: 18px;
+ width: 935px;
+ height: 100%;
+}
+
+.user-info-container {
+ width: 100%;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ margin-bottom: 60px;
+}
+
+.user-posts-container {
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+}
+
+.profile-pic-container {
+ display: flex;
+ float: left;
+ justify-content: center;
+ flex-grow: 1;
+}
+
+.profile-pic {
+ width: 170px;
+ height: 170px;
+ background-color: white;
+ border-radius: 85px;
+}
+#profile-pic {
+ width: 100%;
+ height: 100%;
+ border-radius: 50%;
+}
+
+.user-info {
+ float: right;
+ margin-right: 30px;
+ display: flex;
+ flex-direction: column;
+ flex-grow: 3;
+
+ > div {
+   margin-bottom: 20px;
+ }
+}
+
+.username {
+ font-size: 32px;
+ display: flex;
+ align-items: center;
+}
+
+.user-stats {
+ display: flex;
+ flex-direction: column;
+
+ h4 {
+   margin: 5px 0;
+ }
+}
+
+.edit-button {
+ margin-left: 20px;
+ height: 32px;
+ font-size: 14px;
+ background-color: #fafafa;
+ border-radius: 6px;
+ cursor: pointer;
+
+ &:active {
+   color: $light-grey;
+   border: 1px solid $light-grey;
+   border-radius: 6px;
+ }
+
+ &:hover {
+   background-color: $mid-grey;
+ }
+}
+
+.logout-button {
+ margin-left: 20px;
+ height: 32px;
+ font-size: 14px;
+ color: white;
+ background-color: #bcbcbc;
+ border-radius: 6px;
+ cursor: pointer;
+
+ &:active {
+   color: $light-grey;
+   border: 1px solid $light-grey;
+   background-color: #fafafa;
+   border-radius: 6px;
+ }
+
+ &:hover {
+   background-color: $grey;
+ }
 }
