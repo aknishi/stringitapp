@@ -1,4 +1,22 @@
 var path = require('path');
+var webpack = require("webpack");
+
+var prodPlugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+    }
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: true
+    }
+  })
+];
+
+plugins = plugins.concat(
+  process.env.NODE_ENV === 'production' ? prodPlugins : devPlugins
+)
 
 module.exports = {
   entry: './frontend/ctc.jsx',
@@ -10,7 +28,7 @@ module.exports = {
     rules: [
       {
         test: [/\.jsx?$/],
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           query: {
