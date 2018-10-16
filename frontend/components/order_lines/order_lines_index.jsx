@@ -49,11 +49,19 @@ class OrderLinesIndex extends React.Component {
       </div>
     )
 
+    // if order is cancelled disable the order index by toggling an overlay
+    var disablingOverlay = document.getElementById(`dark-overlay-${orderId}`)
+    if (disablingOverlay) {
+      disablingOverlay.style.height = `${(data.length*166)+42}px`
+      console.log(disablingOverlay.style.height);
+    }
+
     if (loading) {
       return (<LoadingIcon />)
     } else {
       return (
-        <div>
+        <div id="order-index-container">
+          <div id={`dark-overlay-${orderId}`} className="dark-overlay hidden"></div>
           { items }
           <button
             id={`add-button-${orderId}`}

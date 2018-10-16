@@ -7,6 +7,14 @@
   background: white;
 }
 
+.dark-overlay {
+  z-index: 5;
+  position: absolute;
+  width: 958px;
+  background-color: black;
+  opacity: 0.2;
+}
+
 .add-button {
   margin: 10px 0px 10px 10px;
   background: $lime-green;

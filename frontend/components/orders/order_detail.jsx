@@ -20,7 +20,13 @@ class OrderDetail extends React.Component {
     const { updateOrder } = this.props;
     const updatedOrder = Object.assign({}, order)
     updatedOrder.status = status;
-    updateOrder(updatedOrder);
+    if (status === "Ready") {
+      if ( window.confirm(`Changing the status to "Ready" will send an email notification to the client. Do you wish to continue?`))
+      updateOrder(updatedOrder);
+    } else {
+      updateOrder(updatedOrder);
+    }
+
   }
 
   showTextbox(order) {
@@ -75,6 +81,14 @@ class OrderDetail extends React.Component {
     $(".status-option").prop("checked", false);
     $(`#${order.status}-${order.id}`).prop("checked", true);
 
+    if (order.status === "Cancelled") {
+      $(`#dark-overlay-${order.id}`).removeClass("hidden");
+      $(`add-button-${order.id}`).addClass("hidden");
+    } else {
+      $(`#dark-overlay-${order.id}`).addClass("hidden");
+      $(`add-button-${order.id}`).removeClass("hidden");
+    }
+
     return (
       <div>
         <div className="status-options">
@@ -119,15 +133,15 @@ class OrderDetail extends React.Component {
               />
             <label id="picked-up-label">Picked Up</label>
           </div>
-          <div className="status-option"
+          <div className="cancel-order"
             onClick={this.changeStatus.bind(this, order, "Cancelled")}>
             <input
               type="radio"
               name="status"
-              value="Cancelled"
+              value="Cancel Order"
               id={`Cancelled-${order.id}`}
               />
-            <label id="cancelled-label">Cancelled</label>
+            <label id="cancelled-label"></label>
           </div>
         </div>
         <br />
@@ -168,6 +182,7 @@ class OrderDetail extends React.Component {
           <h4 className="detail-title">Customer:</h4>
           <h6><b>Name: </b>{order.customer.name}</h6>
           <h6><b>Phone: </b>{order.customer.phone_number}</h6>
+          <h6><b>Email: </b>{order.customer.email}</h6>
           <h6><b>Address: </b>{order.customer.address}</h6>
           <h6><b>Comment: </b>{order.customer.comment}</h6>
         </div>

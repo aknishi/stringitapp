@@ -198,43 +198,42 @@
 }
 
 #pending-label {
-  position: absolute;
-  left: 180px;
-  z-index: 5;
+  margin-left: 20px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
 
-#in-progress-label {
-  top: 12px;
-  left: 280px;
-  z-index: 4;
-}
-
-#ready-label {
-  top: 12px;
-  left: 280px;
-  z-index: 3;
-}
+// #in-progress-label {
+//   top: 12px;
+//   left: 280px;
+//   z-index: 4;
+// }
+//
+// #ready-label {
+//   top: 12px;
+//   left: 280px;
+//   z-index: 3;
+// }
+//
 
 #picked-up-label {
-  top: 12px;
-  left: 280px;
-  z-index: 2;
-}
-
-#cancelled-label {
-  top: 12px;
-  left: 280px;
-  z-index: 1;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+  margin-right: 40px;
+}
+
+//
+#cancelled-label {
+  border-radius: 8px;
+  border: 1px solid $grey;
 }
 
 
 .status-option {
+  display: flex;
+  align-items: center;
+
   label {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -263,8 +262,41 @@
   }
 }
 
-.status-title {
-  position: absolute;
+.cancel-order {
+  display: flex;
+  align-items: center;
+
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 24px;
+  }
+  input + label {
+    background-color: white;
+  }
+  input {
+    visibility: hidden;
+    width: 0;
+  }
+  input:checked + label {
+    font-weight: bold;
+    color: white;
+    background-color: $red;
+    z-index: 6;
+  }
+  input:checked + label:after {
+    content: "Cancelled";
+  }
+  input + label:after {
+    content: "Cancel Order";
+  }
+  label:hover {
+    font-weight: bold;
+    color: white;
+    background-color: red;
+  }
 }
 
 .status-option-container {
