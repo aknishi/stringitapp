@@ -13,7 +13,7 @@ export const createCord = cord => dispatch => (
 );
 
 export const updateCord = cord => dispatch => (
-  APIUtil.udpateCord(cord).then(
+  APIUtil.updateCord(cord).then(
     cord => dispatch(receiveCord(cord)),
     err => dispatch(receiveErrors(err.responseJSON)))
 );

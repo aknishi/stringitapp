@@ -27,12 +27,6 @@ export const fetchOrderLines = orderId => dispatch => {
     err => dispatch(receiveErrors(err.responseJSON)))
 };
 
-export const fetchOrderLine = id => dispatch => {
-  return APIUtil.fetchOrderLine(id).then(
-    orderLine => dispatch(receiveOrderLine(orderLine)),
-    err => dispatch(receiveErrors(err.responseJSON)))
-};
-
 export const destroyOrderLine = orderLine => dispatch => (
   APIUtil.destroyOrderLine(orderLine).then(
     orderLine => dispatch(removeOrderLine(orderLine)))

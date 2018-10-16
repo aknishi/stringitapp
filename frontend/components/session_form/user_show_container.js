@@ -7,7 +7,7 @@ const mapStateToProps = (state, { match }) => {
   const userId = parseInt(match.params.userId);
   const user = state.entities.users[userId];
   const currentUserId = state.session.id;
-  const loading = state.ui.loading.loading;
+  const loading = state.ui.loadingUsers.loading;
   return({
     userId,
     user,

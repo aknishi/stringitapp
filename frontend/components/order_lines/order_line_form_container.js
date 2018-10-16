@@ -4,7 +4,7 @@ import OrderLineForm from './order_line_form';
 import { updateOrder } from '../../actions/order_actions';
 import { clearErrors, createOrderLine } from '../../actions/order_line_actions';
 import { fetchRackets } from '../../actions/racket_actions';
-import { fetchCords } from '../../actions/racket_actions';
+import { fetchCords } from '../../actions/cord_actions';
 import values from 'lodash/values';
 
 const mapStateToProps = (state, { orderId }) => {

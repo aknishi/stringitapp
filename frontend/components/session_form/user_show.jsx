@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter, Route } from 'react-router-dom';
+import LoadingBar from '../loading_bar';
 
 class UserShow extends React.Component {
   constructor(props) {
@@ -7,6 +8,9 @@ class UserShow extends React.Component {
 
     this.handleEdit = this.handleEdit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  componentWillMount() {
   }
 
   handleEdit() {
@@ -36,8 +40,8 @@ class UserShow extends React.Component {
   }
 
   render() {
-    const { user, loading} = this.props;
-    if (loading) { return <LoadingIcon />; }
+    const { user, loading } = this.props;
+    if (loading) { return <LoadingBar />; }
     else {
       return(
         <div className="user-profile-container">

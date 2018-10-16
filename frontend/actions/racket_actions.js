@@ -13,7 +13,7 @@ export const createRacket = racket => dispatch => (
 );
 
 export const updateRacket = racket => dispatch => (
-  APIUtil.udpateRacket(racket).then(
+  APIUtil.updateRacket(racket).then(
     racket => dispatch(receiveRacket(racket)),
     err => dispatch(receiveErrors(err.responseJSON)))
 );
