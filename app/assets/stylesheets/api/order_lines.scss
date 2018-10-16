@@ -3,10 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "variables";
 
-.order-lines-table {
-  background: white;
-}
-
 .dark-overlay {
   z-index: 5;
   position: absolute;
@@ -42,6 +38,7 @@
 .section-container {
   display: flex;
   justify-content: space-around;
+  margin-top: 20px;
 }
 
 .section-title {
@@ -157,6 +154,7 @@
   display: flex;
   align-items: center;
   background-color: white;
+  border-top: 1px solid $mid-light-grey;
   border-bottom: 1px solid $mid-light-grey;
   padding: 5px 20px;
 }
@@ -186,13 +184,17 @@
 .string-info {
   display: flex;
   flex-direction: column;
-  width: 280px;
+  width: 300px;
   margin: 5px 0 5px 40px;
   background-color: $light-grey;
   border-radius: 6px;
   padding: 10px 20px;
-  h4, h5 {
+  h4 {
     margin-bottom: 5px;
+  }
+
+  h5 {
+    margin: 5px 0px;
   }
 
   h6 {

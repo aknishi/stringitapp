@@ -1,7 +1,7 @@
 import {
-  RECEIVE_ORDER_LINE_ERRORS, 
+  RECEIVE_ORDER_LINE_ERRORS,
   RECEIVE_ORDER_LINE,
-  CLEAR_ORDER_LINE_ERRORS } from '../actions/order_actions';
+  CLEAR_ORDER_LINE_ERRORS } from '../actions/order_line_actions';
 
 export default (state = [], action) => {
   Object.freeze(state);

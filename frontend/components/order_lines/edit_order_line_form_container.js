@@ -3,8 +3,7 @@ import React from 'react';
 import EditOrderLineForm from './edit_order_line_form';
 import { fetchRackets } from '../../actions/racket_actions';
 import { updateOrder } from '../../actions/order_actions';
-import { clearErrors } from '../../actions/order_line_actions';
-import { updateOrderLine } from '../../actions/order_line_actions';
+import { updateOrderLine, clearErrors } from '../../actions/order_line_actions';
 import values from 'lodash/values';
 
 const mapStateToProps = (state, { orderLine }) => {

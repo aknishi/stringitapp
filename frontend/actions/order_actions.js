@@ -4,6 +4,7 @@ export const RECEIVE_ORDERS = "RECEIVE_ORDERS";
 export const RECEIVE_ORDER = "RECEIVE_ORDER";
 export const RECEIVE_ORDER_ERRORS = "RECEIVE_ORDER_ERRORS";
 export const REMOVE_ORDER = "REMOVE_ORDER";
+export const START_LOADING_ORDER = "START_LOADING_ORDER";
 
 export const createOrder = order => dispatch => (
   APIUtil.createOrder(order).then(
@@ -11,11 +12,12 @@ export const createOrder = order => dispatch => (
     err => dispatch(receiveErrors(err.responseJSON)))
 );
 
-export const updateOrder = order => dispatch => (
-  APIUtil.updateOrder(order).then(
+export const updateOrder = order => dispatch => {
+  dispatch(startLoading());
+  return APIUtil.updateOrder(order).then(
     order => dispatch(receiveOrder(order)),
     err => dispatch(receiveErrors(err.responseJSON)))
-);
+};
 
 export const fetchOrders = () => dispatch => (
   APIUtil.fetchOrders().then(
@@ -34,6 +36,10 @@ export const deleteOrder = id => dispatch => (
     () => dispatch(removeOrder(id)),
     err => dispatch(receiveErrors(err.responseJSON)))
 );
+
+export const startLoading = () => ({
+  type: START_LOADING_ORDER
+});
 
 const receiveOrders = orders => ({
   type: RECEIVE_ORDERS,

@@ -122,8 +122,9 @@ class OrderLineForm extends React.Component {
   }
 
   hideOrderLineForm(orderId) {
-    $(`#add-button-${orderId}`).removeClass('hidden');
-    $(`#ol-form-${orderId}`).addClass('hidden');
+    $(`#add-button-${orderId}`).stop().css('display','block').hide().slideDown();
+    $(`#ol-form-${orderId}`).stop().css('display','hidden').slideUp();
+    this.props.clearErrors();
   }
 
   handleSubmit() {
@@ -141,7 +142,8 @@ class OrderLineForm extends React.Component {
     delete orderLine.cross_brand;
     delete orderLine.cross_model;
     createOrderLine(orderLine).then(
-        () => this.hideOrderLineForm(orderId));
+      () => this.hideOrderLineForm(orderId)
+    );
   }
 
   errors() {

@@ -20,6 +20,7 @@ class Api::OrdersController < ApplicationController
   end
 
   def update
+    sleep 1
     @order = Order.find(params[:id])
     if @order.update(order_params)
       if @order.status == "Ready"

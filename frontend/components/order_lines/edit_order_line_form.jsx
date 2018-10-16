@@ -120,7 +120,8 @@ class EditOrderLineForm extends React.Component {
   }
 
   hideEditOrderLineForm(orderLineId) {
-    $(`#edit-form-${orderLineId}`).addClass('hidden');
+    $(`#edit-form-${orderLineId}`).stop().css('display','hidden').slideUp();
+    this.props.clearErrors();
   }
 
   handleSubmit() {

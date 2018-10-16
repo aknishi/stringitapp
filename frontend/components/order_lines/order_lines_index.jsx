@@ -28,12 +28,12 @@ class OrderLinesIndex extends React.Component {
   }
 
   showOrderLineForm(orderId) {
-    $(`#add-button-${orderId}`).addClass('hidden');
-    $(`#ol-form-${orderId}`).removeClass('hidden');
+    $(`#add-button-${orderId}`).stop().css('display','hidden').slideUp();
+    $(`#ol-form-${orderId}`).stop().css('display','block').hide().slideDown();
   }
 
   showEditOrderLineForm(orderLineId) {
-    $(`#edit-form-${orderLineId}`).removeClass('hidden');
+    $(`#edit-form-${orderLineId}`).stop().css('display','block').hide().slideDown();
   }
 
   render() {
@@ -53,7 +53,6 @@ class OrderLinesIndex extends React.Component {
     var disablingOverlay = document.getElementById(`dark-overlay-${orderId}`)
     if (disablingOverlay) {
       disablingOverlay.style.height = `${(data.length*166)+42}px`
-      console.log(disablingOverlay.style.height);
     }
 
     if (loading) {

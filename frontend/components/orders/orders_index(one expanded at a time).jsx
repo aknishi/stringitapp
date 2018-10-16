@@ -78,9 +78,9 @@ const orderColumns = [
 class OrdersIndex extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   expanded: {}
-    // }
+    this.state = {
+      expanded: {}
+    }
     this.navigateToOrderForm = this.navigateToOrderForm.bind(this)
   }
 
@@ -92,13 +92,13 @@ class OrdersIndex extends React.Component {
     this.props.history.push("/orderform")
   }
 
-  // handleRowExpanded(rowsState, index) {
-  //   this.setState({
-  //     expanded: {
-  //       [index[0]]: !this.state.expanded[index[0]],
-  //     },
-  //   });
-  // }
+  handleRowExpanded(rowsState, index) {
+    this.setState({
+      expanded: {
+        [index[0]]: !this.state.expanded[index[0]],
+      },
+    });
+  }
 
   render() {
     const { orders, orderLines, fetchOrderLines, updateOrder, loading } = this.props;
@@ -140,6 +140,9 @@ class OrdersIndex extends React.Component {
                   );
                 }}
                 collapseOnDataChange={false}
+                expanded={this.state.expanded}
+                onExpandedChange={(newExpanded, index) =>
+                  this.handleRowExpanded(newExpanded, index)}
               />
             </div>
           </div>

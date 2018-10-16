@@ -9,7 +9,6 @@ export const START_LOADING = "START_LOADING";
 export const CLEAR_ORDER_LINE_ERRORS = "CLEAR_ORDER_LINE_ERRORS";
 
 export const createOrderLine = orderLine => dispatch => {
-  dispatch(startLoadingLine());
   return APIUtil.createOrderLine(orderLine).then(
     orderLine => dispatch(receiveOrderLine(orderLine)),
     err => dispatch(receiveErrors(err.responseJSON)))
@@ -25,6 +24,12 @@ export const fetchOrderLines = orderId => dispatch => {
   dispatch(startLoadingLines());
   return APIUtil.fetchOrderLines(orderId).then(
     orderLines => dispatch(receiveOrderLines(orderLines)),
+    err => dispatch(receiveErrors(err.responseJSON)))
+};
+
+export const fetchOrderLine = id => dispatch => {
+  return APIUtil.fetchOrderLine(id).then(
+    orderLine => dispatch(receiveOrderLine(orderLine)),
     err => dispatch(receiveErrors(err.responseJSON)))
 };
 
