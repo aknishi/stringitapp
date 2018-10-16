@@ -1,8 +1,6 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "variables";
-
 
  .nav-login-form {
    display: flex;
@@ -34,7 +32,7 @@
 .login-form-box {
   width: 250px;
   padding: 20px;
-  border: 1px solid $light-grey;
+  border: 1px solid #F0F0F0;
   text-align: center;
   background-color: white;
 }
@@ -57,7 +55,7 @@
   width: 250px;
   padding: 20px;
   margin-top: 10px;
-  border: 1px solid $light-grey;
+  border: 1px solid #F0F0F0;
   text-align: center;
   background-color: white;
 }
@@ -93,13 +91,13 @@
   cursor: pointer;
 
   &:active {
-    color: $light-grey;
-    border: 1px solid $light-grey;
+    color: #F0F0F0;
+    border: 1px solid #F0F0F0;
     background-color: #fafafa;
     border-radius: 6px;
   }
 
   &:hover {
-    background-color: $grey;
+    background-color: #747474;
   }
 }

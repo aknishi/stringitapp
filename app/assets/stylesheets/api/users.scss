@@ -2,10 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 // Customer Form
-
-
-@import "variables";
 
 .customer-form-box {
   background-color: white;
@@ -89,13 +87,13 @@
  cursor: pointer;
 
  &:active {
-   color: $light-grey;
-   border: 1px solid $light-grey;
+   color: #F0F0F0;
+   border: 1px solid #F0F0F0;
    border-radius: 6px;
  }
 
  &:hover {
-   background-color: $mid-grey;
+   background-color: #d5d5d5;
  }
 }
 
@@ -109,13 +107,13 @@
  cursor: pointer;
 
  &:active {
-   color: $light-grey;
-   border: 1px solid $light-grey;
+   color: #F0F0F0;
+   border: 1px solid #F0F0F0;
    background-color: #fafafa;
    border-radius: 6px;
  }
 
  &:hover {
-   background-color: $grey;
+   background-color: #747474;
  }
 }

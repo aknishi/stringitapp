@@ -1,11 +1,10 @@
-@import "variables";
 
 .load-bar {
   position: relative;
   margin-top: 20px;
   width: 100%;
   height: 6px;
-  background-color: $light-blue;
+  background-color: #dbfafe;
 }
 .bar {
   content: "";
@@ -17,15 +16,15 @@
   text-align: center;
 }
 .bar:nth-child(1) {
-  background-color: $blue;
+  background-color: #00BFFF;
   animation: loading 3s linear infinite;
 }
 .bar:nth-child(2) {
-  background-color: $mid-dark-blue;
+  background-color: #6973f6;
   animation: loading 3s linear 1s infinite;
 }
 .bar:nth-child(3) {
-  background-color: $light-blue;
+  background-color: #dbfafe;
   animation: loading 3s linear 2s infinite;
 }
 @keyframes loading {

@@ -1,7 +1,6 @@
 // Place all the styles related to the api/order_lines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "variables";
 
 .dark-overlay {
   z-index: 5;
@@ -13,7 +12,7 @@
 
 .add-button {
   margin: 10px 0px 10px 10px;
-  background: $lime-green;
+  background: #3ad62b;
 }
 
 .ol-form-container {
@@ -43,7 +42,7 @@
 
 .section-title {
   text-align: center;
-  background-color: $mid-grey;
+  background-color: #d5d5d5;
   width: 100%;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
@@ -59,7 +58,7 @@
   width: 500px;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
-  background-color: $light-grey;
+  background-color: #F0F0F0;
   margin-bottom: 15px;
   padding: 10px 20px;
   * {
@@ -154,8 +153,8 @@
   display: flex;
   align-items: center;
   background-color: white;
-  border-top: 1px solid $mid-light-grey;
-  border-bottom: 1px solid $mid-light-grey;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
   padding: 5px 20px;
 }
 
@@ -186,7 +185,7 @@
   flex-direction: column;
   width: 300px;
   margin: 5px 0 5px 40px;
-  background-color: $light-grey;
+  background-color: #F0F0F0;
   border-radius: 6px;
   padding: 10px 20px;
   h4 {
@@ -228,20 +227,20 @@
 
 #green-button {
   color: black;
-  background-color: $lime-green;
+  background-color: #3ad62b;
   &:hover {
-    background-color: $green;
+    background-color: #35bf28;
   }
   &:active {
-    background-color: $dark-green;
+    background-color: #30ab25;
   }
 }
 
 #cancel-button {
   &:hover {
-    background-color: $light-grey;
+    background-color: #F0F0F0;
   }
   &:active {
-    background-color: $mid-grey;
+    background-color: #d5d5d5;
   }
 }

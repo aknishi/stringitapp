@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-@import "variables";
 
 body, html {
   height: 100%;
@@ -49,7 +48,7 @@ h6 {
 body {
   // background: url("gradient.svg") fixed no-repeat;
   // background-size: cover;
-  background: $light-grey;
+  background: #F0F0F0;
 }
 
 nav {
@@ -71,7 +70,7 @@ input {
   height: 30px;
   font-size: 14px;
   padding-left: 10px;
-  border: 1px solid $light-grey;
+  border: 1px solid #F0F0F0;
 }
 
 textarea {
@@ -90,10 +89,10 @@ textarea {
 
 .button {
   &:hover {
-    background-color: $light-grey;
+    background-color: #F0F0F0;
   }
   &:active {
-    background-color: $mid-grey;
+    background-color: #d5d5d5;
   }
 }
 
@@ -112,7 +111,7 @@ textarea {
     background-color: #2d76bb;
   }
   &:focus {
-    background-color: $light-grey;
+    background-color: #F0F0F0;
   }
 }
 
@@ -120,12 +119,12 @@ textarea {
   border-radius: 5px;
   padding: 5px;
   color: black;
-  background-color: $lime-green;
+  background-color: #3ad62b;
   &:hover {
-    background-color: $green;
+    background-color: #35bf28;
   }
   &:active {
-    background-color: $dark-green;
+    background-color: #30ab25;
   }
   &:focus {
     outline: 0;
@@ -136,14 +135,14 @@ textarea {
   border-radius: 5px;
   padding: 5px;
   color: black;
-  background-color: $blue;
+  background-color: #00BFFF;
   font-weight: bold;
   color: white;
   &:hover {
-    background-color: $mid-dark-blue;
+    background-color: #6973f6;
   }
   &:active {
-    background-color: $dark-blue;
+    background-color: #404dfb;
   }
   &:focus {
     outline: 0;

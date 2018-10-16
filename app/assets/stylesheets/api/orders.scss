@@ -4,8 +4,6 @@
 
 // Orders Index
 
-@import "variables";
-
 .orders-container {
   display: flex;
   justify-content: center;
@@ -20,7 +18,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  background: $mid-grey;
+  background: #d5d5d5;
   width: 100%;
   height: 40px;
   h3 {
@@ -30,7 +28,7 @@
 
 .order-detail-container {
   padding: 20px;
-  background: $mid-light-grey;
+  background: #e8e8e8;
 }
 
 .table-container {
@@ -68,7 +66,7 @@
   input {
     font-size: 18px;
     margin: 8px 0;
-    color: $disabled;
+    color: #949494;
     width: 100%;
   }
 }
@@ -84,13 +82,13 @@
   margin-top: 30px;
   margin-bottom: 20px;
   padding: 10px;
-  color: $disabled;
+  color: #949494;
 }
 
 .search input {
   color: black;
   width: 280px;
-  background-color: $light-grey;
+  background-color: #F0F0F0;
   height: 30px;
   text-align: center;
   border-radius: 10px;
@@ -109,7 +107,7 @@
   position: relative;
   // top: 200px;
   left: 40px;
-  color: $mid-grey;
+  color: #d5d5d5;
 }
 
 .search-name {
@@ -123,7 +121,7 @@
   width: 250px;
   max-height: 360px;
   overflow: scroll;
-  border: 1px solid $light-grey;
+  border: 1px solid #F0F0F0;
 	border-radius: 3px;
 	z-index: 4;
 	text-align: left;
@@ -161,7 +159,7 @@
 
 .order-info-container {
   width: 450px;
-  background-color: $light-grey;
+  background-color: #F0F0F0;
   padding: 5px;
   border-radius: 5px;
   margin: 15px 0;
@@ -225,7 +223,7 @@
 //
 #cancelled-label {
   border-radius: 8px;
-  border: 1px solid $grey;
+  border: 1px solid #747474;
 }
 
 
@@ -239,26 +237,26 @@
     align-items: center;
     width: 120px;
     height: 24px;
-    border-radius: 1px solid $mid-grey;
+    border-radius: 1px solid #d5d5d5;
   }
   input + label {
-    background-color: $light-blue;
+    background-color: #dbfafe;
   }
   input {
     visibility: hidden;
     width: 0;
-    background-color: $light-blue;
+    background-color: #dbfafe;
   }
   input:checked + label {
     font-weight: bold;
     color: white;
-    background-color: $blue;
+    background-color: #00BFFF;
     z-index: 6;
   }
   label:hover {
     font-weight: bold;
     color: white;
-    background-color: $mid-blue;
+    background-color: #87CEFA;
   }
 }
 
@@ -322,7 +320,7 @@
 .textbox {
   width: 300px;
   min-height: 35px;
-  border: 1px solid $light-grey;
+  border: 1px solid #F0F0F0;
   border-radius: 6px;
   padding: 10px;
   margin-left: 15px;
@@ -331,7 +329,7 @@
 
 .greybox {
   color: black;
-  background: $mid-light-grey;
+  background: #e8e8e8;
   border: none;
 }
 
@@ -358,12 +356,12 @@
   color: black;
   width: 200px;
   margin: auto;
-  background-color: $lime-green;
+  background-color: #3ad62b;
   &:hover {
-    background-color: $green;
+    background-color: #35bf28;
   }
   &:active {
-    background-color: $dark-green;
+    background-color: #30ab25;
   }
 }
 
