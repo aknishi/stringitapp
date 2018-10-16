@@ -281,7 +281,7 @@
   input:checked + label {
     font-weight: bold;
     color: white;
-    background-color: $red;
+    background-color: red;
     z-index: 6;
   }
   input:checked + label:after {
