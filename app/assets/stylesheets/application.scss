@@ -115,6 +115,27 @@ textarea {
   }
 }
 
+.demo-button {
+  background-color: #3897f0;
+  color: white;
+  width: 100px;
+  height: 26px;
+  border-radius: 3px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 5px;
+  &:hover {
+    background-color: #348adb;
+  }
+  &:active {
+    background-color: #2d76bb;
+  }
+  &:focus {
+    background-color: #F0F0F0;
+  }
+}
+
 .green-button {
   border-radius: 5px;
   padding: 5px;

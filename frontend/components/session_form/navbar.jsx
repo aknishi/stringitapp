@@ -10,6 +10,7 @@ class Navbar extends React.Component {
     }
       this.handleLogin = this.handleLogin.bind(this);
       this.handleLogout = this.handleLogout.bind(this);
+      this.handleAdminDemoLogin = this.handleAdminDemoLogin.bind(this);
     }
 
     handleLogin(e) {
@@ -24,6 +25,12 @@ class Navbar extends React.Component {
 
     update(field) {
       return e => this.setState({ [field]: e.currentTarget.value });
+    }
+
+    handleAdminDemoLogin(e) {
+      e.preventDefault();
+      const guest = {email:"admin@example.com", password: "123456"};
+      this.props.login(guest).then(() => this.props.history.push("orders"))
     }
 
     userButtons() {
@@ -44,6 +51,13 @@ class Navbar extends React.Component {
               onChange={this.update('password')}
               />
             <input type="submit" value="Log In" className="login-button"/>
+            <button
+              type="submit"
+              id="green-button"
+              onClick={this.handleAdminDemoLogin}
+              className="demo-button">
+              Demo Login
+            </button>
           </form>
         )
       } else {
