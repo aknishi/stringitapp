@@ -6,6 +6,7 @@ class EditCustomerForm extends React.Component {
     super(props)
     const { customer } = this.props;
     this.state = {
+      id: customer.id,
       email: customer.email,
       name: customer.name,
       phone_number: customer.phone_number,
@@ -15,10 +16,7 @@ class EditCustomerForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.fetchOrders();
+    this.navigateToProfile = this.navigateToProfile.bind(this);
   }
 
   componentWillUnmount() {
@@ -28,7 +26,14 @@ class EditCustomerForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state)
-    this.props.createUser(user).then(() => this.props.history.push("/orderform"));
+    if (user.id === 1) {
+      user.password="123456";
+    } 
+    this.props.updateUser(user).then(() => this.props.history.push("/users/1"));
+  }
+
+  navigateToProfile() {
+    this.props.history.push(`users/${customer.id}`);
   }
 
   errors() {
@@ -64,7 +69,6 @@ class EditCustomerForm extends React.Component {
             <input
               type="text"
               value={this.state.email}
-              placeholder="name@example.com"
               onChange={this.update('email')}
               />
             <br/>
@@ -72,7 +76,6 @@ class EditCustomerForm extends React.Component {
             <input
               type="text"
               value={this.state.phone_number}
-              placeholder="XXX-XXX-XXXX"
               onChange={this.update('phone_number')}
               />
             <br/>
@@ -86,11 +89,11 @@ class EditCustomerForm extends React.Component {
             <label>Comment:</label>
             <textarea
               value={this.state.comment}
-              placeholder="Comment"
               onChange={this.update('comment')}
               />
             <br/>
-            <input type="submit" value="Create Customer" className="green-button"/>
+            <input type="submit" value="Update Customer" className="blue-button"/>
+            <button value="Cancel" className="cancel-button" onClick={this.navigateToProfile}/>
           </div>
         </form>
       </div>

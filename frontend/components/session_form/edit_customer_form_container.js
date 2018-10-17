@@ -1,20 +1,23 @@
 import { connect } from 'react-redux';
-import { createUser, clearErrors } from '../../actions/user_actions';
-import { fetchOrders } from '../../actions/order_actions';
+import { updateUser, clearErrors } from '../../actions/user_actions';
 import React from 'react';
-import CustomerForm from './customer_form';
+import EditCustomerForm from './edit_customer_form';
 
-const mapStateToProps = ({ errors }) => ({
-  errors: errors.user
-});
+const mapStateToProps = (state, { match }) => {
+  const customer = state.entities.users[match.params.userId];
+  const errors= state.errors.user
+  return({
+    customer,
+    errors
+  })
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  createUser: user => dispatch(createUser(user)),
+  updateUser: user => dispatch(updateUser(user)),
   clearErrors: () => dispatch(clearErrors()),
-  fetchOrders: () => dispatch(fetchOrders())
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CustomerForm);
+)(EditCustomerForm);

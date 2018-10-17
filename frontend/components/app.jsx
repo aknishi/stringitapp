@@ -9,6 +9,7 @@ import UserShowContainer from './session_form/user_show_container';
 import OrdersIndexContainer from './orders/orders_index_container';
 import OrderFormContainer from './orders/order_form_container';
 import CustomerFormContainer from './session_form/customer_form_container';
+import EditCustomerFormContainer from './session_form/edit_customer_form_container';
 import RacketIndexContainer from './rackets/racket_index_container';
 import RacketFormContainer from './rackets/racket_form_container';
 import CordIndexContainer from './cords/cord_index_container';
@@ -30,6 +31,7 @@ const App = () => (
       <ProtectedRoute exact path="/strings" component={CordIndexContainer} />
       <ProtectedRoute exact path="/string-form" component={CordFormContainer} />
       <ProtectedRoute exact path="/users/:userId" component={UserShowContainer} />
+      <ProtectedRoute exact path="/users/accounts/:userId/edit" component={EditCustomerFormContainer} />
   </div>
 );
 

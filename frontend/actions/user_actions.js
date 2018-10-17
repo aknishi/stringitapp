@@ -49,8 +49,8 @@ export const fetchUser = id => dispatch => (
   )
 );
 
-export const updateUser = ({ formData, userId }) => dispatch => (
-  APIUtil.updateUser({ formData, userId }).then(
+export const updateUser = user => dispatch => (
+  APIUtil.updateUser(user).then(
     user => dispatch(receiveUser(user)),
     err => dispatch(receiveErrors(err.responseJSON))
   )

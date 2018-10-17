@@ -13,13 +13,11 @@ export const fetchUser = id => (
   })
 );
 
-export const updateUser = ({ formData, userId }) => (
+export const updateUser = user => (
   $.ajax({
     method: 'PATCH',
-    url: `api/users/${userId}`,
-    data: formData ,
-    contentType: false,
-    processData: false
+    url: `api/users/${user.id}`,
+    data: { user }
   })
 );
 
