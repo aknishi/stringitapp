@@ -4,7 +4,7 @@ module.exports = {
   entry: './frontend/ctc.jsx',
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
-    filename: 'app/assets/javascripts/bundle.js'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
