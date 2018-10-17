@@ -3,6 +3,7 @@ class Api::UsersController < ApplicationController
   before_action :authorize_admin, only: :create
 
   def index
+    sleep 0.5
     @users = User.all_customers
   end
 

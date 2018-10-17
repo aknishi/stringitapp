@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter, Route } from 'react-router-dom';
 import LoadingBar from '../loading_bar';
+import UsersSearch from './users_search';
 
 class UserShow extends React.Component {
   constructor(props) {
@@ -8,9 +9,12 @@ class UserShow extends React.Component {
 
     this.handleEdit = this.handleEdit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.navigateToUserForm= this.navigateToUserForm.bind(this);
+    this.navigateToUsersSearch = this.navigateToUsersSearch.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    this.props.fetchUsers();
   }
 
   handleEdit() {
@@ -21,19 +25,40 @@ class UserShow extends React.Component {
     this.props.logout().then(this.props.history.push(`/login`))
   }
 
-  currentUserButtons() {
+  navigateToUsersSearch() {
+    this.props.history.push("users/search");
+  }
+
+  navigateToUserForm() {
+    this.props.history.push("/customer-form");
+  }
+
+  editButton() {
     const { currentUserId } = this.props
-    if (currentUserId == this.props.match.params.userId) {
+    if (currentUserId == this.props.match.params.userId || currentUserId === 1) {
       return(
         <div>
           <button
             onClick={this.handleEdit}
             className="edit-button">
             Edit Profile</button>
+        </div>
+      )
+    }
+  }
+
+  searchUsersButton() {
+    const { currentUserId, customers, fetchUsers } = this.props
+    if (currentUserId === 1) {
+      return(
+        <div className="admin-buttons">
+          <UsersSearch customers={customers} fetchUsers={fetchUsers}/>
+          <h5>OR</h5>
           <button
-            onClick={this.handleLogout}
-            className="logout-button">
-            Log out</button>
+            onClick={this.navigateToUserForm}
+            className="blue-button">
+            Create a Customer
+          </button>
         </div>
       )
     }
@@ -41,8 +66,14 @@ class UserShow extends React.Component {
 
   render() {
     const { user, loading } = this.props;
-    if (loading) { return <LoadingBar />; }
-    else {
+    if (loading) {
+      return (
+        <div>
+          <div className="loading-spacing-container"></div>
+          <LoadingBar />
+        </div>
+      )
+    } else {
       return(
         <div className="user-profile-container">
           <div className="spacing-container"></div>
@@ -55,15 +86,19 @@ class UserShow extends React.Component {
             <div className="user-info">
               <div className="username">
                 <h3>{user.name}</h3>
-                { this.currentUserButtons()}
+                { this.editButton()}
               </div>
               <div className="user-stats">
-                <h4><b>Email:</b> {user.email}</h4>
-                <h4><b>Phone Number:</b> {user.phone_number}</h4>
-                <h4><b>Address:</b> {user.address}</h4>
-                <h4><b>Comment:</b> {user.comments}</h4>
+                <h5><b>Email:</b> {user.email}</h5>
+                <h5><b>Phone Number:</b> {user.phone_number}</h5>
+                <h5><b>Address:</b> {user.address}</h5>
+                <h5><b>Comment:</b> {user.comments}</h5>
               </div>
             </div>
+          </div>
+          <div className="customer-search-container">
+            <h4>Customer Management</h4>
+            { this.searchUsersButton()}
           </div>
         </div>
       )

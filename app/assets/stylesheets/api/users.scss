@@ -13,17 +13,17 @@
 
 .user-profile-container {
   margin: auto;
- font-size: 18px;
- width: 935px;
- height: 100%;
+  font-size: 18px;
+  width: 560px;
+  height: 100%;
 }
 
 .user-info-container {
- width: 100%;
- display: flex;
- align-items: center;
- justify-content: space-between;
- margin-bottom: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .user-posts-container {
@@ -53,7 +53,6 @@
 
 .user-info {
  float: right;
- margin-right: 30px;
  display: flex;
  flex-direction: column;
  flex-grow: 3;
@@ -116,4 +115,31 @@
  &:hover {
    background-color: #747474;
  }
+}
+
+// Users Show
+
+.customer-search-container {
+  width: 560px;
+  height: 220px;
+  padding: 20px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.admin-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h5 {
+    margin: 15px 0;
+  }
+  button {
+    height: 30px;
+  }
 }
