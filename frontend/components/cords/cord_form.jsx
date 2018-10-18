@@ -54,7 +54,7 @@ class CordForm extends React.Component {
   }
 
   setupBrand(e) {
-    if (e.currentTarget.value === "Other") {
+    if (e.currentTarget.value === "- New Brand -") {
       $("#new-cord-brand").removeClass("hidden")
     } else {
       $("#new-cord-brand").addClass("hidden")
@@ -63,7 +63,7 @@ class CordForm extends React.Component {
   }
 
   setupComposition(e) {
-    if (e.currentTarget.value === "Other") {
+    if (e.currentTarget.value === "- New Composition -") {
       $("#new-cord-composition").removeClass("hidden")
     } else {
       $("#new-cord-composition").addClass("hidden")
@@ -111,7 +111,7 @@ class CordForm extends React.Component {
             <select onChange={this.setupBrand} id="cord-brand">
               <option>-- Select a Brand --</option>
               { cordBrandItems }
-              <option>Other</option>
+              <option>- New Brand -</option>
             </select>
             <br />
             <div id="new-cord-brand" className="new-cord-brand hidden">
@@ -148,7 +148,7 @@ class CordForm extends React.Component {
             <select onChange={this.setupComposition} id="cord-composition">
               <option>-- Select a Composition --</option>
               { cordCompositionItems }
-              <option>Other</option>
+              <option>- New Composition -</option>
             </select>
             <br />
             <div id="new-cord-composition" className="new-cord-composition hidden">

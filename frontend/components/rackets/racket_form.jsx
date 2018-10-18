@@ -51,7 +51,7 @@ class RacketForm extends React.Component {
   }
 
   setupBrand(e) {
-    if (e.currentTarget.value === "Other") {
+    if (e.currentTarget.value === "- New Brand -") {
       $("#new-racket-brand").removeClass("hidden")
     } else {
       $("#new-racket-brand").addClass("hidden")
@@ -89,7 +89,7 @@ class RacketForm extends React.Component {
             <select onChange={this.setupBrand} id="racket-brand">
               <option>-- Select a Brand --</option>
               { racketBrandItems }
-              <option>Other</option>
+              <option>- New Brand -</option>
             </select>
             <br />
             <div id="new-racket-brand" className="new-racket-brand hidden">

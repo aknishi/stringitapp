@@ -21,17 +21,9 @@ class EditCustomerForm extends React.Component {
     this.customerEditButtons = this.customerEditButtons.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.formType === "Customer Edit") {
       this.props.fetchUser(this.props.match.params.userId)
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.formType === "Customer Edit") {
-      if (this.props.customer.id != nextProps.match.params.userId) {
-        this.props.fetchUser(nextProps.match.params.userId);
-      }
     }
   }
 
@@ -101,8 +93,8 @@ class EditCustomerForm extends React.Component {
       topSpacingContainer = <div className="spacing-container"></div>
       bottomSpacingContainer = <div className="small-spacing-container"></div>
     }
-    const { loading } = this.props;
-    if (loading) {
+    const { loading, customer } = this.props;
+    if (!customer) {
       return (
         <div>
           <div className="loading-spacing-container"></div>
