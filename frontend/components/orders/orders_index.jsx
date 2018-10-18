@@ -27,6 +27,7 @@ const orderColumns = [
   {
     Header: "Name",
     id: "name",
+    width: 140,
     accessor: order => order.customer.name,
     filterMethod: (filter, rows) =>
       matchSorter(rows, filter.value, { keys: ["name"] }),
@@ -45,7 +46,6 @@ const orderColumns = [
     Header: 'Address',
     id: "address",
     accessor: order => order.customer.address,
-    minWidth: 300,
     filterMethod: (filter, rows) =>
       matchSorter(rows, filter.value, { keys: ["address"] }),
     filterAll: true
@@ -58,7 +58,7 @@ const orderColumns = [
       if (order.status == "Picked_up") { return "Picked Up" }
       else return order.status
     },
-    width: 130,
+    width: 110,
     Filter: ({ filter, onChange }) =>
       <select
         onChange={event => onChange(event.target.value)}
