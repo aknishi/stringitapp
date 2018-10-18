@@ -70,7 +70,7 @@ class UserShow extends React.Component {
   }
 
   customerComments() {
-    const { currentUserId, customers, fetchUsers } = this.props
+    const { currentUserId, customers, fetchUsers, user } = this.props
     if (currentUserId === 1) {
       return (
         <h5><b>Comment:</b> {user.comment}</h5>
