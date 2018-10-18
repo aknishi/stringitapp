@@ -107,7 +107,7 @@ class OrdersIndex extends React.Component {
     if (loading) {
       return (
         <div>
-          <div className="spacing-container"></div>
+          <div className="loading-spacing-container"></div>
           <LoadingBar />
         </div>
       )
