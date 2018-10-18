@@ -1,5 +1,6 @@
 import React from "react";
 import OrderDetail from './order_detail';
+import LoadingBar from '../loading_bar';
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table";
@@ -103,7 +104,14 @@ class OrdersIndex extends React.Component {
 
   render() {
     const { orders, orderLines, updateOrder, loading } = this.props;
-    if (orders.length > 0) {
+    if (loading) {
+      return (
+        <div>
+          <div className="spacing-container"></div>
+          <LoadingBar />
+        </div>
+      )
+    } else {
       return (
         <div>
           <div className="spacing-container"></div>
@@ -146,8 +154,6 @@ class OrdersIndex extends React.Component {
           </div>
         </div>
       )
-    } else {
-      return (<div></div>)
     }
   }
 }

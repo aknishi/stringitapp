@@ -19,11 +19,12 @@ export const updateOrder = order => dispatch => {
     err => dispatch(receiveErrors(err.responseJSON)))
 };
 
-export const fetchOrders = () => dispatch => (
-  APIUtil.fetchOrders().then(
+export const fetchOrders = () => dispatch => {
+  dispatch(startLoading());
+  return APIUtil.fetchOrders().then(
     orders => dispatch(receiveOrders(orders)),
     err => dispatch(receiveErrors(err.responseJSON)))
-);
+};
 
 export const fetchOrder = id => dispatch => (
   APIUtil.fetchOrder(id).then(
