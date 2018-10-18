@@ -2,6 +2,7 @@ class Api::OrdersController < ApplicationController
   before_action :require_login
 
   def index
+    sleep 0.75
     @orders = Order.all
   end
 

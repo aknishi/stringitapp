@@ -18,14 +18,14 @@ const WelcomePage = () => {
             <img src={window.whiteRacketURL} />
             <div className="keynotes">
               <h2>Manage stringing racket orders</h2>
-              <h3>Send order status notifications to your clients</h3>
+              <h3>Receive order status notifications of your orders</h3>
             </div>
           </li>
           <li>
             <i className="fas fa-store-alt"></i>
             <div className="keynotes">
-              <h2>Manage your tennis store</h2>
-              <h3>Add new rackets and strings to your inventory</h3>
+              <h2>Check out the store</h2>
+              <h3>See what's new</h3>
             </div>
           </li>
           <br/>
@@ -33,8 +33,8 @@ const WelcomePage = () => {
             <i className="fas fa-edit"></i>
             <div className="keynotes">
               <h2>Look up previous orders</h2>
-              <h3>See clients previous stringing orders to compare</h3>
-              <h3>and improve their game on the court.</h3>
+              <h3>Compare your previous orders strings and tensions</h3>
+              <h3>and improve your game on the court</h3>
             </div>
           </li>
         </ul>
