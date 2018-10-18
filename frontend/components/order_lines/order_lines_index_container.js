@@ -11,10 +11,12 @@ import { selectOrderLines } from '../../reducers/selectors';
 const mapStateToProps = (state, { orderId }) => {
   const orderLines = selectOrderLines(state, orderId);
   const loading = state.ui.loading.loading;
+  const currentUserId = state.session.id;
   return({
     orderId,
     data: orderLines,
     loading,
+    currentUserId
   })
 };
 

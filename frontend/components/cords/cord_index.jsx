@@ -7,6 +7,7 @@ class CordIndex extends React.Component {
   constructor(props) {
     super(props)
     this.navigateToCordForm = this.navigateToCordForm.bind(this);
+    this.addStringButton = this.addStringButton.bind(this);
   }
 
   componentDidMount() {
@@ -15,6 +16,12 @@ class CordIndex extends React.Component {
 
   navigateToCordForm() {
     this.props.history.push("/string-form")
+  }
+
+  addStringButton() {
+    if (this.props.currentUserId === 1) {
+      return <button className="add-cord-button green-button" onClick={this.navigateToCordForm}>Add New String</button>
+    }
   }
 
   render() {
@@ -30,7 +37,7 @@ class CordIndex extends React.Component {
       const cordItems = cords.map(cord => <CordIndexItem key={cord.id} cord={cord} />)
       return (
         <div>
-          <button className="add-cord-button green-button" onClick={this.navigateToCordForm}>Add New String</button>
+          { this.addStringButton() }
           <div className="spacing-container"></div>
           <h3 className="cord-index-title">Strings</h3>
           <div className="cord-index-container">

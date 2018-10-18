@@ -9,9 +9,11 @@ const mapStateToProps = (state) => {
   //reverse order:
   const cords = getCords.slice(0).reverse()
   const loading = state.ui.loading.loading;
+  const currentUserId = state.session.id;
   return({
     cords,
-    loading
+    loading,
+    currentUserId
   })
 };
 

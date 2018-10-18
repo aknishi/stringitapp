@@ -16,9 +16,9 @@ class UserSearch extends React.Component {
     $('#customer-search').addClass('hidden');
   }
 
-  navigateToCustomerProfile(userId) {
-    console.log(userId);
-    this.props.history.push(`/users/${userId}`);
+  navigateToCustomerProfile(customer) {
+    this.setState({query: customer.name});
+    this.props.history.push(`/users/${customer.id}`);
   }
 
   handleInput(e) {
@@ -36,7 +36,7 @@ class UserSearch extends React.Component {
       <li
         key={customer.id}
         className="search-result-item">
-        <div onClick={this.navigateToCustomerProfile.bind(this, customer.id)}>
+        <div onClick={this.navigateToCustomerProfile.bind(this, customer)}>
           <h5 className="search-name" id="bold">{customer.name}</h5>
         </div>
       </li>

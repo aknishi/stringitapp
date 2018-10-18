@@ -30,7 +30,7 @@ class Navbar extends React.Component {
     handleAdminDemoLogin(e) {
       e.preventDefault();
       const guest = {email:"admin@example.com", password: "123456"};
-      this.props.login(guest).then(() => this.props.history.push("orders"))
+      this.props.login(guest).then(() => this.props.history.push("/orders"))
     }
 
     userButtons() {

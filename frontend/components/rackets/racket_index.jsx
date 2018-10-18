@@ -7,6 +7,7 @@ class RacketIndex extends React.Component {
   constructor(props) {
     super(props)
     this.navigateToRacketForm = this.navigateToRacketForm.bind(this);
+    this.addRacketButton = this.addRacketButton.bind(this);
   }
 
   componentDidMount() {
@@ -15,6 +16,12 @@ class RacketIndex extends React.Component {
 
   navigateToRacketForm() {
     this.props.history.push("/racket-form")
+  }
+
+  addRacketButton() {
+    if (this.props.currentUserId === 1) {
+      return <button className="add-racket-button green-button" onClick={this.navigateToRacketForm}>Add New Racket</button>
+    }
   }
 
   render() {
@@ -30,7 +37,7 @@ class RacketIndex extends React.Component {
       const racketItems = rackets.map(racket => <RacketIndexItem key={racket.id} racket={racket} />)
       return (
         <div>
-          <button className="add-racket-button green-button" onClick={this.navigateToRacketForm}>Add New Racket</button>
+          { this.addRacketButton() }
           <div className="spacing-container"></div>
           <h3 className="racket-index-title">Rackets</h3>
           <div className="racket-index-container">

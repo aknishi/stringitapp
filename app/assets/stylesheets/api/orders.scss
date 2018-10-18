@@ -251,8 +251,12 @@
   border: 1px solid #747474;
 }
 
+.customer-order-status-container {
+  display: flex;
+  align-items: center;
+}
 
-.status-option {
+.status-option, .customer-status-option {
   display: flex;
   align-items: center;
 
@@ -278,6 +282,9 @@
     background-color: #00BFFF;
     z-index: 6;
   }
+}
+
+.status-option {
   label:hover {
     font-weight: bold;
     color: white;

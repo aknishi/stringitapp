@@ -21,6 +21,16 @@ admin = User.create!(
   admin: true
 )
 
+guest = User.create!(
+  name: "Guest",
+  email: "guest@example.com",
+  password: "123456",
+  phone_number: "000-000-0000",
+  address: "",
+  comment: "",
+  admin: false
+)
+
 user1 = User.create!(
   name: "Jordan B.",
   email: "jordan8@example.com",
@@ -83,6 +93,18 @@ order2 = Order.create!(
   comments: "Needs Racket by October 15"
 )
 
+order3 = Order.create!(
+  customer_id: guest.id,
+  status: "Cancelled",
+  comments: "Customer changed his mind"
+)
+
+order4 = Order.create!(
+  customer_id: guest.id,
+  status: "Pending",
+  comments: "Customer paid in advance."
+)
+
 racket1 = Racket.create!(
   brand: "Yonex",
   model: "Vcore Pro 100",
@@ -102,6 +124,20 @@ racket3 = Racket.create!(
   model: "Phantom Pro 100",
   color: "Black",
   image: "https://img.tennis-warehouse.com/watermark/rs.php?path=TPP100-1.jpg&nw=350"
+)
+
+racket4 = Racket.create!(
+  brand: "Babolat",
+  model: "Pure Drive",
+  color: "Blue",
+  image: "https://img.tennis-warehouse.com/watermark/rs.php?path=BPD1H-1.jpg&nw=350"
+)
+
+racket5 = Racket.create!(
+  brand: "Dunlop",
+  model: "Srixon Revo CX 2.0",
+  color: "Red / Black",
+  image: "https://img.tennis-warehouse.com/watermark/rs.php?path=RCX2-1.jpg&nw=350"
 )
 
 string1 = Cord.create!(
@@ -170,4 +206,31 @@ order_line3 = OrderLine.create!(
   main_tension: 53,
   cross_cord_id: string3.id,
   cross_tension: 58
+)
+
+order_line4 = OrderLine.create!(
+  order_id: order3.id,
+  racket_id: racket4.id,
+  main_cord_id: string1.id,
+  main_tension: 60,
+  cross_cord_id: string2.id,
+  cross_tension: 55
+)
+
+order_line5 = OrderLine.create!(
+  order_id: order4.id,
+  racket_id: racket4.id,
+  main_cord_id: string3.id,
+  main_tension: 57,
+  cross_cord_id: string3.id,
+  cross_tension: 62
+)
+
+order_line6 = OrderLine.create!(
+  order_id: order4.id,
+  racket_id: racket5.id,
+  main_cord_id: string2.id,
+  main_tension: 66,
+  cross_cord_id: string3.id,
+  cross_tension: 66
 )

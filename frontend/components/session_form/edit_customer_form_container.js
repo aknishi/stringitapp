@@ -4,7 +4,7 @@ import React from 'react';
 import EditCustomerForm from './edit_customer_form';
 
 const mapStateToProps = (state, { match }) => {
-  const customer = state.entities.users[match.params.userId];
+  const customer = state.entities.users[match.params.userId]
   const errors= state.errors.user;
   const disabledForm = false;
   const formType = "Customer Edit";

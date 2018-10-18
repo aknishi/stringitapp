@@ -5,16 +5,7 @@ import { withRouter } from 'react-router-dom';
 class EditCustomerForm extends React.Component {
   constructor(props) {
     super(props)
-    const { customer } = this.props;
-    this.state = {
-      id: customer.id,
-      email: customer.email,
-      name: customer.name,
-      phone_number: customer.phone_number,
-      address: customer.address,
-      comment: customer.comment,
-      password: "ctc2018",
-    };
+    this.state = this.props.customer;
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigateOut = this.navigateOut.bind(this);
@@ -34,9 +25,6 @@ class EditCustomerForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state)
-    if (user.id === 1) {
-      user.password="123456";
-    }
     this.props.updateUser(user).then(() => this.navigateOut());
   }
 
@@ -94,7 +82,7 @@ class EditCustomerForm extends React.Component {
       bottomSpacingContainer = <div className="small-spacing-container"></div>
     }
     const { loading, customer } = this.props;
-    if (!customer) {
+    if (loading) {
       return (
         <div>
           <div className="loading-spacing-container"></div>
@@ -102,61 +90,65 @@ class EditCustomerForm extends React.Component {
         </div>
       )
     } else {
-      return (
-        <div id="edit-customer-form" className="form-container">
-          { topSpacingContainer }
-          <div className="customer-form-box">
-            <ul>
-              {this.errors()}
-            </ul>
-            { formTitle }
-            <div className="login-form">
-              <label>Full Name:</label>
-              <input
-                type="text"
-                value={this.state.name}
-                disabled={this.props.disabled}
-                onChange={this.update('name')}
-                />
-              <br/>
-              <label>Email:</label>
-              <input
-                type="text"
-                value={this.state.email}
-                disabled={this.props.disabled}
-                onChange={this.update('email')}
-                />
-              <br/>
-              <label>Phone Number:</label>
-              <input
-                type="text"
-                value={this.state.phone_number}
-                disabled={this.props.disabled}
-                onChange={this.update('phone_number')}
-                />
-              <br/>
-              <label>Address:</label>
-              <input
-                type="text"
-                value={this.state.address}
-                disabled={this.props.disabled}
-                onChange={this.update('address')}
-                />
-              <br/>
-              <label>Comment:</label>
-              <textarea
-                value={this.state.comment}
-                disabled={this.props.disabled}
-                placeholder="Comments here"
-                onChange={this.update('comment')}
-                />
-              <br/>
-              { this.customerEditButtons() }
+      if (customer.id !== "") {
+        return (
+          <div id="edit-customer-form" className="form-container">
+            { topSpacingContainer }
+            <div className="customer-form-box">
+              <ul>
+                {this.errors()}
+              </ul>
+              { formTitle }
+              <div className="login-form">
+                <label>Full Name:</label>
+                <input
+                  type="text"
+                  value={this.state.name}
+                  disabled={this.props.disabled}
+                  onChange={this.update('name')}
+                  />
+                <br/>
+                <label>Email:</label>
+                <input
+                  type="text"
+                  value={this.state.email}
+                  disabled={this.props.disabled}
+                  onChange={this.update('email')}
+                  />
+                <br/>
+                <label>Phone Number:</label>
+                <input
+                  type="text"
+                  value={this.state.phone_number}
+                  disabled={this.props.disabled}
+                  onChange={this.update('phone_number')}
+                  />
+                <br/>
+                <label>Address:</label>
+                <input
+                  type="text"
+                  value={this.state.address}
+                  disabled={this.props.disabled}
+                  onChange={this.update('address')}
+                  />
+                <br/>
+                <label>Comment:</label>
+                <textarea
+                  value={this.state.comment}
+                  disabled={this.props.disabled}
+                  placeholder="Comments here"
+                  onChange={this.update('comment')}
+                  />
+                <br/>
+                { this.customerEditButtons() }
+              </div>
+              { bottomSpacingContainer }
             </div>
-            { bottomSpacingContainer }
           </div>
-        </div>
-      )
+        )
+      } else {
+        return <div></div>
+      }
     }
   }
 }

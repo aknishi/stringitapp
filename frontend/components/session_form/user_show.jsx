@@ -11,6 +11,7 @@ class UserShow extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.navigateToUserForm= this.navigateToUserForm.bind(this);
     this.navigateToUsersSearch = this.navigateToUsersSearch.bind(this);
+    this.customerComments = this.customerComments.bind(this);
   }
 
   componentDidMount() {
@@ -18,7 +19,7 @@ class UserShow extends React.Component {
   }
 
   handleEdit() {
-    this.props.history.push(`/users/accounts/${this.props.userId}/edit`);
+    this.props.history.push(`/users/${this.props.userId}/edit`);
   }
 
   handleLogout() {
@@ -35,7 +36,7 @@ class UserShow extends React.Component {
 
   editButton() {
     const { currentUserId } = this.props
-    if (currentUserId == this.props.match.params.userId || currentUserId === 1) {
+    if (currentUserId === 1) {
       return(
         <div>
           <button
@@ -47,20 +48,32 @@ class UserShow extends React.Component {
     }
   }
 
-  searchUsersButton() {
+  customerSearchContainer() {
     const { currentUserId, customers, fetchUsers } = this.props
     if (currentUserId === 1) {
       return(
-        <div className="admin-buttons">
-          <UsersSearch customers={customers} fetchUsers={fetchUsers}/>
-          <h5 className="or">OR</h5>
-          <button
-            onClick={this.navigateToUserForm}
-            id="admin-create-customer-button"
-            className="blue-button">
-            Create a Customer
-          </button>
+        <div className="customer-search-container">
+          <h4>Customer Management</h4>
+          <div className="admin-buttons">
+            <UsersSearch customers={customers} fetchUsers={fetchUsers}/>
+            <h5 className="or">OR</h5>
+            <button
+              onClick={this.navigateToUserForm}
+              id="admin-create-customer-button"
+              className="blue-button">
+              Create a Customer
+            </button>
+          </div>
         </div>
+      )
+    }
+  }
+
+  customerComments() {
+    const { currentUserId, customers, fetchUsers } = this.props
+    if (currentUserId === 1) {
+      return (
+        <h5><b>Comment:</b> {user.comment}</h5>
       )
     }
   }
@@ -93,14 +106,11 @@ class UserShow extends React.Component {
                 <h5><b>Email:</b> {user.email}</h5>
                 <h5><b>Phone Number:</b> {user.phone_number}</h5>
                 <h5><b>Address:</b> {user.address}</h5>
-                <h5><b>Comment:</b> {user.comments}</h5>
+                { this.customerComments() }
               </div>
             </div>
           </div>
-          <div className="customer-search-container">
-            <h4>Customer Management</h4>
-            { this.searchUsersButton()}
-          </div>
+          { this.customerSearchContainer()}
         </div>
       )
     }

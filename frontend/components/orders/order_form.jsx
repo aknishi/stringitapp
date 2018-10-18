@@ -40,7 +40,7 @@ class OrderForm extends React.Component {
 
   navigateToCustomerEdit(e) {
     e.preventDefault();
-    this.props.history.push(`/users/accounts/${this.state.customer_id}/edit`)
+    this.props.history.push(`/user/${this.state.customer_id}/edit`)
   }
 
   setupCustomer(customer) {

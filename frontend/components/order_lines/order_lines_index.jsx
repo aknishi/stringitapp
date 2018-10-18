@@ -36,15 +36,23 @@ class OrderLinesIndex extends React.Component {
     $(`#edit-form-${orderLineId}`).stop().css('display','block').hide().slideDown();
   }
 
+  orderLineForm() {
+    const { orderId } = this.props;
+    if (this.props.currentUserId === 1) {
+      return <OrderLineFormContainer orderId={orderId}/>
+    }
+  }
+
   render() {
-    const { orderId, data, loading } = this.props
+    const { orderId, data, loading, currentUserId } = this.props
 
     const items = data.map( ol =>
       <div key={ol.id}>
         <OrderLinesIndexItem
           orderLine={ol}
           deleteLine={this.deleteLine}
-          showEditOrderLineForm={this.showEditOrderLineForm}/>
+          showEditOrderLineForm={this.showEditOrderLineForm}
+          currentUserId={currentUserId}/>
         <EditOrderLineFormContainer orderLine={ol}/>
       </div>
     )
@@ -52,7 +60,23 @@ class OrderLinesIndex extends React.Component {
     // if order is cancelled disable the order index by toggling an overlay
     var disablingOverlay = document.getElementById(`dark-overlay-${orderId}`)
     if (disablingOverlay) {
-      disablingOverlay.style.height = `${(data.length*166)+54}px`
+      // put an overlay on the items and on the add line button
+      if (currentUserId === 1) {
+        disablingOverlay.style.height = `${(data.length*166)+54}px`;
+      } else {
+        // put an overlay on the items only
+        disablingOverlay.style.height = `${(data.length*166)}px`;
+      }
+    }
+    let addButton;
+    if (currentUserId === 1) {
+      addButton = (
+        <button
+          id={`add-button-${orderId}`}
+          className="add-button blue-button"
+          onClick={this.showOrderLineForm.bind(this, orderId)}
+          >Add Line</button>
+      );
     }
 
     if (loading) {
@@ -62,12 +86,8 @@ class OrderLinesIndex extends React.Component {
         <div id="order-index-container">
           <div id={`dark-overlay-${orderId}`} className="dark-overlay hidden"></div>
           { items }
-          <button
-            id={`add-button-${orderId}`}
-            className="add-button blue-button"
-            onClick={this.showOrderLineForm.bind(this, orderId)}
-            >Add Line</button>
-          <OrderLineFormContainer orderId={orderId}/>
+          { addButton }
+          { this.orderLineForm() }
         </div>
       )
     }

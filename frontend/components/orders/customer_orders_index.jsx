@@ -1,9 +1,10 @@
 import React from "react";
-import OrderDetail from './order_detail';
+import CustomerOrderDetail from './customer_order_detail';
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table";
 import matchSorter from 'match-sorter';
+import { withRouter } from 'react-router';
 
 const orderColumns = [
   {
@@ -25,29 +26,29 @@ const orderColumns = [
     filterAll: true
   },
   {
-    Header: "Name",
-    id: "name",
-    width: 140,
-    accessor: order => order.customer.name,
+    Header: 'No. of Rackets',
+    id: "racket-count",
+    accessor: order => order.orderLineIds.length,
+    width: 120,
+    filterMethod: (filter, rows) =>
+      matchSorter(rows, filter.value, { keys: ["racket-count"] }),
+    filterAll: true
+  },
+  {
+    Header: "Store",
+    id: "store-name",
+    Cell: "Tennis Center Store",
+    width: 170,
     filterMethod: (filter, rows) =>
       matchSorter(rows, filter.value, { keys: ["name"] }),
     filterAll: true
   },
   {
-    Header: 'Phone Number',
-    id: "phoneNumber",
-    accessor: order => order.customer.phone_number,
-    width: 120,
+    Header: "Store Address",
+    id: "store-address",
+    Cell: "111 Main Ave. San Francisco, CA 94110",
     filterMethod: (filter, rows) =>
-      matchSorter(rows, filter.value, { keys: ["phoneNumber"] }),
-    filterAll: true
-  },
-  {
-    Header: 'Address',
-    id: "address",
-    accessor: order => order.customer.address,
-    filterMethod: (filter, rows) =>
-      matchSorter(rows, filter.value, { keys: ["address"] }),
+      matchSorter(rows, filter.value, { keys: ["name"] }),
     filterAll: true
   },
   {
@@ -75,46 +76,30 @@ const orderColumns = [
   }
 ];
 
-class OrdersIndex extends React.Component {
+class CustomerOrdersIndex extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   expanded: {}
-    // }
     this.navigateToOrderForm = this.navigateToOrderForm.bind(this)
   }
 
   componentWillMount() {
      this.props.fetchOrders();
-     this.props.fetchUsers();
   }
 
   navigateToOrderForm() {
     this.props.history.push("/orderform")
   }
 
-  // handleRowExpanded(rowsState, index) {
-  //   this.setState({
-  //     expanded: {
-  //       [index[0]]: !this.state.expanded[index[0]],
-  //     },
-  //   });
-  // }
-
   render() {
-    const { orders, orderLines, fetchOrderLines, updateOrder, loading } = this.props;
+    const { orders, orderLines, fetchOrderLines, loading } = this.props;
     if (orders.length > 0) {
       return (
         <div>
           <div className="spacing-container"></div>
           <div className="orders-container">
             <div className="table-title">
-              <button
-                className="new-order-button blue-button"
-                onClick={this.navigateToOrderForm}>
-                New Order
-              </button>
-              <h3>Stringing Orders</h3>
+              <div className="empty-div"></div>
+              <h3>My Orders</h3>
               <div className="empty-div"></div>
             </div>
             <div className="table-container">
@@ -130,12 +115,10 @@ class OrdersIndex extends React.Component {
                   const data = orderLines.filter(ol => ol.order_id === row.original.id)
                   return (
                     <div className="order-detail-container">
-                      <OrderDetail
+                      <CustomerOrderDetail
                         data={data}
                         orderId={row.original.id}
                         order={row.original}
-                        changeStatus={this.changeStatus}
-                        updateOrder={updateOrder}
                         loading={loading}/>
                     </div>
                   );
@@ -152,4 +135,4 @@ class OrdersIndex extends React.Component {
   }
 }
 
-export default OrdersIndex;
+export default withRouter(CustomerOrdersIndex);

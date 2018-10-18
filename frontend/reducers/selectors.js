@@ -9,3 +9,8 @@ export const selectCustomers = (users) => {
   const customers = values(users).filter(user => user.admin === false)
   return customers;
 }
+
+export const selectOrdersByCustomer = (orders, customerId) => {
+  const customerOrders = values(orders).filter(order => order.customer.id === customerId)
+  return customerOrders;
+}

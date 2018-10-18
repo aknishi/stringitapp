@@ -9,9 +9,11 @@ const mapStateToProps = (state) => {
   //reverse order:
   const rackets = getRackets.slice(0).reverse()
   const loading = state.ui.loading.loading;
+  const currentUserId = state.session.id;
   return({
     rackets,
-    loading
+    loading,
+    currentUserId
   })
 };
 

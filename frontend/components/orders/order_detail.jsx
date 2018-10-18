@@ -32,7 +32,7 @@ class OrderDetail extends React.Component {
   }
 
   navigateToCustomerEdit(customerId) {
-    this.props.history.push(`/users/accounts/${customerId}/edit`)
+    this.props.history.push(`/users/${customerId}/edit`)
   }
 
   loadingBar() {
