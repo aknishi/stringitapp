@@ -53,7 +53,7 @@ class UserShow extends React.Component {
       return(
         <div className="admin-buttons">
           <UsersSearch customers={customers} fetchUsers={fetchUsers}/>
-          <h5>OR</h5>
+          <h5 className="or">OR</h5>
           <button
             onClick={this.navigateToUserForm}
             id="admin-create-customer-button"
