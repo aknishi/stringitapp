@@ -4,7 +4,6 @@ import OrdersIndex from './orders_index';
 import { fetchOrders, updateOrder } from '../../actions/order_actions';
 import { fetchRackets } from '../../actions/racket_actions';
 import { fetchCords } from '../../actions/cord_actions';
-import { fetchOrderLines } from '../../actions/order_line_actions';
 import { fetchUsers } from '../../actions/user_actions';
 import values from 'lodash/values';
 
@@ -26,7 +25,6 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUsers: () => dispatch(fetchUsers()),
   fetchRackets: () => dispatch(fetchRackets()),
   fetchCords: () => dispatch(fetchCords()),
-  fetchOrderLines: orderId => dispatch(fetchOrderLines(orderId)),
   updateOrder: order => dispatch(updateOrder(order)),
 });
 

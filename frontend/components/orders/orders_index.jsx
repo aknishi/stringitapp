@@ -102,7 +102,7 @@ class OrdersIndex extends React.Component {
   // }
 
   render() {
-    const { orders, orderLines, fetchOrderLines, updateOrder, loading } = this.props;
+    const { orders, orderLines, updateOrder, loading } = this.props;
     if (orders.length > 0) {
       return (
         <div>
