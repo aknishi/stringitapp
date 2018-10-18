@@ -14,6 +14,7 @@ class CustomerForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.returnToPage = this.returnToPage.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +29,11 @@ class CustomerForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state)
     this.props.createUser(user).then(() => this.props.history.push("/orderform"));
+  }
+
+  returnToPage(e) {
+    e.preventDefault();
+    this.props.history.goBack();
   }
 
   errors() {
@@ -47,10 +53,10 @@ class CustomerForm extends React.Component {
       <div className="form-container">
         <div className="spacing-container"></div>
         <form className="customer-form-box" onSubmit={this.handleSubmit}>
+          <h3 className="form-title">Create User</h3>
           <ul>
             {this.errors()}
           </ul>
-          <h3 className="form-title">Create User</h3>
           <div className="login-form">
             <label>Full Name:</label>
             <input
@@ -89,8 +95,18 @@ class CustomerForm extends React.Component {
               onChange={this.update('comment')}
               />
             <br/>
-            <input type="submit" value="Create Customer" className="green-button"/>
+            <input
+              id="customer-form-button"
+              type="submit"
+              value="Create Customer"
+              className="green-button"/>
+            <button
+              id="customer-form-button"
+              className="grey-button"
+              onClick={this.returnToPage}>
+            Cancel</button>
           </div>
+          <div className="small-spacing-container"></div>
         </form>
       </div>
     )

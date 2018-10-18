@@ -109,12 +109,12 @@ class OrdersIndex extends React.Component {
           <div className="orders-container">
             <div className="table-title">
               <button
-                className="new-order-button"
+                className="new-order-button blue-button"
                 onClick={this.navigateToOrderForm}>
                 New Order
               </button>
               <h3>Stringing Orders</h3>
-              <button className="print-button">Print</button>
+              <div className="empty-div"></div>
             </div>
             <div className="table-container">
               <ReactTable

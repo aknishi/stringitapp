@@ -9,7 +9,7 @@ const WelcomePage = () => {
       </figure>
       <div className="welcome-container">
         <h1 className="welcome-text">
-          Welcome to the String It App!
+          Welcome to String It App!
         </h1>
       </div>
       <div className="bottom-container">

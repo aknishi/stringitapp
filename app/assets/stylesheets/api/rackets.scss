@@ -1,6 +1,7 @@
 // Place all the styles related to the api/rackets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
 
 .racket-index-container {
   display: flex;
@@ -54,7 +55,7 @@
 .racket-form-box {
   background: white;
   width: 300px;
-  padding: 20px 40px;
+  padding: 0 40px 20px 40px;
   display: flex;
   flex-direction: column;
   border-radius: 8px;

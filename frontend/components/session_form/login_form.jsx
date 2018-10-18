@@ -66,14 +66,15 @@ class LoginForm extends React.Component {
               onChange={this.update('password')}
               />
             <br/>
-            <input type="submit" value="Log In" className="login-button"/>
+            <input id="login-button" type="submit" value="Log In" className="blue-button"/>
           </div>
         </form>
         <div className="demo-login">
           <button
             type="submit"
+            id="demo-login-button"
             onClick={this.handleAdminDemoLogin}
-            className="demo-login-button">
+            className="blue-button">
             Admin Demo Login
           </button>
         </div>

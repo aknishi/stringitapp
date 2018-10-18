@@ -16,6 +16,7 @@ class OrderDetail extends React.Component {
     this.editComment = this.editComment.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
     this.loadingBar = this.loadingBar.bind(this);
+    this.navigateToCustomerEdit = this.navigateToCustomerEdit.bind(this);
   }
 
   changeStatus(order, status) {
@@ -28,6 +29,10 @@ class OrderDetail extends React.Component {
     } else {
       updateOrder(updatedOrder);
     }
+  }
+
+  navigateToCustomerEdit(customerId) {
+    this.props.history.push(`/users/accounts/${customerId}/edit`)
   }
 
   loadingBar() {
@@ -200,6 +205,12 @@ class OrderDetail extends React.Component {
           <h6><b>Email: </b>{order.customer.email}</h6>
           <h6><b>Address: </b>{order.customer.address}</h6>
           <h6><b>Comment: </b>{order.customer.comment}</h6>
+          <button
+            id="edit-customer-button"
+            className="button"
+            onClick={this.navigateToCustomerEdit.bind(this, order.customer.id)}>
+            Edit Customer
+          </button>
         </div>
         <br />
 

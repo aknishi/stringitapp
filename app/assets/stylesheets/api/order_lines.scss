@@ -131,7 +131,7 @@
   }
 }
 
-.ol-button {
+#ol-button {
   height: 30px;
   padding: 2px 5px;
   margin: 5px;
@@ -224,24 +224,4 @@
 .ol-form-buttons {
   display: flex;
   justify-content: center;
-}
-
-#green-button {
-  color: black;
-  background-color: #3ad62b;
-  &:hover {
-    background-color: #35bf28;
-  }
-  &:active {
-    background-color: #30ab25;
-  }
-}
-
-#cancel-button {
-  &:hover {
-    background-color: #F0F0F0;
-  }
-  &:active {
-    background-color: #d5d5d5;
-  }
 }

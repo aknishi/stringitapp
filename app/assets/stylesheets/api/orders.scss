@@ -2,8 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Orders Index
+@import "variables";
 
+// Orders Index
 .orders-container {
   display: flex;
   justify-content: center;
@@ -23,6 +24,9 @@
   height: 40px;
   h3 {
     font-size: 22px;
+  }
+  .empty-div {
+    width: 50px;
   }
 }
 
@@ -66,8 +70,13 @@
   input {
     font-size: 18px;
     margin: 8px 0;
-    color: #949494;
     width: 100%;
+  }
+}
+
+.order-form-customer-form {
+  label {
+    display: none;
   }
 }
 
@@ -90,40 +99,37 @@
   width: 280px;
   background-color: #F0F0F0;
   height: 30px;
+  font-size: 18px;
   text-align: center;
   border-radius: 10px;
   margin-right: 14px;
   margin-top: 20px;
 }
 
-.new-customer-button {
+#new-customer-button {
   width: 280px;
   height: 30px;
   border-radius: 10px;
   margin: 15px auto;
 }
 
-.search .fa-search {
-  position: relative;
-  // top: 200px;
-  left: 40px;
-  color: #d5d5d5;
-}
-
 .search-name {
   margin: 3px;
 }
 
-.search-results {
+#search-input {
   position: relative;
-  left: 30px;
+}
+
+.search-results {
+  position: absolute;
   background-color: white;
   width: 250px;
   max-height: 360px;
   overflow: scroll;
   border: 1px solid #F0F0F0;
 	border-radius: 3px;
-	z-index: 4;
+	z-index: 3;
 	text-align: left;
 	box-shadow: -1px 4px 6px 1px rgba(0,0,0,0.09);
 }
@@ -134,9 +140,18 @@
   justify-content: center;
 }
 
-.create-order-button {
-  border-radius: 5px;
+#create-order-button {
+  color: black;
+  font-weight: normal;
+  margin-top: 20px;
 }
+
+ #customer-edit-button, #create-order-button {
+   border-radius: 5px;
+   font-size: 16px;
+   height: 25px;
+   margin: 10px, auto;
+ }
 
 .add-line-button {
   width: 100px;
@@ -181,10 +196,6 @@
   }
 }
 
-.cancel-button {
-  border-radius: 5px;
-}
-
 .red {
   color: red;
 }
@@ -193,6 +204,11 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+}
+
+#edit-customer-button {
+  margin-left: 15px;
+  width: 150px;
 }
 
 #pending-label {
@@ -350,19 +366,6 @@
 
 .detail-title {
   margin: 5px 0;
-}
-
-#create-order-button {
-  color: black;
-  width: 200px;
-  margin: auto;
-  background-color: #3ad62b;
-  &:hover {
-    background-color: #35bf28;
-  }
-  &:active {
-    background-color: #30ab25;
-  }
 }
 
 #center {

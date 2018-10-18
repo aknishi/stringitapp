@@ -50,12 +50,12 @@ class Navbar extends React.Component {
               placeholder="Password"
               onChange={this.update('password')}
               />
-            <input type="submit" value="Log In" className="login-button"/>
+            <input id="nav-login-button" type="submit" value="Log In" className="blue-button"/>
             <button
               type="submit"
-              id="green-button"
+              id="demo-button"
               onClick={this.handleAdminDemoLogin}
-              className="demo-button">
+              className="green-button">
               Demo Login
             </button>
           </form>

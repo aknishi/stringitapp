@@ -52,7 +52,7 @@ class OrderLinesIndex extends React.Component {
     // if order is cancelled disable the order index by toggling an overlay
     var disablingOverlay = document.getElementById(`dark-overlay-${orderId}`)
     if (disablingOverlay) {
-      disablingOverlay.style.height = `${(data.length*166)+42}px`
+      disablingOverlay.style.height = `${(data.length*166)+54}px`
     }
 
     if (loading) {

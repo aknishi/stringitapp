@@ -1,6 +1,7 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
 
  .nav-login-form {
    display: flex;
@@ -22,6 +23,11 @@
   margin-bottom: 60px;
 }
 
+.small-spacing-container {
+  height: 20px;
+  margin-top: 20px;
+}
+
 .loading-spacing-container {
   height: 50px;
 }
@@ -34,8 +40,8 @@
 }
 
 .login-form-box {
-  width: 250px;
-  padding: 20px;
+  width: 320px;
+  padding: 0 40px 20px 40px;
   border: 1px solid #F0F0F0;
   text-align: center;
   background-color: white;
@@ -51,12 +57,12 @@
 .form-title {
   font-family: 'Questrial', sans-serif;
   color: black;
-  margin: 10px;
+  margin-top: 20px;
   text-align: center;
 }
 
 .demo-login {
-  width: 250px;
+  width: 320px;
   padding: 20px;
   margin-top: 10px;
   border: 1px solid #F0F0F0;
@@ -64,12 +70,9 @@
   background-color: white;
 }
 
-.demo-login-button {
-  background-color: #3897f0;
-  color: white;
+#demo-login-button {
   border-radius: 3px;
   font-family: Arial, sans-serif;
-  font-weight: bold;
   font-size: 14px;
   margin: 5px;
   height: 30px;

@@ -258,14 +258,14 @@ class OrderLineForm extends React.Component {
         </div>
         <div className="ol-form-buttons">
           <button
-            id="green-button"
-            className="ol-button"
+            id="ol-button"
+            className="green-button"
             onClick={this.handleSubmit}>
             Create New Order Line
           </button>
           <button
-            id="cancel-button"
-            className="ol-button"
+            id="ol-button"
+            className="grey-button"
             onClick={this.hideOrderLineForm.bind(this, orderId)}>
             Cancel
           </button>

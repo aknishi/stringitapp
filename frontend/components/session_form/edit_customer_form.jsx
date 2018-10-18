@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadingBar from '../loading_bar';
 import { withRouter } from 'react-router-dom';
 
 class EditCustomerForm extends React.Component {
@@ -16,7 +17,22 @@ class EditCustomerForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.navigateToProfile = this.navigateToProfile.bind(this);
+    this.navigateOut = this.navigateOut.bind(this);
+    this.customerEditButtons = this.customerEditButtons.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.formType === "Customer Edit") {
+      this.props.fetchUser(this.props.match.params.userId)
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.formType === "Customer Edit") {
+      if (this.props.customer.id != nextProps.match.params.userId) {
+        this.props.fetchUser(nextProps.match.params.userId);
+      }
+    }
   }
 
   componentWillUnmount() {
@@ -28,12 +44,17 @@ class EditCustomerForm extends React.Component {
     const user = Object.assign({}, this.state)
     if (user.id === 1) {
       user.password="123456";
-    } 
-    this.props.updateUser(user).then(() => this.props.history.push("/users/1"));
+    }
+    this.props.updateUser(user).then(() => this.navigateOut());
   }
 
-  navigateToProfile() {
-    this.props.history.push(`users/${customer.id}`);
+  navigateOut() {
+    if (this.props.formType === "Customer Edit") {
+      this.props.history.goBack();
+    } else {
+      this.props.disableForm();
+    }
+
   }
 
   errors() {
@@ -48,56 +69,103 @@ class EditCustomerForm extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
+  customerEditButtons() {
+    if (!this.props.disabled) {
+      return(
+        <div className="customer-edit-buttons">
+          <button
+            type="submit"
+            id="update-customer-button"
+            disabled={this.props.disabled}
+            className="blue-button"
+            onClick={this.handleSubmit}>
+            Update Customer
+          </button>
+          <button
+            id="cancel-edit-customer-button"
+            className="grey-button"
+            onClick={this.navigateOut}>
+            Cancel
+          </button>
+        </div>
+      )
+    }
+  }
+
   render(){
-    return (
-      <div className="form-container">
-        <div className="spacing-container"></div>
-        <form className="customer-form-box" onSubmit={this.handleSubmit}>
-          <ul>
-            {this.errors()}
-          </ul>
-          <h3 className="form-title">Create User</h3>
-          <div className="login-form">
-            <label>Full Name:</label>
-            <input
-              type="text"
-              value={this.state.name}
-              onChange={this.update('name')}
-              />
-            <br/>
-            <label>Email:</label>
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update('email')}
-              />
-            <br/>
-            <label>Phone Number:</label>
-            <input
-              type="text"
-              value={this.state.phone_number}
-              onChange={this.update('phone_number')}
-              />
-            <br/>
-            <label>Address:</label>
-            <input
-              type="text"
-              value={this.state.address}
-              onChange={this.update('address')}
-              />
-            <br/>
-            <label>Comment:</label>
-            <textarea
-              value={this.state.comment}
-              onChange={this.update('comment')}
-              />
-            <br/>
-            <input type="submit" value="Update Customer" className="blue-button"/>
-            <button value="Cancel" className="cancel-button" onClick={this.navigateToProfile}/>
+    let formTitle;
+    let topSpacingContainer;
+    let bottomSpacingContainer;
+    if (this.props.formType === "Customer Edit"){
+      formTitle = <h3 className="form-title edit-user-title">Edit User</h3>
+      topSpacingContainer = <div className="spacing-container"></div>
+      bottomSpacingContainer = <div className="small-spacing-container"></div>
+    }
+    const { loading } = this.props;
+    if (loading) {
+      return (
+        <div>
+          <div className="loading-spacing-container"></div>
+          <LoadingBar />
+        </div>
+      )
+    } else {
+      return (
+        <div id="edit-customer-form" className="form-container">
+          { topSpacingContainer }
+          <div className="customer-form-box">
+            <ul>
+              {this.errors()}
+            </ul>
+            { formTitle }
+            <div className="login-form">
+              <label>Full Name:</label>
+              <input
+                type="text"
+                value={this.state.name}
+                disabled={this.props.disabled}
+                onChange={this.update('name')}
+                />
+              <br/>
+              <label>Email:</label>
+              <input
+                type="text"
+                value={this.state.email}
+                disabled={this.props.disabled}
+                onChange={this.update('email')}
+                />
+              <br/>
+              <label>Phone Number:</label>
+              <input
+                type="text"
+                value={this.state.phone_number}
+                disabled={this.props.disabled}
+                onChange={this.update('phone_number')}
+                />
+              <br/>
+              <label>Address:</label>
+              <input
+                type="text"
+                value={this.state.address}
+                disabled={this.props.disabled}
+                onChange={this.update('address')}
+                />
+              <br/>
+              <label>Comment:</label>
+              <textarea
+                value={this.state.comment}
+                disabled={this.props.disabled}
+                placeholder="Comments here"
+                onChange={this.update('comment')}
+                />
+              <br/>
+              { this.customerEditButtons() }
+            </div>
+            { bottomSpacingContainer }
           </div>
-        </form>
-      </div>
-    )
+        </div>
+      )
+    }
   }
 }
 

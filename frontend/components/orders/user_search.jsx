@@ -18,19 +18,16 @@ class UserSearch extends React.Component {
 
   hitEnter(e) {
     if (e.keyCode == 13) {
-      this.sendCustomerInfo.bind(this, customer)
+      this.sendCustomerInfo(this.state.results[0])
+    }
+    if (e.keyCode == 8) {
+      this.props.hideCustomerForm();
     }
   }
 
   sendCustomerInfo(customer) {
     this.setState({query: customer.name});
-    $("#customer-fields").removeClass("hidden");
-    $("#customer-id")[0].value = customer.id;
-    $("#customer-name")[0].value = customer.name;
-    $("#customer-email")[0].value = customer.email;
-    $("#customer-phone")[0].value = customer.phone_number;
-    $("#customer-address")[0].value = customer.address;
-    $("#customer-comments")[0].value = customer.comment;
+    this.props.setupCustomer(customer);
   }
 
   handleInput(e) {
@@ -48,8 +45,7 @@ class UserSearch extends React.Component {
       <li
         key={customer.id}
         className="search-result-item"
-        onClick={this.sendCustomerInfo.bind(this, customer)}
-        onKeyDown={this.hitEnter}>
+        onClick={this.sendCustomerInfo.bind(this, customer)}>
         <div>
           <h5 className="search-name" id="bold">{customer.name}</h5>
         </div>
@@ -67,13 +63,14 @@ class UserSearch extends React.Component {
     return(
     <div className="search-container">
       <div className="search">
-        <span className="fa fa-search"></span>
         <input
           type="text"
           id="search-input"
           placeholder="Search Customer"
           value={this.state.query}
+          autoComplete="off"
           onChange={this.handleInput}
+          onKeyDown={this.hitEnter}
           >
         </input>
       </div>

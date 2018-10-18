@@ -240,13 +240,14 @@ class EditOrderLineForm extends React.Component {
         </div>
         <div className="ol-form-buttons">
           <button
-            className="ol-button blue-button"
+            id="ol-button"
+            className="blue-button"
             onClick={this.handleSubmit}>
             Update Order Line
           </button>
           <button
-            id="cancel-button"
-            className="ol-button"
+            id="ol-button"
+            className="grey-button"
             onClick={this.hideEditOrderLineForm.bind(this, orderLine.id)}>
             Cancel
           </button>

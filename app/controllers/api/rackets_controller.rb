@@ -2,7 +2,7 @@ class Api::RacketsController < ApplicationController
   before_action :require_login
 
   def index
-    sleep 1
+    sleep 0.75
     @rackets = Racket.all
   end
 

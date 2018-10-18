@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import "variables";
 
 body, html {
   height: 100%;
@@ -43,6 +44,20 @@ h5 {
 
 h6 {
   font-size: 14px;
+}
+
+input[type="text"]:disabled {
+  color: #bcbcbc;
+}
+
+textarea:disabled {
+  color: #bcbcbc;
+  border: #bcbcbc;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: #bcbcbc;
 }
 
 body {
@@ -96,28 +111,15 @@ textarea {
   }
 }
 
-.login-button {
-  background-color: #3897f0;
-  color: white;
+#login-button, #nav-login-button {
   border-radius: 3px;
   font-family: Arial, sans-serif;
   font-weight: bold;
   font-size: 14px;
   margin: 5px;
-  &:hover {
-    background-color: #348adb;
-  }
-  &:active {
-    background-color: #2d76bb;
-  }
-  &:focus {
-    background-color: #F0F0F0;
-  }
 }
 
-.demo-button {
-  background-color: #3897f0;
-  color: white;
+#demo-button {
   width: 100px;
   height: 26px;
   border-radius: 3px;
@@ -125,27 +127,20 @@ textarea {
   font-weight: bold;
   font-size: 14px;
   margin: 5px;
-  &:hover {
-    background-color: #348adb;
-  }
-  &:active {
-    background-color: #2d76bb;
-  }
-  &:focus {
-    background-color: #F0F0F0;
-  }
 }
 
 .green-button {
+  background-color: $lime-green;
+  color: white;
   border-radius: 5px;
+  border: none;
   padding: 5px;
-  color: black;
-  background-color: #3ad62b;
+  font-weight: bold;
   &:hover {
-    background-color: #35bf28;
+    background-color: $green;
   }
   &:active {
-    background-color: #30ab25;
+    background-color: $dark-green;
   }
   &:focus {
     outline: 0;
@@ -153,17 +148,32 @@ textarea {
 }
 
 .blue-button {
+  background-color: $blue;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  font-weight: bold;
+  &:hover {
+    background-color: $mid-dark-blue;
+  }
+  &:active {
+    background-color: $dark-blue;
+  }
+  &:focus {
+    outline: 0;
+  }
+}
+
+.grey-button {
   border-radius: 5px;
   padding: 5px;
   color: black;
-  background-color: #00BFFF;
-  font-weight: bold;
-  color: white;
   &:hover {
-    background-color: #6973f6;
+    background-color: $light-grey;
   }
   &:active {
-    background-color: #404dfb;
+    background-color: $mid-grey;
   }
   &:focus {
     outline: 0;
@@ -287,12 +297,11 @@ textarea {
   height: 100%;
 }
 
-.expandable {
-  height: 0px;
-  overflow: hidden;
-  transition: all 1s ease-in-out;
-}
-
-.expandable.open {
-  max-height: 900px;
+#cancel-button {
+  &:hover {
+    background-color: #F0F0F0;
+  }
+  &:active {
+    background-color: #d5d5d5;
+  }
 }

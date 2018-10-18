@@ -5,6 +5,7 @@ export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
 export const CLEAR_USER_ERRORS = 'CLEAR_USER_ERRORS';
 export const START_LOADING_USERS = 'START_LOADING_USERS';
+export const START_LOADING_USER = 'START_LOADING_USER';
 
 const receiveUsers = users => ({
   type: RECEIVE_USERS,
@@ -29,6 +30,10 @@ export const startLoadingUsers = () => ({
   type: START_LOADING_USERS
 });
 
+export const startLoadingUser = () => ({
+  type: START_LOADING_USER
+});
+
 export const createUser = user => dispatch => (
   APIUtil.createUser(user).then(
     user => dispatch(receiveUser(user)),
@@ -43,11 +48,12 @@ export const fetchUsers = () => dispatch => {
   )
 };
 
-export const fetchUser = id => dispatch => (
-  APIUtil.fetchUser(id).then(
+export const fetchUser = id => dispatch => {
+  dispatch(startLoadingUser());
+  return APIUtil.fetchUser(id).then(
     user => dispatch(receiveUser(user))
   )
-);
+};
 
 export const updateUser = user => dispatch => (
   APIUtil.updateUser(user).then(

@@ -53,11 +53,11 @@ class UserSearch extends React.Component {
     return(
     <div className="search-container">
       <div className="search">
-        <span className="fa fa-search"></span>
         <input
           type="text"
           id="search-input"
           placeholder="Search Customer"
+          autoComplete="off"
           value={this.state.query}
           onChange={this.handleInput}
           >

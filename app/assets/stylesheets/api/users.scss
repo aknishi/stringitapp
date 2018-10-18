@@ -1,14 +1,28 @@
 // Place all the styles related to the api/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+@import "variables";
 
 // Customer Form
 
 .customer-form-box {
-  background-color: white;
+  background-color: #fafafa;
   width: 500px;
-  padding: 20px;
+  padding: 0 40px;
+  border-radius: 8px;
+  label {
+    font-weight: bold;
+  }
+  input {
+    font-size: 16px;
+  }
+  textarea {
+    background-color: #fafafa;
+  }
+}
+
+#customer-form-button {
+  margin: 10px 0;
 }
 
 .user-profile-container {
@@ -23,7 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .user-posts-container {
@@ -36,14 +50,14 @@
  display: flex;
  float: left;
  justify-content: center;
- flex-grow: 1;
+ flex-grow: 2;
 }
 
 .profile-pic {
- width: 170px;
- height: 170px;
+ width: 120px;
+ height: 120px;
  background-color: white;
- border-radius: 85px;
+ border-radius: 60px;
 }
 #profile-pic {
  width: 100%;
@@ -72,7 +86,7 @@
  display: flex;
  flex-direction: column;
 
- h4 {
+ h5 {
    margin: 5px 0;
  }
 }
@@ -142,4 +156,24 @@
   button {
     height: 30px;
   }
+}
+
+#admin-create-customer-button {
+  width: 280px;
+}
+
+// Edit customer
+
+#update-customer-button, #cancel-edit-customer-button {
+  width: 160px;
+  height: 26px;
+}
+
+.customer-edit-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-user-title {
+  margin-top: 20px;
 }
