@@ -1,12 +1,12 @@
 import React from 'react'
 
 const OrderLinesIndexItem = (props) => {
-  const { orderLine, deleteLine, showEditOrderLineForm, currentUserId } = props
+  const { orderLine, deleteLine, showEditOrderLineForm, admin } = props
   const racket = orderLine.racket;
   const main = orderLine.main_cord;
   const cross = orderLine.cross_cord;
   let olButtons;
-  if (currentUserId === 1) {
+  if (admin) {
     olButtons= (
       <div className="ol-edit-buttons">
         <button className="delete-line-button button" onClick={() => showEditOrderLineForm(orderLine.id)}>

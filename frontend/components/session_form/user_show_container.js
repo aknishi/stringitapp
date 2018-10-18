@@ -9,12 +9,14 @@ const mapStateToProps = (state, { match }) => {
   const userId = parseInt(match.params.userId);
   const user = state.entities.users[userId];
   const currentUserId = state.session.id;
+  const admin = state.session.admin;
   const loading = state.ui.loadingUsers.loading;
   const customers = selectCustomers(state.entities.users);
   return({
     userId,
     user,
     currentUserId,
+    admin,
     customers,
     loading
   });

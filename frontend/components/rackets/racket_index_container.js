@@ -10,10 +10,12 @@ const mapStateToProps = (state) => {
   const rackets = getRackets.slice(0).reverse()
   const loading = state.ui.loading.loading;
   const currentUserId = state.session.id;
+  const admin = state.session.admin;
   return({
     rackets,
     loading,
-    currentUserId
+    currentUserId,
+    admin
   })
 };
 

@@ -19,7 +19,7 @@ class CordIndex extends React.Component {
   }
 
   addStringButton() {
-    if (this.props.currentUserId === 1) {
+    if (this.props.admin) {
       return <button className="add-cord-button green-button" onClick={this.navigateToCordForm}>Add New String</button>
     }
   }

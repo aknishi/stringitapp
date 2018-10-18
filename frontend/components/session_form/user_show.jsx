@@ -35,8 +35,7 @@ class UserShow extends React.Component {
   }
 
   editButton() {
-    const { currentUserId } = this.props
-    if (currentUserId === 1) {
+    if (this.props.admin) {
       return(
         <div>
           <button
@@ -49,8 +48,8 @@ class UserShow extends React.Component {
   }
 
   customerSearchContainer() {
-    const { currentUserId, customers, fetchUsers } = this.props
-    if (currentUserId === 1) {
+    const { admin, customers, fetchUsers } = this.props
+    if (admin) {
       return(
         <div className="customer-search-container">
           <h4>Customer Management</h4>
@@ -70,8 +69,8 @@ class UserShow extends React.Component {
   }
 
   customerComments() {
-    const { currentUserId, customers, fetchUsers, user } = this.props
-    if (currentUserId === 1) {
+    const { admin, customers, fetchUsers, user } = this.props
+    if (admin) {
       return (
         <h5><b>Comment:</b> {user.comment}</h5>
       )

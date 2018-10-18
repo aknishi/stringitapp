@@ -12,11 +12,13 @@ const mapStateToProps = (state, { orderId }) => {
   const orderLines = selectOrderLines(state, orderId);
   const loading = state.ui.loading.loading;
   const currentUserId = state.session.id;
+  const admin = state.session.admin;
   return({
     orderId,
     data: orderLines,
     loading,
-    currentUserId
+    currentUserId,
+    admin
   })
 };
 

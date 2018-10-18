@@ -19,7 +19,7 @@ class RacketIndex extends React.Component {
   }
 
   addRacketButton() {
-    if (this.props.currentUserId === 1) {
+    if (this.props.admin) {
       return <button className="add-racket-button green-button" onClick={this.navigateToRacketForm}>Add New Racket</button>
     }
   }

@@ -22,10 +22,10 @@ const Protected = ({component: Component, path, loggedIn, exact}) => (
   }}/>
 );
 
-const AdminProtected = ({component: Component, path, currentUserId, loggedIn, exact}) => (
+const AdminProtected = ({component: Component, path, admin, currentUserId, loggedIn, exact}) => (
   <Route path={path} exact={exact} render={(props) => {
     if (loggedIn) {
-      if (currentUserId === 1) {
+      if (admin) {
         return (<Component {...props} />)
       } else {
         return (<Redirect to={`/users/${currentUserId}/myorders`} />)
@@ -38,7 +38,8 @@ const AdminProtected = ({component: Component, path, currentUserId, loggedIn, ex
 
 const mapStateToProps = ( state ) => ({
   loggedIn: Boolean(state.session.id),
-  currentUserId: state.session.id
+  currentUserId: state.session.id,
+  admin: state.session.admin
 });
 
 export const AuthRoute = withRouter(connect(mapStateToProps, null)(Auth))
