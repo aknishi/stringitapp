@@ -95,10 +95,10 @@ class EditCustomerForm extends React.Component {
           <div id="edit-customer-form" className="form-container">
             { topSpacingContainer }
             <div className="customer-form-box">
+              { formTitle }
               <ul>
                 {this.errors()}
               </ul>
-              { formTitle }
               <div className="login-form">
                 <label>Full Name:</label>
                 <input

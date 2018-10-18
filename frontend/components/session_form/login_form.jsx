@@ -53,10 +53,10 @@ class LoginForm extends React.Component {
       <div className="form-container">
         <div className="spacing-container"></div>
         <form className="login-form-box" onSubmit={this.handleSubmit}>
+          <h3 className="form-title">Customer Login</h3>
           <ul>
             {this.errors()}
           </ul>
-          <h3 className="form-title">Customer Login</h3>
           <div className="login-form">
             <br/>
             <input
@@ -90,7 +90,7 @@ class LoginForm extends React.Component {
             id="demo-login-button"
             onClick={this.handleGuestDemoLogin}
             className="blue-button">
-            Guest Demo Login
+            Customer Demo Login
           </button>
         </div>
       </div>

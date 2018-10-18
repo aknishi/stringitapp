@@ -109,6 +109,9 @@ textarea {
   &:active {
     background-color: #d5d5d5;
   }
+  &:focus {
+    outline: 0;
+  }
 }
 
 #login-button, #nav-login-button {
