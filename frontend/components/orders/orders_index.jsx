@@ -103,8 +103,8 @@ class OrdersIndex extends React.Component {
   // }
 
   render() {
-    const { orders, orderLines, updateOrder, loading } = this.props;
-    if (loading) {
+    const { orders, orderLines, updateOrder, loadingOrders, loadingSingleOrder } = this.props;
+    if (loadingOrders) {
       return (
         <div>
           <div className="loading-spacing-container"></div>
@@ -144,7 +144,7 @@ class OrdersIndex extends React.Component {
                         order={row.original}
                         changeStatus={this.changeStatus}
                         updateOrder={updateOrder}
-                        loading={loading}/>
+                        loading={loadingSingleOrder}/>
                     </div>
                   );
                 }}

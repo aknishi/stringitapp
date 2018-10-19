@@ -12,11 +12,13 @@ const mapStateToProps = (state) => {
   //reverse order:
   const orders = getOrders.slice(0).reverse()
   const orderLines = values(state.entities.orderLines);
-  const loading = state.ui.loadingOrder.loading;
+  const loadingOrders = state.ui.loadingOrders.loading;
+  const loadingSingleOrder = state.ui.loadingSingleOrder.loading;
   return({
     orders,
     orderLines,
-    loading
+    loadingOrders,
+    loadingSingleOrder
   })
 };
 
