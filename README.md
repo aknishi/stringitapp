@@ -15,5 +15,10 @@ String-it App is a Rails backend - React/Redux frontend. This app helps tennis s
 ## Welcome Page
 ![Home](https://github.com/aknishi/stringitapp/blob/master/app/assets/images/home-page.png)
 
+## Managing orders
+![Home](https://github.com/aknishi/stringitapp/blob/master/app/assets/images/orders.gif)
+
+## Real-Time User Search
+![Home](https://github.com/aknishi/stringitapp/blob/master/app/assets/images/search-bar.gif)
 
 
