@@ -13,7 +13,7 @@ String-it App is a Rails backend - React/Redux frontend. This app helps tennis s
 + Store admins can also edit customer information from either their profile, an existing order or while creating a new order.
 
 ## Welcome Page
-![Home]()
+![Home](https://github.com/aknishi/stringitapp/blob/master/app/assets/images/home-page.png)
 
 
 
