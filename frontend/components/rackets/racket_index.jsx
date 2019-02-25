@@ -37,11 +37,14 @@ class RacketIndex extends React.Component {
       const racketItems = rackets.map(racket => <RacketIndexItem key={racket.id} racket={racket} />)
       return (
         <div>
-          { this.addRacketButton() }
+          {this.addRacketButton()}
           <div className="spacing-container"></div>
+          <div className="helper-notice">
+            <p>Store currently being developed</p>
+          </div>
           <h3 className="racket-index-title">Rackets</h3>
           <div className="racket-index-container">
-            { racketItems }
+            {racketItems}
           </div>
         </div>
       )

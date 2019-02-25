@@ -37,11 +37,14 @@ class CordIndex extends React.Component {
       const cordItems = cords.map(cord => <CordIndexItem key={cord.id} cord={cord} />)
       return (
         <div>
-          { this.addStringButton() }
+          {this.addStringButton()}
           <div className="spacing-container"></div>
+          <div className="helper-notice">
+            <p>Store currently being developed</p>
+          </div>
           <h3 className="cord-index-title">Strings</h3>
           <div className="cord-index-container">
-            { cordItems }
+            {cordItems}
           </div>
         </div>
       )

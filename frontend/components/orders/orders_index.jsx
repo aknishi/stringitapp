@@ -86,8 +86,8 @@ class OrdersIndex extends React.Component {
   }
 
   componentWillMount() {
-     this.props.fetchOrders();
-     this.props.fetchUsers();
+    this.props.fetchOrders();
+    this.props.fetchUsers();
   }
 
   navigateToOrderForm() {
@@ -116,6 +116,9 @@ class OrdersIndex extends React.Component {
         <div>
           <div className="spacing-container"></div>
           <div className="orders-container">
+            <div className="helper-notice">
+              <p>Click the left arrows to see order details!</p>
+            </div>
             <div className="table-title">
               <button
                 className="new-order-button blue-button"
@@ -134,7 +137,7 @@ class OrdersIndex extends React.Component {
                 columns={orderColumns}
                 defaultPageSize={10}
                 className="-striped -highlight"
-                SubComponent = {row => {
+                SubComponent={row => {
                   const data = orderLines.filter(ol => ol.order_id === row.original.id)
                   return (
                     <div className="order-detail-container">
@@ -144,7 +147,7 @@ class OrdersIndex extends React.Component {
                         order={row.original}
                         changeStatus={this.changeStatus}
                         updateOrder={updateOrder}
-                        loading={loadingSingleOrder}/>
+                        loading={loadingSingleOrder} />
                     </div>
                   );
                 }}
