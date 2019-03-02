@@ -217,15 +217,41 @@ textarea {
   width: 40px;
 }
 
+.white-left-mask {
+  background-color: #f0f0f0;
+  height: 240px;
+  position: absolute;
+  width: 1100px;
+  z-index: 3;
+  top: 371px;
+  transform: rotate(11.4deg);
+  left: -35px;
+}
+
+.white-right-mask {
+  background-color: #f0f0f0;
+  height: 150px;
+  position: absolute;
+  width: 460px;
+  z-index: 3;
+  top: 100px;
+  transform: rotate(-67.5deg) scaleY(1.25) scaleX(1.5);
+  left: 954px;
+  top: 260px;
+  // box-shadow: 10px 0px 10px 10px rgba(0,0,0,0.2);
+}
+
 .welcome-container {
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
-  height: 70px;
+  background:#333;
+  background: -webkit-gradient(radial, center center, 120, center center, 900, from(#33495E), to(#2E2329));
+  background:-moz-radial-gradient(circle, #33495E, #2E2329);
+  height: 100px;
   position: relative;
-  z-index: 2;
-  box-shadow: 10px 0px 10px 10px rgba(0,0,0,0.2);
+  z-index: 3;
 }
 
 .welcome-text {
@@ -237,16 +263,16 @@ textarea {
 }
 
 .bottom-container {
-  background:#333;
-  background: -webkit-gradient(radial, center center, 120, center center, 900, from(#33495E), to(#2E2329));
-  background:-moz-radial-gradient(circle, #33495E, #2E2329);
+  background: #f0f0f0;
+  height: 300px;
   width: 100%;
   display: flex;
   justify-content: center;
   padding-top: 10px;
+  z-index: 4;
 
   li {
-    color: white;
+    // color: white;
     display: none;
     height: 150px;
     align-items: center;
@@ -271,20 +297,18 @@ textarea {
   flex-direction: column;
 }
 
-.court-image-container  {
-  position: relative;
-  overflow: hidden;
-  margin:0;
-  img {
-   margin: -30% 0 -10% 0;
-   z-index: 1;
-   width: 100%;
-  }
+.court-image-container {
+  background: #f0f0f0;
+  background-image: url("court.jpg");
+  background-position: 0 -330px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  // background-size: cover;
+  height: 500px;
 }
 
 .image-overlay {
-  position: absolute;
-  width: 100%;
+  width: 1200px;
   height: 100%;
   z-index: 2;
   background: white;

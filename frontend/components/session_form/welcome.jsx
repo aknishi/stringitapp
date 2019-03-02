@@ -16,10 +16,12 @@ const WelcomePage = () => {
   }, 4000)
   return (
     <div className="welcome-background">
-      <figure className="court-image-container">
+      <div className="court-image-container">
         <div className="image-overlay"></div>
-        <img src="https://images-cdn.torchx.com/property-images/19/2018-07-21t11:44/1820-avenida-del-mundo-1408-coronado_180040070-23-full.jpg" className="courts-img" />
-      </figure>
+        <div className="courts-img"></div>
+      </div>
+      <div className="white-left-mask"></div>
+      <div className="white-right-mask"></div>
       <div className="welcome-container">
         <h1 className="welcome-text welcome-anim">
           Welcome to String It App!
