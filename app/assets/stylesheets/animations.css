@@ -427,6 +427,21 @@ fadeIn
 	}
 }
 
+@keyframes fade {
+	0% {
+		opacity: 0.0;
+	}
+	60% {
+		opacity: 0.5
+	}
+	80% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 @-webkit-keyframes fadeIn {
 	0% {
 		-webkit-transform: scale(0);
