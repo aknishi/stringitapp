@@ -1,0 +1,143 @@
+@import "abstracts/variables";
+
+#login-button, #nav-login-button {
+    border-radius: 3px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 5px;
+}
+
+#demo-button {
+    width: 100px;
+    height: 26px;
+    border-radius: 3px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.btn-square {
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    transition: all .2s;
+
+    &:hover {
+        transform: translateY(-0.2rem);
+        box-shadow: 0 .5rem 1rem rgba($black, 0.2);
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-0.1rem);
+        box-shadow: 0 0.2rem .5rem rgba($black, 0.2);
+    }
+
+    &--blue {
+        background-color: $blue;
+        color: $white;
+
+        &:hover {
+            background-color: $mid-dark-blue;
+        }
+
+        &:active {
+            background-color: $dark-blue;
+        }
+    }
+
+    &--grey {
+        background-color: $light-grey;
+        color: $black;
+
+        &:hover {
+            background-color: $mid-grey;
+        }
+
+        &:active {
+            background-color: $grey;
+        }
+    }
+}
+
+#cancel-button {
+    &:hover {
+        background-color: #F0F0F0;
+    }
+
+    &:active {
+        background-color: #d5d5d5;
+    }
+}
+
+.btn {
+    &,
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: .2rem 1rem;
+        display: inline-block;
+        border-radius: 4px;
+        transition: all .2s;
+        position: relative;
+        font-size: $default-font-size;
+        border: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+        transform: translateY(-0.2rem);
+        box-shadow: 0 .5rem 1rem rgba($black, 0.2);
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-0.1rem);
+        box-shadow: 0 .2rem .5rem rgba($black, 0.2);
+    }
+
+    &--white {
+        background-color: $white;
+        color: $grey-dark;
+    }
+
+    &--green {
+        background-color: $dark-green;
+        color: $white;
+    }
+
+    &--blue {
+        background-color: $blue;
+        color: $white;
+    }
+}
+
+.add-new-btn {
+    position: absolute;
+    top: 8rem;
+    right: 2rem;
+    color: $white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    background-color: $lime-green;
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:hover {
+        background-color: $green;
+    }
+
+    &:active {
+        background-color: $dark-green;
+    }
+}

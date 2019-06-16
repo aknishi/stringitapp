@@ -4,13 +4,13 @@ import CordIndex from './cord_index';
 import { fetchCords } from '../../actions/cord_actions';
 import values from 'lodash/values';
 
-const mapStateToProps = (state) => {
-  const getCords = values(state.entities.cords);
-  //reverse order:
+const mapStateToProps = ({ entities, ui, session }) => {
+  const getCords = values(entities.cords);
   const cords = getCords.slice(0).reverse()
-  const loading = state.ui.loading.loading;
-  const currentUserId = state.session.id;
-  const admin = state.session.admin;
+  const loading = ui.loading.loading;
+  const currentUserId = session.id;
+  const admin = session.admin;
+
   return({
     cords,
     loading,

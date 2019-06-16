@@ -4,16 +4,15 @@ import React from 'react';
 import values from 'lodash/values';
 import CordForm from './cord_form';
 
-const mapStateToProps = (state) => {
-  const errors = state.errors.cord;
-  const cords = values(state.entities.cords);
+const mapStateToProps = ({ errors, entities }) => {
+  const cords = values(entities.cords);
   return({
     errors,
     cords,
   })
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   createCord: cord => dispatch(createCord(cord)),
   clearErrors: () => dispatch(clearErrors()),
   fetchCords: () => dispatch(fetchCords())

@@ -1,0 +1,120 @@
+@import "abstracts/variables";
+
+.homepage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.welcome {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333;
+    background: -webkit-gradient(radial, center center, 120, center center, 900, from(#33495E), to(#2E2329));
+    background: -moz-radial-gradient(circle, #33495E, #2E2329);
+    height: 10rem;
+    width: 100%;
+    position: absolute;
+    top: 48vh;
+    z-index: 3;
+
+    &__text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Lato';
+        margin: 1.5rem;
+    }
+}
+
+.keynotes {
+    background-color: $light-grey;
+    color: $grey;
+    height: 120rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    z-index: 5;
+
+    &__item {
+        // color: white;
+        display: none;
+        height: 15rem;
+        align-items: center;
+        font-family: 'Lato';
+        margin: 2rem 0;
+
+        img {
+            width: 14rem;
+            margin: 3rem 2rem;
+        }
+    }
+
+    &__item:first-child {
+        display: flex;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.court-image-container {
+    position: relative;
+    top: -6rem;
+    left: 0;
+    background: #f0f0f0;
+    background-image: linear-gradient(to left bottom, rgba(255, 255, 255, 0.51), rgba(255, 255, 255, 0.17)), url("../assets/courts.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 50vh;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6e9f0;
+    height: 45rem;
+    width: 100%;
+
+    h2 {
+        font-family: 'Lato';
+    }
+
+    h3 {
+        font-family: 'Lato';
+    }
+}
+
+.graph {
+    opacity: 0.9;
+    transform: scale(0.9);
+    transition: opacity 0.2s, transform 0.2s;
+
+    &:hover {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.more-features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25rem;
+    width: 100%;
+    font-family: 'Lato';
+    margin-bottom: 4rem;
+
+    img {
+        height: 20rem;
+        margin-right: 2rem;
+    }
+}

@@ -1,0 +1,67 @@
+@import "abstracts/variables";
+
+.form-container {
+    display: inline-block;
+    background-color: white;
+    padding: 2rem 4rem;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+
+    &__title {
+        font-family: 'Questrial', sans-serif;
+        color: black;
+        text-align: center;
+    }
+}
+
+.login-form {
+  width: 25rem;
+}
+
+.demo-login {
+    width: 320px;
+    padding: 20px;
+    margin-top: 10px;
+    border: 1px solid #F0F0F0;
+    text-align: center;
+    background-color: white;
+}
+
+#demo-login-button {
+    border-radius: 3px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin: 5px;
+    height: 30px;
+    width: 210px;
+}
+
+.logout-button {
+    margin-left: 20px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background-color: #bcbcbc;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:active {
+        color: #F0F0F0;
+        border: 1px solid #F0F0F0;
+        background-color: #fafafa;
+        border-radius: 6px;
+    }
+
+    &:hover {
+        background-color: #747474;
+    }
+}

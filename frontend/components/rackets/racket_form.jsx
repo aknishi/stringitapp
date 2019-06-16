@@ -1,17 +1,17 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
+String.prototype.capitalize = function () {
+  return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-String.prototype.titleize = function() {
-    var string_array = this.split(' ');
-    string_array = string_array.map(function(str) {
-       return str.capitalize();
-    });
+String.prototype.titleize = function () {
+  var string_array = this.split(' ');
+  string_array = string_array.map(function (str) {
+    return str.capitalize();
+  });
 
-    return string_array.join(' ');
+  return string_array.join(' ');
 }
 
 class RacketForm extends React.Component {
@@ -67,18 +67,18 @@ class RacketForm extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
-  render(){
+  render() {
     const { rackets } = this.props;
     const uniqueRacketBrands = []
     rackets.forEach(racket => {
       if (!uniqueRacketBrands.includes(racket.brand)) {
         uniqueRacketBrands.push(racket.brand)
-      }})
+      }
+    })
     const racketBrandItems = uniqueRacketBrands.map(
       (brand, idx) => <option key={idx} value={brand}>{brand}</option>);
     return (
       <div className="form-container">
-        <div className="spacing-container"></div>
         <form className="racket-form-box" onSubmit={this.handleSubmit}>
           <h3 className="form-title">New Racket</h3>
           <ul>
@@ -88,7 +88,7 @@ class RacketForm extends React.Component {
             <label>Brand:</label>
             <select onChange={this.setupBrand} id="racket-brand">
               <option>-- Select a Brand --</option>
-              { racketBrandItems }
+              {racketBrandItems}
               <option>- New Brand -</option>
             </select>
             <br />
@@ -98,31 +98,31 @@ class RacketForm extends React.Component {
                 type="text"
                 value={this.state.brand}
                 onChange={this.update('brand')}
-                />
-              <br/>
+              />
+              <br />
             </div>
             <label>Model:</label>
             <input
               type="text"
               value={this.state.model}
               onChange={this.update('model')}
-              />
-            <br/>
+            />
+            <br />
             <label>Color:</label>
             <input
               type="text"
               value={this.state.color}
               onChange={this.update('color')}
-              />
-            <br/>
+            />
+            <br />
             <label>Image URL:</label>
             <input
               type="text"
               value={this.state.image}
               onChange={this.updateImageUrl('image')}
-              />
-            <br/>
-            <input type="submit" value="Add Racket" className="green-button"/>
+            />
+            <br />
+            <input type="submit" value="Add Racket" className="green-button" />
           </div>
         </form>
       </div>

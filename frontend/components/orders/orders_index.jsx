@@ -1,9 +1,7 @@
 import React from "react";
 import OrderDetail from './order_detail';
 import LoadingBar from '../loading_bar';
-// Import React Table
 import ReactTable from "react-table";
-import "react-table/react-table";
 import matchSorter from 'match-sorter';
 
 const orderColumns = [
@@ -79,9 +77,7 @@ const orderColumns = [
 class OrdersIndex extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   expanded: {}
-    // }
+
     this.navigateToOrderForm = this.navigateToOrderForm.bind(this)
   }
 
@@ -94,66 +90,50 @@ class OrdersIndex extends React.Component {
     this.props.history.push("/orderform")
   }
 
-  // handleRowExpanded(rowsState, index) {
-  //   this.setState({
-  //     expanded: {
-  //       [index[0]]: !this.state.expanded[index[0]],
-  //     },
-  //   });
-  // }
-
   render() {
     const { orders, orderLines, updateOrder, loadingOrders, loadingSingleOrder } = this.props;
     if (loadingOrders) {
-      return (
-        <div>
-          <div className="loading-spacing-container"></div>
-          <LoadingBar />
-        </div>
-      )
+      return <LoadingBar />
     } else {
       return (
-        <div>
-          <div className="spacing-container"></div>
-          <div className="orders-container">
-            <div className="helper-notice">
-              <p>Click the left arrows to see order details!</p>
-            </div>
-            <div className="table-title">
-              <button
-                className="new-order-button blue-button"
-                onClick={this.navigateToOrderForm}>
-                New Order
-              </button>
-              <h3>Stringing Orders</h3>
-              <div className="empty-div"></div>
-            </div>
-            <div className="table-container">
-              <ReactTable
-                data={orders}
-                filterable
-                defaultFilterMethod={(filter, row) =>
-                  String(row[filter.id]) === filter.value}
-                columns={orderColumns}
-                defaultPageSize={10}
-                className="-striped -highlight"
-                SubComponent={row => {
-                  const data = orderLines.filter(ol => ol.order_id === row.original.id)
-                  return (
-                    <div className="order-detail-container">
-                      <OrderDetail
-                        data={data}
-                        orderId={row.original.id}
-                        order={row.original}
-                        changeStatus={this.changeStatus}
-                        updateOrder={updateOrder}
-                        loading={loadingSingleOrder} />
-                    </div>
-                  );
-                }}
-                collapseOnDataChange={false}
-              />
-            </div>
+        <div className="container orders-container">
+          <div className="helper-notice">
+            <p>Click the left arrows to see order details!</p>
+          </div>
+          <div className="table-title">
+            <button
+              className="btn btn--blue"
+              onClick={this.navigateToOrderForm}>
+              New Order
+            </button>
+            <h3>Stringing Orders</h3>
+            <div className="empty-div"></div>
+          </div>
+          <div className="orders-table">
+            <ReactTable
+              data={orders}
+              filterable
+              defaultFilterMethod={(filter, row) =>
+                String(row[filter.id]) === filter.value}
+              columns={orderColumns}
+              defaultPageSize={10}
+              className="-striped -highlight"
+              SubComponent={row => {
+                const data = orderLines.filter(ol => ol.order_id === row.original.id)
+                return (
+                  <div className="order-detail-container">
+                    <OrderDetail
+                      data={data}
+                      orderId={row.original.id}
+                      order={row.original}
+                      changeStatus={this.changeStatus}
+                      updateOrder={updateOrder}
+                      loading={loadingSingleOrder} />
+                  </div>
+                );
+              }}
+              collapseOnDataChange={false}
+            />
           </div>
         </div>
       )

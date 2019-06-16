@@ -7,12 +7,12 @@ const OrderLinesIndexItem = (props) => {
   const cross = orderLine.cross_cord;
   let olButtons;
   if (admin) {
-    olButtons= (
+    olButtons = (
       <div className="ol-edit-buttons">
-        <button className="delete-line-button button" onClick={() => showEditOrderLineForm(orderLine.id)}>
+        <button className="btn-square delete-line-button" onClick={() => showEditOrderLineForm(orderLine.id)}>
           Edit
         </button>
-        <button className="delete-line-button button" onClick={() => deleteLine(orderLine)}>
+        <button className="btn-square delete-line-button" onClick={() => deleteLine(orderLine)}>
           Delete
         </button>
       </div>
@@ -41,7 +41,7 @@ const OrderLinesIndexItem = (props) => {
         <h6><b>Composition:</b> {cross.composition}</h6>
         <h6><b>Color:</b> {cross.color}</h6>
       </div>
-      { olButtons }
+      {olButtons}
     </div>
   )
 }

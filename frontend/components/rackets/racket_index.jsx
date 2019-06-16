@@ -20,7 +20,7 @@ class RacketIndex extends React.Component {
 
   addRacketButton() {
     if (this.props.admin) {
-      return <button className="add-racket-button green-button" onClick={this.navigateToRacketForm}>Add New Racket</button>
+      return <button className="add-new-btn" onClick={this.navigateToRacketForm}>Add New Racket</button>
     }
   }
 
@@ -29,7 +29,6 @@ class RacketIndex extends React.Component {
     if (loading) {
       return (
         <div>
-          <div className="spacing-container"></div>
           <LoadingIcon />
         </div>
       )
@@ -38,8 +37,7 @@ class RacketIndex extends React.Component {
       return (
         <div>
           {this.addRacketButton()}
-          <div className="spacing-container"></div>
-          <div className="helper-notice">
+          <div className="helper-notice u-center-text">
             <p>Store currently being developed</p>
           </div>
           <h3 className="racket-index-title">Rackets</h3>

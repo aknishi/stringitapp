@@ -83,7 +83,7 @@ class CustomerOrdersIndex extends React.Component {
   }
 
   componentWillMount() {
-     this.props.fetchOrders();
+    this.props.fetchOrders();
   }
 
   navigateToOrderForm() {
@@ -95,7 +95,6 @@ class CustomerOrdersIndex extends React.Component {
     if (orders.length > 0) {
       return (
         <div>
-          <div className="spacing-container"></div>
           <div className="orders-container">
             <div className="table-title">
               <div className="empty-div"></div>
@@ -111,7 +110,7 @@ class CustomerOrdersIndex extends React.Component {
                 columns={orderColumns}
                 defaultPageSize={10}
                 className="-striped -highlight"
-                SubComponent = {row => {
+                SubComponent={row => {
                   const data = orderLines.filter(ol => ol.order_id === row.original.id)
                   return (
                     <div className="order-detail-container">
@@ -119,7 +118,7 @@ class CustomerOrdersIndex extends React.Component {
                         data={data}
                         orderId={row.original.id}
                         order={row.original}
-                        loading={loading}/>
+                        loading={loading} />
                     </div>
                   );
                 }}

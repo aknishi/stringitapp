@@ -20,7 +20,7 @@ class CordIndex extends React.Component {
 
   addStringButton() {
     if (this.props.admin) {
-      return <button className="add-cord-button green-button" onClick={this.navigateToCordForm}>Add New String</button>
+      return <button className="add-new-btn" onClick={this.navigateToCordForm}>Add New String</button>
     }
   }
 
@@ -29,7 +29,6 @@ class CordIndex extends React.Component {
     if (loading) {
       return (
         <div>
-          <div className="spacing-container"></div>
           <LoadingIcon />
         </div>
       )
@@ -38,8 +37,7 @@ class CordIndex extends React.Component {
       return (
         <div>
           {this.addStringButton()}
-          <div className="spacing-container"></div>
-          <div className="helper-notice">
+          <div className="helper-notice u-center-text">
             <p>Store currently being developed</p>
           </div>
           <h3 className="cord-index-title">Strings</h3>

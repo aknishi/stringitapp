@@ -1,16 +1,16 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-String.prototype.capitalize = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
+String.prototype.capitalize = function () {
+  return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-String.prototype.titleize = function() {
-    var string_array = this.split(' ');
-    string_array = string_array.map(function(str) {
-       return str.capitalize();
-    });
-    return string_array.join(' ');
+String.prototype.titleize = function () {
+  var string_array = this.split(' ');
+  string_array = string_array.map(function (str) {
+    return str.capitalize();
+  });
+  return string_array.join(' ');
 }
 
 class CordForm extends React.Component {
@@ -46,9 +46,9 @@ class CordForm extends React.Component {
   }
 
   errors() {
-    if (this.props.errors) {
+    if (this.props.errors.cord) {
       return (
-        this.props.errors.map(error => <li className='errors' key={error}>{error}</li>)
+        this.props.errors.cord.map(error => <li className='errors' key={error}>{error}</li>)
       );
     }
   }
@@ -79,14 +79,15 @@ class CordForm extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
-  render(){
+  render() {
     const { cords } = this.props;
 
     const uniqueCordBrands = []
     cords.forEach(cord => {
       if (!uniqueCordBrands.includes(cord.brand)) {
         uniqueCordBrands.push(cord.brand)
-      }})
+      }
+    })
     const cordBrandItems = uniqueCordBrands.map(
       (brand, idx) => <option key={idx} value={brand}>{brand}</option>);
 
@@ -94,13 +95,13 @@ class CordForm extends React.Component {
     cords.forEach(cord => {
       if (!uniqueCordCompositions.includes(cord.composition)) {
         uniqueCordCompositions.push(cord.composition)
-      }})
+      }
+    })
     const cordCompositionItems = uniqueCordCompositions.map(
       (composition, idx) => <option key={idx} value={composition}>{composition}</option>);
 
     return (
       <div className="form-container">
-        <div className="spacing-container"></div>
         <form className="cord-form-box" onSubmit={this.handleSubmit}>
           <h3 className="form-title">New String</h3>
           <ul>
@@ -110,7 +111,7 @@ class CordForm extends React.Component {
             <label>Brand:</label>
             <select onChange={this.setupBrand} id="cord-brand">
               <option>-- Select a Brand --</option>
-              { cordBrandItems }
+              {cordBrandItems}
               <option>- New Brand -</option>
             </select>
             <br />
@@ -120,34 +121,34 @@ class CordForm extends React.Component {
                 type="text"
                 value={this.state.brand}
                 onChange={this.update('brand')}
-                />
-              <br/>
+              />
+              <br />
             </div>
             <label>Model:</label>
             <input
               type="text"
               value={this.state.model}
               onChange={this.update('model')}
-              />
-            <br/>
+            />
+            <br />
             <label>Gauge:</label>
             <input
               type="text"
               value={this.state.gauge}
               onChange={this.update('gauge')}
-              />
-            <br/>
+            />
+            <br />
             <label>Length:</label>
             <input
               type="text"
               value={this.state.length}
               onChange={this.update('length')}
-              />
-            <br/>
+            />
+            <br />
             <label>Composition:</label>
             <select onChange={this.setupComposition} id="cord-composition">
               <option>-- Select a Composition --</option>
-              { cordCompositionItems }
+              {cordCompositionItems}
               <option>- New Composition -</option>
             </select>
             <br />
@@ -157,24 +158,24 @@ class CordForm extends React.Component {
                 type="text"
                 value={this.state.composition}
                 onChange={this.update('composition')}
-                />
-              <br/>
+              />
+              <br />
             </div>
             <label>Color:</label>
             <input
               type="text"
               value={this.state.color}
               onChange={this.update('color')}
-              />
-            <br/>
+            />
+            <br />
             <label>Image URL:</label>
             <input
               type="text"
               value={this.state.image}
               onChange={this.updateImageUrl('image')}
-              />
-            <br/>
-            <input type="submit" value="Add Cord" className="green-button"/>
+            />
+            <br />
+            <input type="submit" value="Add Cord" className="green-button" />
           </div>
         </form>
       </div>

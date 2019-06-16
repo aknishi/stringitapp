@@ -1,66 +1,60 @@
 // Place all the styles related to the api/rackets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "variables";
-
 .racket-index-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 900px;
-  min-height: 500px;
-  background-color: #fafafa;
-  margin: auto;
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 900px;
+    min-height: 500px;
+    background-color: #fafafa;
+    margin: auto;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 
 .racket-index-title {
-  text-align: center;
-  background-color: #e8e8e8;
-  width: 900px;
-  margin: auto;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
+    text-align: center;
+    background-color: #e8e8e8;
+    width: 900px;
+    margin: auto;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
 }
 
 .racket-item {
-  margin: 5px;
-  padding: 5px;
-  background: white;
-  width: 170px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    margin: 5px;
+    padding: 5px;
+    background: white;
+    width: 170px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .racket-image {
-  width: 100px;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  img {
-    height: 100%;
-  }
-}
+    width: 100px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
 
-.add-racket-button {
-  float: right;
-  margin-right: 20px;
-  margin-top: 80px;
+    img {
+        height: 100%;
+    }
 }
 
 // Racket Form
 
 .racket-form-box {
-  background: white;
-  width: 300px;
-  padding: 0 40px 20px 40px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
-  label, input, select {
-    margin: 8px 0;
-    width: 100%;
-  }
+    background: white;
+    width: 300px;
+    padding: 0 40px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+
+    label, input, select {
+        margin: 8px 0;
+        width: 100%;
+    }
 }

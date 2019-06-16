@@ -51,19 +51,17 @@ class EditCustomerForm extends React.Component {
 
   customerEditButtons() {
     if (!this.props.disabled) {
-      return(
+      return (
         <div className="customer-edit-buttons">
           <button
             type="submit"
-            id="update-customer-button"
             disabled={this.props.disabled}
-            className="blue-button"
+            className="btn-square btn-square--blue"
             onClick={this.handleSubmit}>
             Update Customer
           </button>
           <button
-            id="cancel-edit-customer-button"
-            className="grey-button"
+            className="btn-square btn-square--grey"
             onClick={this.navigateOut}>
             Cancel
           </button>
@@ -72,77 +70,72 @@ class EditCustomerForm extends React.Component {
     }
   }
 
-  render(){
+  render() {
     let formTitle;
     let topSpacingContainer;
     let bottomSpacingContainer;
-    if (this.props.formType === "Customer Edit"){
+    if (this.props.formType === "Customer Edit") {
       formTitle = <h3 className="form-title edit-user-title">Edit User</h3>
-      topSpacingContainer = <div className="spacing-container"></div>
-      bottomSpacingContainer = <div className="small-spacing-container"></div>
     }
     const { loading, customer } = this.props;
     if (loading) {
       return (
         <div>
-          <div className="loading-spacing-container"></div>
           <LoadingBar />
         </div>
       )
     } else {
       if (customer.id !== "") {
         return (
-          <div id="edit-customer-form" className="form-container">
-            { topSpacingContainer }
-            <div className="customer-form-box">
-              { formTitle }
+          <div id="edit-customer-form" className="container">
+            <div className="form-container customer-form">
+              {formTitle}
               <ul>
                 {this.errors()}
               </ul>
-              <div className="login-form">
+              <div className="form">
                 <label>Full Name:</label>
                 <input
                   type="text"
                   value={this.state.name}
                   disabled={this.props.disabled}
                   onChange={this.update('name')}
-                  />
-                <br/>
+                />
+                <br />
                 <label>Email:</label>
                 <input
                   type="text"
                   value={this.state.email}
                   disabled={this.props.disabled}
                   onChange={this.update('email')}
-                  />
-                <br/>
+                />
+                <br />
                 <label>Phone Number:</label>
                 <input
                   type="text"
                   value={this.state.phone_number}
                   disabled={this.props.disabled}
                   onChange={this.update('phone_number')}
-                  />
-                <br/>
+                />
+                <br />
                 <label>Address:</label>
                 <input
                   type="text"
                   value={this.state.address}
                   disabled={this.props.disabled}
                   onChange={this.update('address')}
-                  />
-                <br/>
+                />
+                <br />
                 <label>Comment:</label>
                 <textarea
                   value={this.state.comment}
                   disabled={this.props.disabled}
                   placeholder="Comments here"
                   onChange={this.update('comment')}
-                  />
-                <br/>
-                { this.customerEditButtons() }
+                />
+                <br />
+                {this.customerEditButtons()}
               </div>
-              { bottomSpacingContainer }
             </div>
           </div>
         )

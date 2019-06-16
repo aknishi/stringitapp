@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class UserSearch extends React.Component {
   constructor(props) {
     super(props)
-    this.state={
+    this.state = {
       query: '',
       results: []
     }
@@ -26,58 +26,58 @@ class UserSearch extends React.Component {
   }
 
   sendCustomerInfo(customer) {
-    this.setState({query: customer.name});
+    this.setState({ query: customer.name });
     this.props.setupCustomer(customer);
   }
 
   handleInput(e) {
     $('#customer-search').removeClass('hidden');
     $(document).on('click', this.hideResults);
-    this.setState({ results: []})
+    this.setState({ results: [] })
     const { customers } = this.props
-    this.setState({query: e.currentTarget.value.toLowerCase()})
+    this.setState({ query: e.currentTarget.value.toLowerCase() })
     const userResults = customers.filter(customer => customer.name.toLowerCase().includes(this.state.query));
-    this.setState({results: userResults})
+    this.setState({ results: userResults })
   }
 
   renderResults() {
     const userItems = this.state.results.map(customer => (
       <li
         key={customer.id}
-        className="search-result-item"
+        className="search__results__item"
         onClick={this.sendCustomerInfo.bind(this, customer)}>
         <div>
-          <h5 className="search-name" id="bold">{customer.name}</h5>
+          <h5 className="search__name" id="bold">{customer.name}</h5>
         </div>
       </li>
     ));
 
     return (
-      <ul className="search-result-list">
+      <ul className="search__results__list">
         {userItems}
       </ul>
     )
   }
 
   render() {
-    return(
-    <div className="search-container">
-      <div className="search">
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Search Customer"
-          value={this.state.query}
-          autoComplete="off"
-          onChange={this.handleInput}
-          onKeyDown={this.hitEnter}
+    return (
+      <div>
+        <div className="search">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search Customer"
+            value={this.state.query}
+            autoComplete="off"
+            onChange={this.handleInput}
+            onKeyDown={this.hitEnter}
           >
-        </input>
+          </input>
+        </div>
+        <div id="customer-search" className="search__results hidden">
+          {this.renderResults()}
+        </div>
       </div>
-      <div id="customer-search" className="search-results hidden">
-        { this.renderResults() }
-      </div>
-    </div>
     )
   }
 }

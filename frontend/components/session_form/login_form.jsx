@@ -26,13 +26,13 @@ class LoginForm extends React.Component {
 
   handleAdminDemoLogin(e) {
     e.preventDefault();
-    const guest = {email:"admin@example.com", password: "admin2018"};
+    const guest = { email: "admin@example.com", password: "admin2018" };
     this.props.login(guest)
   }
 
   handleGuestDemoLogin(e) {
     e.preventDefault();
-    const guest = {email:"guest@example.com", password: "ctc2018"};
+    const guest = { email: "guest@example.com", password: "ctc2018" };
     this.props.login(guest)
   }
 
@@ -48,50 +48,49 @@ class LoginForm extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
-  render(){
+  render() {
     return (
-      <div className="form-container">
-        <div className="spacing-container"></div>
-        <form className="login-form-box" onSubmit={this.handleSubmit}>
-          <h3 className="form-title">Customer Login</h3>
+      <div className="container">
+        <div className="form-container" onSubmit={this.handleSubmit}>
+          <h3 className="form__title">Login</h3>
           <ul>
             {this.errors()}
           </ul>
-          <div className="login-form">
-            <br/>
+          <form className="form login-form">
+            <br />
             <input
               type="text"
               value={this.state.email}
               placeholder="Email"
               onChange={this.update('email')}
-              />
-            <br/>
+            />
+            <br />
             <input
               type="password"
               value={this.state.password}
               placeholder="Password"
               onChange={this.update('password')}
-              />
-            <br/>
-            <input id="login-button" type="submit" value="Log In" className="blue-button"/>
+            />
+            <br />
+            <button type="submit" className="btn btn--blue">Log In</button>
+          </form>
+        </div>
+        <div className="form-container">
+          <div className="form login-form">
+            <button
+              type="submit"
+              onClick={this.handleAdminDemoLogin}
+              className="btn btn--blue">
+              Admin Demo Login
+            </button>
+            <br />
+            <button
+              type="submit"
+              onClick={this.handleGuestDemoLogin}
+              className="btn btn--blue">
+              Customer Demo Login
+            </button>
           </div>
-        </form>
-        <div className="demo-login">
-          <button
-            type="submit"
-            id="demo-login-button"
-            onClick={this.handleAdminDemoLogin}
-            className="blue-button">
-            Admin Demo Login
-          </button>
-          <br/>
-          <button
-            type="submit"
-            id="demo-login-button"
-            onClick={this.handleGuestDemoLogin}
-            className="blue-button">
-            Customer Demo Login
-          </button>
         </div>
       </div>
     )

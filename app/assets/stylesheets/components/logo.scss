@@ -1,0 +1,14 @@
+.logo {
+    height: 100%;
+
+    &__image {
+        height: 100%;
+        position: relative;
+        left: .5rem;
+        z-index: 2;
+    }
+
+    &__link {
+        cursor: pointer;
+    }
+}

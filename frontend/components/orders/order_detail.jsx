@@ -4,28 +4,28 @@ import OrderLinesIndexContainer from '../order_lines/order_lines_index_container
 import LoadingBar from '../loading_bar';
 
 class OrderDetail extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       comments: this.props.order.comments,
       commentDisabled: true
     }
 
-    this.changeStatus = this.changeStatus.bind(this);
+    this.changeOrderStatus = this.changeOrderStatus.bind(this);
     this.handleComment = this.handleComment.bind(this);
     this.editComment = this.editComment.bind(this);
-    this.cancelEdit = this.cancelEdit.bind(this);
     this.loadingBar = this.loadingBar.bind(this);
     this.navigateToCustomerEdit = this.navigateToCustomerEdit.bind(this);
   }
 
-  changeStatus(order, status) {
+  changeOrderStatus(order, status) {
     const { updateOrder } = this.props;
     const updatedOrder = Object.assign({}, order)
     updatedOrder.status = status;
     if (status === "Ready") {
-      if ( window.confirm(`Changing the status to "Ready" will send an email notification to the client. Do you wish to continue?`))
-      updateOrder(updatedOrder);
+      if (window.confirm(`Changing the status to "Ready" will send an email notification to the client. Do you wish to continue?`)) {
+        updateOrder(updatedOrder);
+      }
     } else {
       updateOrder(updatedOrder);
     }
@@ -37,54 +37,38 @@ class OrderDetail extends React.Component {
 
   loadingBar() {
     const { loading } = this.props;
-    if ( loading ) {
-      return(
+    if (loading) {
+      return (
         <LoadingBar />
       )
     }
   }
 
-  showTextbox(order) {
-    $(`#textbox-${order.id}`).removeClass("hidden");
-    $(`#comment-button-${order.id}`).addClass("hidden");
-    $(`#red-comment-${order.id}`).addClass("hidden");
-  }
-
-  hideTextbox(order) {
-    $(`#textbox-${order.id}`).addClass("hidden");
-    $(`#comment-button-${order.id}`).removeClass("hidden");
-    $(`#red-comment-${order.id}`).removeClass("hidden");
+  toggleEditComments() {
+    const { orderId } = this.props;
+    $(`#update-comment-button-${orderId}`).toggleClass("hidden");
+    $(`#edit-cancel-button-${orderId}`).toggleClass("hidden");
+    $(`#edit-comment-button-${orderId}`).toggleClass("hidden");
+    $(`#comment-textbox-${orderId}`).toggleClass("greybox")
   }
 
   editComment() {
     const { orderId } = this.props;
-    this.setState({commentDisabled: false});
-    $(`#comment-textbox-${orderId}`).removeClass("hidden");
-    $(`#update-comment-button-${orderId}`).removeClass("hidden");
-    $(`#edit-cancel-button-${orderId}`).removeClass("hidden");
-    $(`#edit-comment-button-${orderId}`).addClass("hidden");
-    $(`#comment-textbox-${orderId}`).removeClass("greybox")
-  }
-
-  cancelEdit() {
-    const { orderId } = this.props;
-    $(`#update-comment-button-${orderId}`).addClass("hidden");
-    $(`#edit-cancel-button-${orderId}`).addClass("hidden");
-    $(`#edit-comment-button-${orderId}`).removeClass("hidden");
-    $(`#comment-textbox-${orderId}`).addClass("greybox");
+    this.setState({ commentDisabled: false });
+    this.toggleEditComments();
   }
 
   handleComment() {
     const { updateOrder, order, orderId } = this.props;
     const updatedOrder = Object.assign({}, order);
     updatedOrder.comments = this.state.comments;
-    updateOrder(updatedOrder).then( () => {
+    updateOrder(updatedOrder).then(() => {
       $(`#update-comment-button-${orderId}`).addClass("hidden");
       $(`#edit-cancel-button-${orderId}`).addClass("hidden");
       $(`#edit-comment-button-${orderId}`).removeClass("hidden");
       $(`#comment-textbox-${orderId}`).addClass("greybox");
-      this.setState({commentDisabled: true});
-      }
+      this.setState({ commentDisabled: true });
+    }
     );
   }
 
@@ -93,7 +77,7 @@ class OrderDetail extends React.Component {
   }
 
   render() {
-    const { data, orderId, order, changeStatus } = this.props
+    const { data, orderId, order, changeOrderStatus } = this.props
 
     $(".status-option").prop("checked", false);
     $(`#${order.status}-${order.id}`).prop("checked", true);
@@ -106,64 +90,71 @@ class OrderDetail extends React.Component {
       $(`add-button-${order.id}`).removeClass("hidden");
     }
 
-    return (
-      <div>
+    const StatusBar = () => {
+      const statusOptions = ["Pending", "In_Progress", "Ready", "Picked_up", "Cancelled"];
+      return (
         <div className="status-options">
           <h4 className="detail-title status-title">Status:</h4>
           <div className="status-option"
-            onClick={this.changeStatus.bind(this, order, "Pending")}>
+            onClick={this.changeOrderStatus.bind(this, order, "Pending")}>
             <input
               type="radio"
               name="status"
               value="Pending"
               id={`Pending-${order.id}`}
-              />
+            />
             <label id="pending-label">Pending</label>
           </div>
           <div className="status-option"
-            onClick={this.changeStatus.bind(this, order, "In_Progress")}>
+            onClick={this.changeOrderStatus.bind(this, order, "In_Progress")}>
             <input
               type="radio"
               name="status"
               value="In_Progress"
               id={`In_Progress-${order.id}`}
-              />
+            />
             <label id="in-progress-label">In Progress</label>
           </div>
           <div className="status-option"
-            onClick={this.changeStatus.bind(this, order, "Ready")}>
+            onClick={this.changeOrderStatus.bind(this, order, "Ready")}>
             <input
               type="radio"
               name="status"
               value="Ready"
               id={`Ready-${order.id}`}
-              />
+            />
             <label id="ready-label">Ready</label>
           </div>
           <div className="status-option"
-            onClick={this.changeStatus.bind(this, order, "Picked_up")}>
+            onClick={this.changeOrderStatus.bind(this, order, "Picked_up")}>
             <input
               type="radio"
               name="status"
               value="Picked_up"
               id={`Picked_up-${order.id}`}
-              />
+            />
             <label id="picked-up-label">Picked Up</label>
           </div>
           <div className="cancel-order"
-            onClick={this.changeStatus.bind(this, order, "Cancelled")}>
+            onClick={this.changeOrderStatus.bind(this, order, "Cancelled")}>
             <input
               type="radio"
               name="status"
-              value="Cancel Order"
+              value="Cancelled"
               id={`Cancelled-${order.id}`}
-              />
+            />
             <label id="cancelled-label"></label>
           </div>
         </div>
-        { this.loadingBar() }
+      )
+    }
+
+    return (
+      <div>
+        <StatusBar />
+        {this.loadingBar()}
         <br />
-        <OrderLinesIndexContainer data={data} orderId={order.id}/>
+        <OrderLinesIndexContainer data={data} orderId={order.id} />
         <br />
         <div>
           <h4 className="detail-title">Comments:</h4>
@@ -179,21 +170,21 @@ class OrderDetail extends React.Component {
               </textarea>
               <button
                 id={`edit-comment-button-${orderId}`}
-                className="button"
+                className="btn-square"
                 onClick={this.editComment}>
                 Edit Comments
               </button>
             </div>
             <button
               id={`update-comment-button-${orderId}`}
-              className="button hidden"
+              className="btn-square hidden"
               onClick={this.handleComment}>
               Update Comments
             </button>
             <button
               id={`edit-cancel-button-${orderId}`}
-              className="button hidden"
-              onClick={this.cancelEdit}>
+              className="btn-square hidden"
+              onClick={this.toggleEditComments}>
               Cancel
             </button>
           </div>
@@ -207,7 +198,7 @@ class OrderDetail extends React.Component {
           <h6><b>Comment: </b>{order.customer.comment}</h6>
           <button
             id="edit-customer-button"
-            className="button"
+            className="btn-square"
             onClick={this.navigateToCustomerEdit.bind(this, order.customer.id)}>
             Edit Customer
           </button>

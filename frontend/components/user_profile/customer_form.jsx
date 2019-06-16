@@ -48,11 +48,10 @@ class CustomerForm extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
-  render(){
+  render() {
     return (
       <div className="form-container">
-        <div className="spacing-container"></div>
-        <form className="customer-form-box" onSubmit={this.handleSubmit}>
+        <form className="customer-form" onSubmit={this.handleSubmit}>
           <h3 className="form-title">Create User</h3>
           <ul>
             {this.errors()}
@@ -63,50 +62,49 @@ class CustomerForm extends React.Component {
               type="text"
               value={this.state.name}
               onChange={this.update('name')}
-              />
-            <br/>
+            />
+            <br />
             <label>Email:</label>
             <input
               type="text"
               value={this.state.email}
               placeholder="name@example.com"
               onChange={this.update('email')}
-              />
-            <br/>
+            />
+            <br />
             <label>Phone Number:</label>
             <input
               type="text"
               value={this.state.phone_number}
               placeholder="XXX-XXX-XXXX"
               onChange={this.update('phone_number')}
-              />
-            <br/>
+            />
+            <br />
             <label>Address:</label>
             <input
               type="text"
               value={this.state.address}
               onChange={this.update('address')}
-              />
-            <br/>
+            />
+            <br />
             <label>Comment:</label>
             <textarea
               value={this.state.comment}
               placeholder="Comment"
               onChange={this.update('comment')}
-              />
-            <br/>
+            />
+            <br />
             <input
               id="customer-form-button"
               type="submit"
               value="Create Customer"
-              className="green-button"/>
+              className="green-button" />
             <button
               id="customer-form-button"
               className="grey-button"
               onClick={this.returnToPage}>
-            Cancel</button>
+              Cancel</button>
           </div>
-          <div className="small-spacing-container"></div>
         </form>
       </div>
     )
