@@ -74,28 +74,28 @@ const WelcomePage = () => {
         </div>
       </section>
       <footer className="footer">
-        <div className="footer-section">
+        <div className="footer__section">
           <div>
             <Link to="/" className="logo-link">
-              <img className="footer-logo" src={window.logoURL}></img>
+              <img className="footer__logo" src={window.logoURL}></img>
             </Link>
           </div>
           <h6>by Adrian Kawanishi</h6>
           <h6>© 2019</h6>
         </div>
-        <div className="footer-section">
+        <div className="footer__section">
           <a href="#">About Us</a>
           <a href="#">Careers</a>
           <a href="#">Contact Us</a>
         </div>
-        <div className="footer-section">
+        <div className="footer__section">
           <a href="#">Site Map</a>
           <a href="#">Directions</a>
           <a href="#">Store Hours</a>
         </div>
-        <div className="footer-section">
+        <div className="footer__section">
           <h6>Follow Us</h6>
-          <div className="footer-icons">
+          <div className="footer__icons">
             <a href="#" className="fa fa-facebook-square"></a>
             <a href="#" className="fa fa-twitter"></a>
             <a href="#" className="fa fa-github"></a>

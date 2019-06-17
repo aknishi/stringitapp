@@ -27,6 +27,8 @@
     }
 }
 
+// Users Show
+
 .profile-page {
     margin: 0 auto;
     font-size: 1.8rem;
@@ -41,8 +43,8 @@
     margin-bottom: 4rem;
 
     &__photo {
-        height: 1.6rem;
-        width: 1.6rem;
+        height: 16rem;
+        width: 16rem;
         background-color: white;
         border-radius: 10rem;
         margin-right: 8rem;
@@ -54,7 +56,7 @@
     }
 
     &__info {
-        width: 2.6rem;
+        width: 26rem;
         display: flex;
         flex-direction: column;
 
@@ -84,46 +86,7 @@
     }
 }
 
-.edit-button {
-    height: 3.2rem;
-    font-size: 1.4rem;
-    background-color: #fafafa;
-    border-radius: .6rem;
-    cursor: pointer;
-
-    &:active {
-        color: #F0F0F0;
-        border: 1px solid #F0F0F0;
-        border-radius: .6rem;
-    }
-
-    &:hover {
-        background-color: #d5d5d5;
-    }
-}
-
-.logout-button {
-    margin-left: 2rem;
-    height: 3.2rem;
-    font-size: 1.4rem;
-    color: white;
-    background-color: #bcbcbc;
-    border-radius: .6rem;
-    cursor: pointer;
-
-    &:active {
-        color: #F0F0F0;
-        border: 1px solid #F0F0F0;
-        background-color: #fafafa;
-        border-radius: .6rem;
-    }
-
-    &:hover {
-        background-color: #747474;
-    }
-}
-
-// Users Show
+// Users Search
 
 .customer-search-container {
     width: 56rem;
@@ -147,13 +110,14 @@
         margin: 1.5rem 0;
     }
 
+    input {
+        width: 28rem;
+    }
+
     button {
         height: 3rem;
+        width: 28rem;
     }
-}
-
-#admin-create-customer-button {
-    width: 28rem;
 }
 
 // Edit customer

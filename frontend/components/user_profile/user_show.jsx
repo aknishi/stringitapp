@@ -58,7 +58,6 @@ class UserShow extends React.Component {
             <h5 className="or">OR</h5>
             <button
               onClick={this.navigateToUserForm}
-              id="admin-create-customer-button"
               className="btn btn--blue">
               Create a Customer
             </button>
