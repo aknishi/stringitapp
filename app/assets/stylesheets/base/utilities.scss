@@ -4,11 +4,11 @@
     text-align: center !important;
 }
 
-.u-margin-bottom-small {
+.u-mb-small {
     margin-bottom: 1.5rem !important;
 }
 
-.u-margin-bottom-medium {
+.u-mb-medium {
     margin-bottom: 4rem !important;
 
     @include respond(tab-port) {
@@ -16,7 +16,7 @@
     }
 }
 
-.u-margin-bottom-big {
+.u-mb-big {
     margin-bottom: 8rem !important;
 
     @include respond(tab-port) {
@@ -24,10 +24,10 @@
     }
 }
 
-.u-margin-top-big {
+.u-mt-big {
     margin-top: 8rem !important;
 }
 
-.u-margin-top-huge {
+.u-mtp-huge {
     margin-top: 10rem !important;
 }

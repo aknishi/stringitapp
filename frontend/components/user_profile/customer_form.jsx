@@ -50,20 +50,19 @@ class CustomerForm extends React.Component {
 
   render() {
     return (
-      <div className="form-container">
-        <form className="customer-form" onSubmit={this.handleSubmit}>
-          <h3 className="form-title">Create User</h3>
+      <div className="container">
+        <form className="form-container" onSubmit={this.handleSubmit}>
+          <h3 className="form__title">Create User</h3>
           <ul>
             {this.errors()}
           </ul>
-          <div className="login-form">
+          <div className="form customer-form">
             <label>Full Name:</label>
             <input
               type="text"
               value={this.state.name}
               onChange={this.update('name')}
             />
-            <br />
             <label>Email:</label>
             <input
               type="text"
@@ -71,7 +70,6 @@ class CustomerForm extends React.Component {
               placeholder="name@example.com"
               onChange={this.update('email')}
             />
-            <br />
             <label>Phone Number:</label>
             <input
               type="text"
@@ -79,31 +77,35 @@ class CustomerForm extends React.Component {
               placeholder="XXX-XXX-XXXX"
               onChange={this.update('phone_number')}
             />
-            <br />
             <label>Address:</label>
             <input
               type="text"
               value={this.state.address}
               onChange={this.update('address')}
             />
-            <br />
             <label>Comment:</label>
             <textarea
               value={this.state.comment}
               placeholder="Comment"
               onChange={this.update('comment')}
             />
-            <br />
-            <input
-              id="customer-form-button"
-              type="submit"
-              value="Create Customer"
-              className="green-button" />
-            <button
-              id="customer-form-button"
-              className="grey-button"
-              onClick={this.returnToPage}>
-              Cancel</button>
+            <div className="customer-form__buttons">
+              <button
+                id="customer-form-button"
+                type="submit"
+                className="btn btn--green"
+              >
+                Create Customer
+              </button>
+              <button
+                id="customer-form-button"
+                className="btn btn--grey"
+                onClick={this.returnToPage}
+              >
+                Cancel
+              </button>
+            </div>
+
           </div>
         </form>
       </div>

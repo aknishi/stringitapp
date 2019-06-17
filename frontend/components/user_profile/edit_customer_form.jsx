@@ -101,7 +101,6 @@ class EditCustomerForm extends React.Component {
                   disabled={this.props.disabled}
                   onChange={this.update('name')}
                 />
-                <br />
                 <label>Email:</label>
                 <input
                   type="text"
@@ -109,7 +108,6 @@ class EditCustomerForm extends React.Component {
                   disabled={this.props.disabled}
                   onChange={this.update('email')}
                 />
-                <br />
                 <label>Phone Number:</label>
                 <input
                   type="text"
@@ -117,7 +115,6 @@ class EditCustomerForm extends React.Component {
                   disabled={this.props.disabled}
                   onChange={this.update('phone_number')}
                 />
-                <br />
                 <label>Address:</label>
                 <input
                   type="text"
@@ -125,7 +122,6 @@ class EditCustomerForm extends React.Component {
                   disabled={this.props.disabled}
                   onChange={this.update('address')}
                 />
-                <br />
                 <label>Comment:</label>
                 <textarea
                   value={this.state.comment}
@@ -133,7 +129,6 @@ class EditCustomerForm extends React.Component {
                   placeholder="Comments here"
                   onChange={this.update('comment')}
                 />
-                <br />
                 {this.customerEditButtons()}
               </div>
             </div>

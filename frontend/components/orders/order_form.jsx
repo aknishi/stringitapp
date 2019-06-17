@@ -148,7 +148,7 @@ class OrderForm extends React.Component {
             </button>
           </div>
 
-          <div className="customer-form">
+          <div className="existing-customer-form">
             {customerForm}
           </div>
 
