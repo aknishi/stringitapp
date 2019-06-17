@@ -72,10 +72,12 @@ class EditCustomerForm extends React.Component {
 
   render() {
     let formTitle;
-    let topSpacingContainer;
-    let bottomSpacingContainer;
+    let containerClass;
     if (this.props.formType === "Customer Edit") {
-      formTitle = <h3 className="form-title edit-user-title">Edit User</h3>
+      formTitle = <h3 className="form__title edit-user-title">Edit User</h3>
+      containerClass = "form-container"
+    } else {
+      containerClass = "customer-form-container"
     }
     const { loading, customer } = this.props;
     if (loading) {
@@ -88,12 +90,12 @@ class EditCustomerForm extends React.Component {
       if (customer.id !== "") {
         return (
           <div id="edit-customer-form" className="container">
-            <div className="form-container customer-form">
+            <div className={containerClass}>
               {formTitle}
               <ul>
                 {this.errors()}
               </ul>
-              <div className="form">
+              <div className="form customer-form">
                 <label>Full Name:</label>
                 <input
                   type="text"

@@ -4,6 +4,11 @@
 
 // Customer Form
 
+.customer-form-container {
+    display: inline-block;
+    background-color: white;
+}
+
 .customer-form {
     width: 40rem;
     margin-bottom: 0;
@@ -132,7 +137,7 @@
     justify-content: space-between;
 
     button {
-        width: 16rem;
+        width: 18rem;
     }
     button:not(:last-child) {
         margin-right: .5rem;
