@@ -28,12 +28,12 @@ class OrderLinesIndex extends React.Component {
   }
 
   showOrderLineForm(orderId) {
-    $(`#add-button-${orderId}`).stop().css('display','hidden').slideUp();
-    $(`#ol-form-${orderId}`).stop().css('display','block').hide().slideDown();
+    $(`#add-button-${orderId}`).css('display','hidden').slideUp();
+    $(`#ol-form-${orderId}`).css('display','block').hide().slideDown();
   }
 
   showEditOrderLineForm(orderLineId) {
-    $(`#edit-form-${orderLineId}`).stop().css('display','block').hide().slideDown();
+    $(`#edit-form-${orderLineId}`).css('display','block').hide().slideDown();
   }
 
   orderLineForm() {
@@ -73,9 +73,11 @@ class OrderLinesIndex extends React.Component {
       addButton = (
         <button
           id={`add-button-${orderId}`}
-          className="add-button blue-button"
+          className="btn btn--blue"
           onClick={this.showOrderLineForm.bind(this, orderId)}
-          >Add Line</button>
+        >
+          Add Line
+        </button>
       );
     }
 

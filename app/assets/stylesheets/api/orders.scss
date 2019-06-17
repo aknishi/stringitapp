@@ -6,29 +6,29 @@
 @import "abstracts/variables";
 
 .orders-container {
-    width: 1000px;
+    width: 100rem;
 }
 
 .table-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 0 1rem;
     background: #d5d5d5;
     width: 100%;
-    height: 40px;
+    height: 4rem;
 
     button {
         font-size: 1.4rem;
     }
 
     h3 {
-        font-size: 22px;
+        font-size: 2.2rem;
         align-self: center;
     }
 
     .empty-div {
-        width: 50px;
+        width: 5rem;
     }
 }
 
@@ -38,7 +38,7 @@
 }
 
 .order-detail-container {
-    padding: 20px;
+    padding: 2rem;
     background: #e8e8e8;
 }
 
@@ -47,7 +47,7 @@
     align-items: center;
 
     * {
-        margin: 5px;
+        margin: .5rem;
     }
 }
 
@@ -58,7 +58,7 @@
 }
 .order-form {
     .customer-input {
-        font-size: 18px;
+        font-size: 1.8rem;
         width: 75%;
         margin: 0 auto;
         margin-bottom: 2rem;
@@ -70,17 +70,16 @@
         margin: 0 auto;
         margin-bottom: 2rem;
     }
-    .customer-form {
-        label {
-            display: none;
-        }
-    }
+}
+
+.customer-form {
+    margin-bottom: 1.5rem;
 }
 
 .customer-comments {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
     color: #949494;
 }
 
@@ -89,12 +88,12 @@
         color: black;
         width: 100%;
         background-color: #F0F0F0;
-        height: 30px;
-        font-size: 18px;
+        font-size: 1.6rem;
+        padding: 1rem 1.5rem;
         text-align: center;
-        border-radius: 10px;
-        margin-right: 14px;
-        margin-top: 20px;
+        border-radius: 1rem;
+        margin-right: 1.4rem;
+        margin-top: 2rem;
     }
 
     &__name {
@@ -102,19 +101,20 @@
     }
 
     &__results {
-        position: absolute;
-        background-color: white;
-        width: 290px;
-        max-height: 200px;
+        position: relative;
+        top: .5rem;
+        background-color: $white;
+        width: 29rem;
+        max-height: 20rem;
         overflow: scroll;
         border: 1px solid #F0F0F0;
         border-radius: 3px;
         z-index: 3;
         text-align: left;
-        box-shadow: -1px 4px 6px 1px rgba(0, 0, 0, 0.09);
+        box-shadow: .2rem .4rem 1rem rgba(0, 0, 0, 0.09);
 
         &__item {
-            padding: 4px 10px;
+            padding: .4rem 1rem;
 
             &:hover {
                 background-color: $light-grey;
@@ -127,61 +127,64 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    button:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
 }
 
 .add-line-button {
-    width: 100px;
+    width: 10rem;
 }
 
 //Order Detail form
 
 .order-detail-form {
-    width: 940px;
+    width: 100rem;
     background: #fafafa;
-    padding: 20px;
+    padding: 2rem;
 
     h5 {
         margin: 5px;
     }
 }
 
-.order-form-title {
-    text-align: center;
-}
-
-.order-info-container {
-    width: 450px;
-    background-color: #F0F0F0;
-    padding: 5px;
-    border-radius: 5px;
-    margin: 15px 0;
-}
-
-.order-comments {
-    width: 860px;
-    height: 60px;
-    padding: 10px;
-    border-radius: 6px;
-    margin: 15px 0;
-}
-
-.order-buttons {
+.order-detail {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
-    > * {
-        margin: 0 10px;
+    &__customer-info {
+        font-size: 1.8rem;
+        width: 45rem;
+        background-color: #F0F0F0;
+        padding: .5rem;
+        border-radius: 3px;
+        margin: 1.5rem 0;
     }
-}
 
-.red {
-    color: red;
+    &__comments {
+        width: 100%;
+        height: 6rem;
+        padding: 1rem;
+        border-radius: 3px;
+        margin-bottom: 1.5rem;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+
+        > * {
+            margin: 0 10px;
+        }
+    }
 }
 
 .status-options {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
 #edit-customer-button {
@@ -194,19 +197,6 @@
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
 }
-
-// #in-progress-label {
-//   top: 12px;
-//   left: 280px;
-//   z-index: 4;
-// }
-//
-// #ready-label {
-//   top: 12px;
-//   left: 280px;
-//   z-index: 3;
-// }
-//
 
 #picked-up-label {
     border-top-right-radius: 8px;

@@ -78,20 +78,19 @@ class RacketForm extends React.Component {
     const racketBrandItems = uniqueRacketBrands.map(
       (brand, idx) => <option key={idx} value={brand}>{brand}</option>);
     return (
-      <div className="form-container">
-        <form className="racket-form-box" onSubmit={this.handleSubmit}>
-          <h3 className="form-title">New Racket</h3>
+      <div className="container">
+        <form className="form-container" onSubmit={this.handleSubmit}>
+          <h3 className="form__title">New Racket</h3>
           <ul>
             {this.errors()}
           </ul>
-          <div className="racket-form">
+          <div className="form racket-form">
             <label>Brand:</label>
             <select onChange={this.setupBrand} id="racket-brand">
               <option>-- Select a Brand --</option>
               {racketBrandItems}
               <option>- New Brand -</option>
             </select>
-            <br />
             <div id="new-racket-brand" className="new-racket-brand hidden">
               <label>New Brand:</label>
               <input
@@ -99,7 +98,6 @@ class RacketForm extends React.Component {
                 value={this.state.brand}
                 onChange={this.update('brand')}
               />
-              <br />
             </div>
             <label>Model:</label>
             <input
@@ -107,22 +105,19 @@ class RacketForm extends React.Component {
               value={this.state.model}
               onChange={this.update('model')}
             />
-            <br />
             <label>Color:</label>
             <input
               type="text"
               value={this.state.color}
               onChange={this.update('color')}
             />
-            <br />
             <label>Image URL:</label>
             <input
               type="text"
               value={this.state.image}
               onChange={this.updateImageUrl('image')}
             />
-            <br />
-            <input type="submit" value="Add Racket" className="green-button" />
+            <input type="submit" value="Add Racket" className="btn btn--green" />
           </div>
         </form>
       </div>

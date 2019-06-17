@@ -18,52 +18,6 @@
     margin: 5px;
 }
 
-.btn-square {
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
-    font-weight: bold;
-    transition: all .2s;
-
-    &:hover {
-        transform: translateY(-0.2rem);
-        box-shadow: 0 .5rem 1rem rgba($black, 0.2);
-    }
-
-    &:active,
-    &:focus {
-        outline: none;
-        transform: translateY(-0.1rem);
-        box-shadow: 0 0.2rem .5rem rgba($black, 0.2);
-    }
-
-    &--blue {
-        background-color: $blue;
-        color: $white;
-
-        &:hover {
-            background-color: $mid-dark-blue;
-        }
-
-        &:active {
-            background-color: $dark-blue;
-        }
-    }
-
-    &--grey {
-        background-color: $light-grey;
-        color: $black;
-
-        &:hover {
-            background-color: $mid-grey;
-        }
-
-        &:active {
-            background-color: $grey;
-        }
-    }
-}
-
 #cancel-button {
     &:hover {
         background-color: #F0F0F0;
@@ -80,7 +34,7 @@
     &:visited {
         text-transform: uppercase;
         text-decoration: none;
-        padding: .2rem 1rem;
+        padding: .5rem 1rem;
         display: inline-block;
         border-radius: 4px;
         transition: all .2s;
@@ -105,6 +59,16 @@
     &--white {
         background-color: $white;
         color: $grey-dark;
+    }
+
+    &--grey {
+        background-color: $mid-grey;
+        color: $grey-dark;
+
+        &:hover {
+            color: $white;
+            background-color: $grey-dark-2;
+        }
     }
 
     &--green {

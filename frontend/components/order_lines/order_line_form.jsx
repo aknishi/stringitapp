@@ -179,7 +179,7 @@ class OrderLineForm extends React.Component {
     const crossModelItems = this.updateCrossModels();
 
     return(
-      <div id={`ol-form-${orderId}`} className="ol-form-container hidden">
+      <div id={`ol-form-${orderId}`} className="form-container ol-form-container hidden">
         <h4>New Order Line</h4>
         <br />
         <ul>
@@ -187,9 +187,10 @@ class OrderLineForm extends React.Component {
         </ul>
         <div className="order-line-form" onSubmit={this.handleSubmit}>
           <div className="section-container">
-            <div className="racket-section">
-              <h4 className="racket-section-title section-title">Racket</h4>
-              <div className="racket-order section">
+            {/* Racket */}
+            <section className="section__left-section">
+              <h4 className="section__title">Racket</h4>
+              <div className="section section__racket-section">
                 { this.racketImage() }
                 <div className="racket-dropdowns">
                   <select onChange={this.update('racket_brand')} id="racket-brand">
@@ -201,16 +202,18 @@ class OrderLineForm extends React.Component {
                     { racketModelItems }
                   </select>
                 </div>
-                <div className="lower-section">
+                <div className="section__footer">
                   <h6> OR </h6>
-                  <button className="button" onClick={this.navigateToRacketForm}>
+                  <button className="btn" onClick={this.navigateToRacketForm}>
                     Create New Racket</button>
                 </div>
               </div>
-            </div>
-            <div className="strings-sections">
-              <h4 className="section-title">Main String</h4>
-              <div className="main-order section">
+            </section>
+
+            <section className="section__strings-section">
+              {/* Main String */}
+              <h4 className="section__title">Main String</h4>
+              <div className="section section__strings-section__main">
                 <select onChange={this.update('main_brand')} id="main-brand">
                   <option>-- Select a Brand --</option>
                   { mainBrandItems }
@@ -219,7 +222,7 @@ class OrderLineForm extends React.Component {
                   <option>-- Select a Model --</option>
                   { mainModelItems }
                 </select>
-                <div className="lower-section">
+                <div className="section__footer">
                 <input
                   type="number"
                   value={this.state.main_tension}
@@ -227,12 +230,13 @@ class OrderLineForm extends React.Component {
                   onChange={this.update('main_tension')}
                   />
                   <h6> OR </h6>
-                  <button className="button" onClick={this.navigateToStringForm}>
+                  <button className="btn" onClick={this.navigateToStringForm}>
                     Create New String</button>
                 </div>
               </div>
-              <h4 className="section-title">Cross String</h4>
-              <div className="cross-order section">
+              {/* Cross String */}
+              <h4 className="section__title">Cross String</h4>
+              <div className="section section__strings-section__cross">
                 <select onChange={this.update('cross_brand')} id="cross-brand">
                   <option>-- Select a Brand --</option>
                   { crossBrandItems }
@@ -247,29 +251,31 @@ class OrderLineForm extends React.Component {
                   placeholder="Cross Tension (lbs.)"
                   onChange={this.update('cross_tension')}
                   />
-                <div className="lower-section">
+                <div className="section__footer">
                   <h6> OR </h6>
-                  <button className="button" onClick={this.navigateToStringForm}>
+                  <button className="btn" onClick={this.navigateToStringForm}>
                     Create New String</button>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
         </div>
+
         <div className="ol-form-buttons">
           <button
             id="ol-button"
-            className="green-button"
+            className="btn btn--blue"
             onClick={this.handleSubmit}>
             Create New Order Line
           </button>
           <button
             id="ol-button"
-            className="grey-button"
+            className="btn btn--grey"
             onClick={this.hideOrderLineForm.bind(this, orderId)}>
             Cancel
           </button>
         </div>
+
       </div>
     )
   }

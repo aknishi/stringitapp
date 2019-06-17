@@ -162,6 +162,9 @@
     button {
         width: 160px;
     }
+    button:not(:last-child) {
+        margin-right: .5rem;
+    }
 }
 
 .edit-user-title {

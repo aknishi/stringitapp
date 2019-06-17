@@ -56,16 +56,19 @@ const WelcomePage = () => {
       <section className="features">
         <img className="graph" src={window.graphURL} />
         <div className="keynotes__text">
-          <h2>Analize your gameplay</h2>
+          <h2>Evalute your gameplay</h2>
           <h3>Gather data from previous orders</h3>
-          <h3>to improve your game at the court.</h3>
+          <h3>to improve your game on the court.</h3>
         </div>
       </section>
       <div className="tennis-play-image"></div>
       <section className="features">
-        <img src={window.userShareURL} />
+        <img
+          src={window.userShareURL}
+          className="features__image"
+        />
         <div className="keynotes__text">
-          <h2>Exchange information with other users</h2>
+          <h2>Share insights with other users</h2>
           <h3>Work together to improve your game</h3>
           <h3>and get tips from the experts</h3>
         </div>

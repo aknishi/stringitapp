@@ -65,11 +65,9 @@ class OrderForm extends React.Component {
 
   showOrderDetailForm() {
     this.setState({ orderLinesIndex: true, showCustomerForm: false })
-    $("#customer-fields").addClass("hidden");
-    $("#order-form").addClass("hidden");
-    $("#order-detail-form").removeClass('hidden');
-    $("#order-comments").removeClass('hidden');
-    $("#order-buttons").removeClass('hidden');
+    $("#customer-fields").toggleClass("hidden");
+    $("#order-form").toggleClass("hidden");
+    $("#order-detail-form").toggleClass('hidden');
   }
 
   handleSubmit(e) {
@@ -129,9 +127,10 @@ class OrderForm extends React.Component {
     const { customers, order, orderLines } = this.props;
     return (
       <div className="container">
-        <div className="form-container order-form-container">
+        {/* CUSTOMER DETAIL */}
+        <div id="order-form" className="form-container order-form-container">
           <h3 className="form__title">New Order Form</h3>
-          <div id="order-form" className="form order-form">
+          <div className="form order-form">
 
             <div className="customer-input">
               <UserSearch
@@ -142,7 +141,6 @@ class OrderForm extends React.Component {
             </div>
             <h5>or</h5>
             <button
-              id="new-customer-button"
               className="btn btn--blue"
               onClick={this.navigateToCustomerForm}
             >
@@ -155,35 +153,43 @@ class OrderForm extends React.Component {
           </div>
 
           <div id="customer-fields" className="customer-fields hidden">
-            <button id="customer-edit-button" className="btn btn--grey" value="Edit Customer" onClick={this.enableForm}>
+            <button
+              id="customer-edit-button"
+              className="btn btn--grey"
+              value="Edit Customer" onClick={this.enableForm}
+            >
               Edit Customer
             </button>
-            <button id="create-order-button" className="btn btn--green" onClick={this.handleSubmit}>
+            <button
+              id="create-order-button"
+              className="btn btn--green"
+              onClick={this.handleSubmit}
+            >
               Begin Order
             </button>
           </div>
-
-          <div id="order-detail-form" className="order-detail-form hidden">
-            <h3 className="order-form-title">New Order Form</h3>
-            <div className="order-info-container">
-              <h5><b>Order:</b> {order.order_number}</h5>
-              <h5><b>Customer:</b> {order.customer.name}</h5>
-              <h5><b>Email:</b> {order.customer.email}</h5>
-              <h5><b>Phone Number:</b> {order.customer.phone_number}</h5>
-              <h5><b>Address:</b> {order.customer.address}</h5>
-            </div>
-            {this.showOrderLinesIndex()}
-            <br />
-            <textarea
-              id="order-comments"
-              className="order-comments hidden"
-              placeholder="Order Comments..."
-              onChange={this.update("comments")}
-            />
-            <div id="order-buttons" className="order-buttons hidden">
-              <button className="green-button" onClick={this.finishOrder}>Finish Order</button>
-              <button className="grey-button" onClick={this.cancelOrder}>Cancel</button>
-            </div>
+        </div>
+        {/* ORDER DETAIL */}
+        <div id="order-detail-form" className="form-container order-detail-form hidden">
+          <h3 className="form__title">New Order Form</h3>
+          <div className="order-detail__customer-info">
+            <h5><b>Order:</b> {order.order_number}</h5>
+            <h5><b>Customer:</b> {order.customer.name}</h5>
+            <h5><b>Email:</b> {order.customer.email}</h5>
+            <h5><b>Phone Number:</b> {order.customer.phone_number}</h5>
+            <h5><b>Address:</b> {order.customer.address}</h5>
+          </div>
+          {this.showOrderLinesIndex()}
+          <br />
+          <textarea
+            id="order-comments"
+            className="order-detail__comments"
+            placeholder="Order Comments..."
+            onChange={this.update("comments")}
+          />
+          <div id="order-buttons" className="order-detail__buttons">
+            <button className="btn btn--green" onClick={this.finishOrder}>Finish Order</button>
+            <button className="btn btn--grey" onClick={this.cancelOrder}>Cancel</button>
           </div>
         </div>
 

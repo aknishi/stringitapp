@@ -56,12 +56,12 @@ class EditCustomerForm extends React.Component {
           <button
             type="submit"
             disabled={this.props.disabled}
-            className="btn-square btn-square--blue"
+            className="btn btn--blue"
             onClick={this.handleSubmit}>
             Update Customer
           </button>
           <button
-            className="btn-square btn-square--grey"
+            className="btn btn--grey"
             onClick={this.navigateOut}>
             Cancel
           </button>

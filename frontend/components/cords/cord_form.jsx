@@ -101,20 +101,19 @@ class CordForm extends React.Component {
       (composition, idx) => <option key={idx} value={composition}>{composition}</option>);
 
     return (
-      <div className="form-container">
-        <form className="cord-form-box" onSubmit={this.handleSubmit}>
-          <h3 className="form-title">New String</h3>
+      <div className="container">
+        <form className="form-container" onSubmit={this.handleSubmit}>
+          <h3 className="form__title">New String</h3>
           <ul>
             {this.errors()}
           </ul>
-          <div className="cord-form">
+          <div className="form cord-form">
             <label>Brand:</label>
             <select onChange={this.setupBrand} id="cord-brand">
               <option>-- Select a Brand --</option>
               {cordBrandItems}
               <option>- New Brand -</option>
             </select>
-            <br />
             <div id="new-cord-brand" className="new-cord-brand hidden">
               <label>New Brand:</label>
               <input
@@ -122,7 +121,6 @@ class CordForm extends React.Component {
                 value={this.state.brand}
                 onChange={this.update('brand')}
               />
-              <br />
             </div>
             <label>Model:</label>
             <input
@@ -130,28 +128,24 @@ class CordForm extends React.Component {
               value={this.state.model}
               onChange={this.update('model')}
             />
-            <br />
             <label>Gauge:</label>
             <input
               type="text"
               value={this.state.gauge}
               onChange={this.update('gauge')}
             />
-            <br />
             <label>Length:</label>
             <input
               type="text"
               value={this.state.length}
               onChange={this.update('length')}
             />
-            <br />
             <label>Composition:</label>
             <select onChange={this.setupComposition} id="cord-composition">
               <option>-- Select a Composition --</option>
               {cordCompositionItems}
               <option>- New Composition -</option>
             </select>
-            <br />
             <div id="new-cord-composition" className="new-cord-composition hidden">
               <label>New Composition:</label>
               <input
@@ -159,7 +153,7 @@ class CordForm extends React.Component {
                 value={this.state.composition}
                 onChange={this.update('composition')}
               />
-              <br />
+
             </div>
             <label>Color:</label>
             <input
@@ -167,15 +161,13 @@ class CordForm extends React.Component {
               value={this.state.color}
               onChange={this.update('color')}
             />
-            <br />
             <label>Image URL:</label>
             <input
               type="text"
               value={this.state.image}
               onChange={this.updateImageUrl('image')}
             />
-            <br />
-            <input type="submit" value="Add Cord" className="green-button" />
+            <input type="submit" value="Add Cord" className="btn btn--green" />
           </div>
         </form>
       </div>
