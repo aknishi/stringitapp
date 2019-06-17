@@ -122,8 +122,8 @@ class OrderLineForm extends React.Component {
   }
 
   hideOrderLineForm(orderId) {
-    $(`#add-button-${orderId}`).stop().css('display','block').hide().slideDown();
-    $(`#ol-form-${orderId}`).stop().css('display','hidden').slideUp();
+    $(`#add-button-${orderId}`).toggleClass('hidden').slideDown();
+    $(`#ol-form-${orderId}`).toggleClass('hidden').slideUp();
     this.props.clearErrors();
   }
 

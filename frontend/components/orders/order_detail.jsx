@@ -16,6 +16,7 @@ class OrderDetail extends React.Component {
     this.editComment = this.editComment.bind(this);
     this.loadingBar = this.loadingBar.bind(this);
     this.navigateToCustomerEdit = this.navigateToCustomerEdit.bind(this);
+    this.toggleEditComments = this.toggleEditComments.bind(this);
   }
 
   changeOrderStatus(order, status) {
@@ -63,10 +64,10 @@ class OrderDetail extends React.Component {
     const updatedOrder = Object.assign({}, order);
     updatedOrder.comments = this.state.comments;
     updateOrder(updatedOrder).then(() => {
-      $(`#update-comment-button-${orderId}`).addClass("hidden");
-      $(`#edit-cancel-button-${orderId}`).addClass("hidden");
-      $(`#edit-comment-button-${orderId}`).removeClass("hidden");
-      $(`#comment-textbox-${orderId}`).addClass("greybox");
+      $(`#update-comment-button-${orderId}`).toggleClass("hidden");
+      $(`#edit-cancel-button-${orderId}`).toggleClass("hidden");
+      $(`#edit-comment-button-${orderId}`).toggleClass("hidden");
+      $(`#comment-textbox-${orderId}`).toggleClass("greybox");
       this.setState({ commentDisabled: true });
     }
     );
@@ -80,19 +81,19 @@ class OrderDetail extends React.Component {
     const { data, orderId, order, changeOrderStatus } = this.props
 
     $(".status-option").prop("checked", false);
-    $(`#${order.status}-${order.id}`).prop("checked", true);
-
+    $(`#${order.status}-${orderId}`).prop("checked", true);
     if (order.status === "Cancelled") {
+      console.log(order.status)
       $(`#dark-overlay-${order.id}`).removeClass("hidden");
-      $(`add-button-${order.id}`).addClass("hidden");
+      $(`add-button-${order.id}`).toggleClass("hidden");
     } else {
       $(`#dark-overlay-${order.id}`).addClass("hidden");
-      $(`add-button-${order.id}`).removeClass("hidden");
+      $(`add-button-${order.id}`).toggleClass("hidden");
     }
 
-    const StatusBar = () => {
-      const statusOptions = ["Pending", "In_Progress", "Ready", "Picked_up", "Cancelled"];
-      return (
+    return (
+      <div>
+        {/* Status Bar */}
         <div className="status-options">
           <h4 className="detail-title status-title">Status:</h4>
           <div className="status-option"
@@ -146,16 +147,12 @@ class OrderDetail extends React.Component {
             <label id="cancelled-label"></label>
           </div>
         </div>
-      )
-    }
 
-    return (
-      <div>
-        <StatusBar />
         {this.loadingBar()}
-        <br />
+
         <OrderLinesIndexContainer data={data} orderId={order.id} />
-        <br />
+
+        {/* Order details */}
         <div>
           <h4 className="detail-title">Comments:</h4>
           <div className="comments-container">
@@ -170,20 +167,20 @@ class OrderDetail extends React.Component {
               </textarea>
               <button
                 id={`edit-comment-button-${orderId}`}
-                className="btn-square"
+                className="btn"
                 onClick={this.editComment}>
                 Edit Comments
               </button>
             </div>
             <button
               id={`update-comment-button-${orderId}`}
-              className="btn-square hidden"
+              className="btn hidden"
               onClick={this.handleComment}>
               Update Comments
             </button>
             <button
               id={`edit-cancel-button-${orderId}`}
-              className="btn-square hidden"
+              className="btn hidden"
               onClick={this.toggleEditComments}>
               Cancel
             </button>
@@ -198,7 +195,7 @@ class OrderDetail extends React.Component {
           <h6><b>Comment: </b>{order.customer.comment}</h6>
           <button
             id="edit-customer-button"
-            className="btn-square"
+            className="btn"
             onClick={this.navigateToCustomerEdit.bind(this, order.customer.id)}>
             Edit Customer
           </button>

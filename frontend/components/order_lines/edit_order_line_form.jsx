@@ -176,16 +176,16 @@ class EditOrderLineForm extends React.Component {
     const crossModelItems = this.updateCrossModels();
 
     return(
-      <div id={`edit-form-${orderLine.id}`} className="ol-form-container hidden">
+      <div id={`edit-form-${orderLine.id}`} className="form-container ol-form-container hidden">
         <h4>Edit Order Line</h4>
         <br />
         <ul>
           {this.errors()}
         </ul>
-        <div className="order-line-form" onSubmit={this.handleSubmit}>
+        <div className="=order-line-form" onSubmit={this.handleSubmit}>
           <div className="section-container">
-            <div className="racket-section">
-              <h4 className="racket-section-title section-title">Racket</h4>
+            <div className="section__left-section">
+              <h4 className="racket-section-title section__title">Racket</h4>
               <div className="edit-racket-order section">
                 { this.racketImage() }
                 <div className="racket-dropdowns">
@@ -200,9 +200,9 @@ class EditOrderLineForm extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="strings-sections">
-              <h4 className="section-title">Main String</h4>
-              <div className="main-order section">
+            <div className="section__strings-section">
+              <h4 className="section__title">Main String</h4>
+              <div className="section section__strings-section__main">
                 <select onChange={this.update('main_brand')}>
                   <option>-- Select a Brand --</option>
                   { mainBrandItems }
@@ -218,8 +218,8 @@ class EditOrderLineForm extends React.Component {
                   onChange={this.update('main_tension')}
                   />
               </div>
-              <h4 className="section-title">Cross String</h4>
-              <div className="cross-order section">
+              <h4 className="section__title">Cross String</h4>
+              <div className="section section__strings-section__cross">
                 <select onChange={this.update('cross_brand')}>
                   <option>-- Select a Brand --</option>
                   { crossBrandItems }
@@ -241,13 +241,13 @@ class EditOrderLineForm extends React.Component {
         <div className="ol-form-buttons">
           <button
             id="ol-button"
-            className="blue-button"
+            className="btn btn--blue"
             onClick={this.handleSubmit}>
             Update Order Line
           </button>
           <button
             id="ol-button"
-            className="grey-button"
+            className="btn btn--grey"
             onClick={this.hideEditOrderLineForm.bind(this, orderLine.id)}>
             Cancel
           </button>

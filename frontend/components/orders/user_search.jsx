@@ -13,7 +13,7 @@ class UserSearch extends React.Component {
   }
 
   hideResults() {
-    $('#customer-search').addClass('hidden');
+    $('#customer-search').toggleClass('hidden');
   }
 
   hitEnter(e) {
@@ -31,7 +31,7 @@ class UserSearch extends React.Component {
   }
 
   handleInput(e) {
-    $('#customer-search').removeClass('hidden');
+    $('#customer-search').toggleClass('hidden');
     $(document).on('click', this.hideResults);
     this.setState({ results: [] })
     const { customers } = this.props

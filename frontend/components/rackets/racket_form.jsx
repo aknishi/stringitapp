@@ -52,9 +52,9 @@ class RacketForm extends React.Component {
 
   setupBrand(e) {
     if (e.currentTarget.value === "- New Brand -") {
-      $("#new-racket-brand").removeClass("hidden")
+      $("#new-racket-brand").toggleClass("hidden")
     } else {
-      $("#new-racket-brand").addClass("hidden")
+      $("#new-racket-brand").toggleClass("hidden")
       this.setState({ ["brand"]: e.currentTarget.value });
     }
   }

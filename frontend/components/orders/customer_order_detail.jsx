@@ -20,15 +20,15 @@ class CustomerOrderDetail extends React.Component {
   }
 
   showTextbox(order) {
-    $(`#textbox-${order.id}`).removeClass("hidden");
-    $(`#comment-button-${order.id}`).addClass("hidden");
-    $(`#red-comment-${order.id}`).addClass("hidden");
+    $(`#textbox-${order.id}`).toggleClass("hidden");
+    $(`#comment-button-${order.id}`).toggleClass("hidden");
+    $(`#red-comment-${order.id}`).toggleClass("hidden");
   }
 
   hideTextbox(order) {
-    $(`#textbox-${order.id}`).addClass("hidden");
-    $(`#comment-button-${order.id}`).removeClass("hidden");
-    $(`#red-comment-${order.id}`).removeClass("hidden");
+    $(`#textbox-${order.id}`).toggleClass("hidden");
+    $(`#comment-button-${order.id}`).toggleClass("hidden");
+    $(`#red-comment-${order.id}`).toggleClass("hidden");
   }
 
   orderStatusItems() {
@@ -99,10 +99,10 @@ class CustomerOrderDetail extends React.Component {
 
     if (order.status === "Cancelled") {
       $(`#dark-overlay-${order.id}`).removeClass("hidden");
-      $(`add-button-${order.id}`).addClass("hidden");
+      $(`add-button-${order.id}`).toggleClass("hidden");
     } else {
-      $(`#dark-overlay-${order.id}`).addClass("hidden");
-      $(`add-button-${order.id}`).removeClass("hidden");
+      $(`#dark-overlay-${order.id}`).removeClass("hidden");
+      $(`add-button-${order.id}`).toggleClass("hidden");
     }
 
     return (

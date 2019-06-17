@@ -6,11 +6,11 @@
     position: absolute;
     background-color: black;
     opacity: 0.2;
-    width: 958px;
+    width: 95.8rem;
 }
 
 .add-button {
-    margin: 10px 0px 10px 10px;
+    margin: 1rem 0 1rem 1rem;
     background: #3ad62b;
 }
 
@@ -30,7 +30,7 @@
     label {
         display: flex;
         align-items: center;
-        height: 30px;
+        height: 3rem;
     }
 }
 
@@ -46,13 +46,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: .8rem;
+    border-bottom-left-radius: .8rem;
     background-color: #F0F0F0;
     padding: 1rem 2rem;
 
     * {
-        margin: 5px;
+        margin: .5rem;
     }
 
     input, select {
@@ -63,8 +63,8 @@
         text-align: center;
         background-color: #d5d5d5;
         width: 100%;
-        border-top-right-radius: 8px;
-        border-top-left-radius: 8px;
+        border-top-right-radius: .8rem;
+        border-top-left-radius: .8rem;
     }
 
     &__left-section {
@@ -98,8 +98,8 @@
 }
 
 .edit-racket-order {
-    width: 340px;
-    height: 290px;
+    width: 34rem;
+    height: 29rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,8 +113,8 @@
 
 .racket-order-image {
     background-color: white;
-    height: 220px;
-    width: 220px;
+    height: 22rem;
+    width: 22rem;
     display: flex;
     justify-content: center;
 
@@ -126,8 +126,8 @@
 
 .edit-racket-order-image {
     background-color: white;
-    height: 180px;
-    width: 180px;
+    height: 18rem;
+    width: 18rem;
     display: flex;
     justify-content: center;
 
@@ -138,10 +138,10 @@
 }
 
 #ol-button {
-    height: 30px;
-    padding: 2px 5px;
-    margin: 5px;
-    border-radius: 4px;
+    height: 3rem;
+    padding: .2rem .5rem;
+    margin: .5rem;
+    border-radius: .4rem;
 
     &:focus {
         outline: 0;
@@ -153,8 +153,8 @@
 }
 
 .trash-icon {
-    height: 18px;
-    width: 18px;
+    height: 1.8rem;
+    width: 1.8rem;
 }
 
 .ol-index-item {
@@ -163,11 +163,12 @@
     background-color: white;
     border-top: 1px solid #e8e8e8;
     border-bottom: 1px solid #e8e8e8;
-    padding: 5px 20px;
+    padding: .5rem 2rem;
+    margin-bottom: 1rem;
 }
 
 .racket-info-container {
-    width: 130px;
+    width: 13rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -185,35 +186,35 @@
 }
 
 .ol-racket-image {
-    height: 120px;
+    height: 12rem;
 }
 
 .string-info {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    margin: 5px 0 5px 40px;
+    width: 30rem;
+    margin: .5rem 0 .5rem 4rem;
     background-color: #F0F0F0;
-    border-radius: 6px;
-    padding: 10px 20px;
+    border-radius: .6rem;
+    padding: 1rem 2rem;
 
     h4 {
-        margin-bottom: 5px;
+        margin-bottom: .5rem;
     }
 
     h5 {
-        margin: 5px 0px;
+        margin: .5rem 0;
     }
 
     h6 {
-        margin: 2px 0;
+        margin: .2rem 0;
     }
 }
 
 .delete-line-button {
-    margin-left: 20px;
-    height: 26px;
-    border-radius: 5px;
+    margin-left: 2rem;
+    height: 2.6rem;
+    border-radius: .5rem;
 
     &:focus {
         outline: 0;
@@ -227,7 +228,7 @@
     align-items: center;
 
     button {
-        margin: 5px 20px;
+        margin: .5rem 2rem;
     }
 }
 

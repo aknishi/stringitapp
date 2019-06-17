@@ -28,12 +28,12 @@ class OrderLinesIndex extends React.Component {
   }
 
   showOrderLineForm(orderId) {
-    $(`#add-button-${orderId}`).css('display','hidden').slideUp();
-    $(`#ol-form-${orderId}`).css('display','block').hide().slideDown();
+    $(`#add-button-${orderId}`).toggleClass('hidden').slideUp();
+    $(`#ol-form-${orderId}`).toggleClass('hidden').slideDown();
   }
 
   showEditOrderLineForm(orderLineId) {
-    $(`#edit-form-${orderLineId}`).css('display','block').hide().slideDown();
+    $(`#edit-form-${orderLineId}`).toggleClass('hidden').slideDown();
   }
 
   orderLineForm() {
@@ -52,7 +52,8 @@ class OrderLinesIndex extends React.Component {
           orderLine={ol}
           deleteLine={this.deleteLine}
           showEditOrderLineForm={this.showEditOrderLineForm}
-          admin={admin}/>
+          admin={admin}
+        />
         <EditOrderLineFormContainer orderLine={ol}/>
       </div>
     )

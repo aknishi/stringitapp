@@ -55,18 +55,18 @@ class CordForm extends React.Component {
 
   setupBrand(e) {
     if (e.currentTarget.value === "- New Brand -") {
-      $("#new-cord-brand").removeClass("hidden")
+      $("#new-cord-brand").toggleClass("hidden")
     } else {
-      $("#new-cord-brand").addClass("hidden")
+      $("#new-cord-brand").toggleClass("hidden")
       this.setState({ ["brand"]: e.currentTarget.value });
     }
   }
 
   setupComposition(e) {
     if (e.currentTarget.value === "- New Composition -") {
-      $("#new-cord-composition").removeClass("hidden")
+      $("#new-cord-composition").toggleClass("hidden")
     } else {
-      $("#new-cord-composition").addClass("hidden")
+      $("#new-cord-composition").toggleClass("hidden")
       this.setState({ ["composition"]: e.currentTarget.value });
     }
   }

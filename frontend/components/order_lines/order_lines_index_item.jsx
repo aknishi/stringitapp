@@ -9,10 +9,10 @@ const OrderLinesIndexItem = (props) => {
   if (admin) {
     olButtons = (
       <div className="ol-edit-buttons">
-        <button className="btn-square delete-line-button" onClick={() => showEditOrderLineForm(orderLine.id)}>
+        <button className="btn btn--grey" onClick={() => showEditOrderLineForm(orderLine.id)}>
           Edit
         </button>
-        <button className="btn-square delete-line-button" onClick={() => deleteLine(orderLine)}>
+        <button className="btn btn--grey" onClick={() => deleteLine(orderLine)}>
           Delete
         </button>
       </div>

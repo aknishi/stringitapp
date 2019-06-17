@@ -47,7 +47,7 @@ class OrderForm extends React.Component {
   setupCustomer(customer) {
     const id = customer.id
     this.setState({ customer_id: id, showCustomerForm: true, customer: customer })
-    $("#customer-fields").removeClass("hidden");
+    $("#customer-fields").toggleClass("hidden");
   }
 
   beginOrder(callback) {
@@ -104,12 +104,12 @@ class OrderForm extends React.Component {
 
   disableForm() {
     this.setState({ disabledForm: true })
-    $("#customer-edit-button").removeClass("hidden")
+    $("#customer-edit-button").toggleClass("hidden")
   }
 
   enableForm() {
     this.setState({ disabledForm: false })
-    $("#customer-edit-button").addClass("hidden")
+    $("#customer-edit-button").toggleClass("hidden")
   }
 
   render() {
@@ -180,7 +180,6 @@ class OrderForm extends React.Component {
             <h5><b>Address:</b> {order.customer.address}</h5>
           </div>
           {this.showOrderLinesIndex()}
-          <br />
           <textarea
             id="order-comments"
             className="order-detail__comments"
