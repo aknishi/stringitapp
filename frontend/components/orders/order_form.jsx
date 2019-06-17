@@ -72,7 +72,7 @@ class OrderForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    this.beginOrder(() => this.showOrderDetailForm())
+    this.beginOrder(this.showOrderDetailForm)
   }
 
   finishOrder() {
