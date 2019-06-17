@@ -40,7 +40,7 @@ class UserShow extends React.Component {
         <div>
           <button
             onClick={this.handleEdit}
-            className="edit-button">
+            className="btn">
             Edit Profile</button>
         </div>
       )
@@ -59,7 +59,7 @@ class UserShow extends React.Component {
             <button
               onClick={this.navigateToUserForm}
               id="admin-create-customer-button"
-              className="blue-button">
+              className="btn btn--blue">
               Create a Customer
             </button>
           </div>
