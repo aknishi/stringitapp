@@ -15,14 +15,14 @@
 }
 
 @keyframes fadein {
-  0%   { top:-20px; opacity: 0; }
-  50%  { top:0px; opacity: 0.5; }
+  0%   { top:-2rem; opacity: 0; }
+  50%  { top: 0; opacity: 0.5; }
   100% { opacity: 1; }
 }
 
 @keyframes slides {
-  0%   { top:-10px; opacity: 0; }
-  15%  { top: 0px; opacity: 1; }
-  85%  { top: 0px; opacity: 1; }
-  100% { top:10px; opacity: 0; }
+  0%   { top: -1rem; opacity: 0; }
+  15%  { top: 0; opacity: 1; }
+  85%  { top: 0; opacity: 1; }
+  100% { top: 1rem; opacity: 0; }
 }

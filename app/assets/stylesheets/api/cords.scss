@@ -5,37 +5,37 @@
 .cord-index-container {
     display: flex;
     flex-wrap: wrap;
-    width: 900px;
-    min-height: 500px;
+    width: 90rem;
+    min-height: 50rem;
     background-color: #fafafa;
     margin: auto;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: .8rem;
+    border-bottom-left-radius: .8rem;
 }
 
 .cord-index-title {
     text-align: center;
     background-color: #e8e8e8;
-    width: 900px;
+    width: 90rem;
     margin: auto;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
+    border-top-right-radius: .8rem;
+    border-top-left-radius: .8rem;
 }
 
 .cord-item {
-    margin: 5px;
-    padding: 5px;
+    margin: .5rem;
+    padding: .5rem;
     background: white;
-    width: 215px;
-    height: 200px;
+    width: 21.5rem;
+    height: 20rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .cord-image {
-    width: 100px;
-    height: 150px;
+    width: 10rem;
+    height: 15rem;
     display: flex;
     justify-content: center;
 
@@ -45,14 +45,14 @@
 }
 
 .default-cord-image {
-    width: 145px;
-    height: 135px;
+    width: 14.5rem;
+    height: 13.5rem;
 }
 
 .add-cord-button {
     float: right;
-    margin-right: 20px;
-    margin-top: 80px;
+    margin-right: 2rem;
+    margin-top: 8rem;
 }
 
 // String Form

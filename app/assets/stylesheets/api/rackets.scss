@@ -4,37 +4,37 @@
 .racket-index-container {
     display: flex;
     flex-wrap: wrap;
-    width: 900px;
-    min-height: 500px;
+    width: 90rem;
+    min-height: 50rem;
     background-color: #fafafa;
     margin: auto;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: .8rem;
+    border-bottom-left-radius: .8rem;
 }
 
 .racket-index-title {
     text-align: center;
     background-color: #e8e8e8;
-    width: 900px;
+    width: 90rem;
     margin: auto;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
+    border-top-right-radius: .8rem;
+    border-top-left-radius: .8rem;
 }
 
 .racket-item {
-    margin: 5px;
-    padding: 5px;
+    margin: .5rem;
+    padding: .5rem;
     background: white;
-    width: 170px;
-    height: 200px;
+    width: 17rem;
+    height: 20rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .racket-image {
-    width: 100px;
-    height: 150px;
+    width: 10rem;
+    height: 15rem;
     display: flex;
     justify-content: center;
 

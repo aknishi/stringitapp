@@ -2,21 +2,21 @@
     color: white;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    padding: 40px;
+    padding: 4rem;
     align-items: center;
     background: #333;
     background: -webkit-gradient(radial, center center, 120, center center, 900, from(#33495E), to(#2E2329));
     background: -moz-radial-gradient(circle, #33495E, #2E2329);
-    height: 200px;
+    height: 20rem;
     position: relative;
-    top: -30px;
+    top: -3rem;
     z-index: 3;
 }
 
 .footer-logo {
-    height: 40px;
+    height: 4rem;
     position: relative;
-    left: -15px;
+    left: -1.5rem;
     z-index: 2;
 }
 
@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 100px;
+    height: 10rem;
 
     a {
         color: white;
@@ -38,8 +38,8 @@
 
 .footer-icons {
     a {
-        font-size: 25px;
-        margin-right: 20px;
+        font-size: 2.5rem;
+        margin-right: 2rem;
         color: white;
         text-decoration: none;
 

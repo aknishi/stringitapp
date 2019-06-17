@@ -41,8 +41,8 @@
     margin-bottom: 4rem;
 
     &__photo {
-        height: 16rem;
-        width: 16rem;
+        height: 1.6rem;
+        width: 1.6rem;
         background-color: white;
         border-radius: 10rem;
         margin-right: 8rem;
@@ -54,7 +54,7 @@
     }
 
     &__info {
-        width: 26rem;
+        width: 2.6rem;
         display: flex;
         flex-direction: column;
 
@@ -85,16 +85,16 @@
 }
 
 .edit-button {
-    height: 32px;
-    font-size: 14px;
+    height: 3.2rem;
+    font-size: 1.4rem;
     background-color: #fafafa;
-    border-radius: 6px;
+    border-radius: .6rem;
     cursor: pointer;
 
     &:active {
         color: #F0F0F0;
         border: 1px solid #F0F0F0;
-        border-radius: 6px;
+        border-radius: .6rem;
     }
 
     &:hover {
@@ -103,19 +103,19 @@
 }
 
 .logout-button {
-    margin-left: 20px;
-    height: 32px;
-    font-size: 14px;
+    margin-left: 2rem;
+    height: 3.2rem;
+    font-size: 1.4rem;
     color: white;
     background-color: #bcbcbc;
-    border-radius: 6px;
+    border-radius: .6rem;
     cursor: pointer;
 
     &:active {
         color: #F0F0F0;
         border: 1px solid #F0F0F0;
         background-color: #fafafa;
-        border-radius: 6px;
+        border-radius: .6rem;
     }
 
     &:hover {
@@ -126,16 +126,16 @@
 // Users Show
 
 .customer-search-container {
-    width: 560px;
-    height: 220px;
-    padding: 20px;
+    width: 56rem;
+    height: 22rem;
+    padding: 2rem;
     margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
-    border-radius: 8px;
+    border-radius: .8rem;
 }
 
 .admin-buttons {
@@ -144,23 +144,23 @@
     align-items: center;
 
     .or {
-        margin: 15px 0;
+        margin: 1.5rem 0;
     }
 
     button {
-        height: 30px;
+        height: 3rem;
     }
 }
 
 #admin-create-customer-button {
-    width: 280px;
+    width: 28rem;
 }
 
 // Edit customer
 
 .customer-edit-btn {
-    width: 160px;
-    height: 26px;
+    width: 16rem;
+    height: 2.6rem;
 }
 
 .customer-edit-buttons {
@@ -168,7 +168,7 @@
     justify-content: space-between;
 
     button {
-        width: 160px;
+        width: 16rem;
     }
     button:not(:last-child) {
         margin-right: .5rem;
@@ -176,5 +176,5 @@
 }
 
 .edit-user-title {
-    margin-top: 20px;
+    margin-top: 2rem;
 }
