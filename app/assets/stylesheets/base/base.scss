@@ -1,5 +1,12 @@
 @import "abstracts/mixins";
 
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+}
+
 html {
     /* to get 10px use percentage of brower default (16px) */
     font-size: 62.5%;

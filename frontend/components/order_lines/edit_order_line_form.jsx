@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from "react-router"
 
 class EditOrderLineForm extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     const { racket, cross_cord, main_cord } = this.props.orderLine;
     const { orderLine } = this.props;
@@ -49,14 +49,14 @@ class EditOrderLineForm extends React.Component {
   updateRacketModels(e) {
     const { rackets } = this.props;
     const racketModels = rackets.filter(racket => racket.brand === this.state.racket_brand).map(
-      racket => ( <option
-                    key={racket.id}
-                    value={racket.model}
-                    data-racketid={racket.id}
-                    data-image={racket.image}
-                    selected={this.state.racket_model === racket.model}>
-                    {racket.model}
-                  </option> ));
+      racket => (<option
+        key={racket.id}
+        value={racket.model}
+        data-racketid={racket.id}
+        data-image={racket.image}
+        selected={this.state.racket_model === racket.model}>
+        {racket.model}
+      </option>));
     return racketModels;
   }
 
@@ -64,12 +64,12 @@ class EditOrderLineForm extends React.Component {
     const { cords } = this.props;
     const mainModels = cords.filter(cord => cord.brand === this.state.main_brand).map(
       cord => <option
-                key={cord.id}
-                value={cord.model}
-                data={cord.id}
-                selected={this.state.main_model === cord.model}>
-                {cord.model} {cord.gauge} {cord.composition} {cord.color}
-              </option>);
+        key={cord.id}
+        value={cord.model}
+        data={cord.id}
+        selected={this.state.main_model === cord.model}>
+        {cord.model} {cord.gauge} {cord.composition} {cord.color}
+      </option>);
     return mainModels;
   }
 
@@ -77,12 +77,12 @@ class EditOrderLineForm extends React.Component {
     const { cords } = this.props;
     const crossModels = cords.filter(cord => cord.brand === this.state.cross_brand).map(
       cord => <option
-                key={cord.id}
-                value={cord.model}
-                data={cord.id}
-                selected={this.state.cross_model === cord.model}>
-                {cord.model} {cord.gauge} {cord.composition} {cord.color}
-              </option>);
+        key={cord.id}
+        value={cord.model}
+        data={cord.id}
+        selected={this.state.cross_model === cord.model}>
+        {cord.model} {cord.gauge} {cord.composition} {cord.color}
+      </option>);
     return crossModels;
   }
 
@@ -120,7 +120,7 @@ class EditOrderLineForm extends React.Component {
   }
 
   hideEditOrderLineForm(orderLineId) {
-    $(`#edit-form-${orderLineId}`).stop().css('display','hidden').slideUp();
+    $(`#edit-form-${orderLineId}`).stop().css('display', 'hidden').slideUp();
     this.props.clearErrors();
   }
 
@@ -135,7 +135,7 @@ class EditOrderLineForm extends React.Component {
     delete updatedOrderLine.cross_brand;
     delete updatedOrderLine.cross_model;
     updateOrderLine(updatedOrderLine).then(
-        () => this.hideEditOrderLineForm(orderLine.id));
+      () => this.hideEditOrderLineForm(orderLine.id));
   }
 
   errors() {
@@ -175,7 +175,7 @@ class EditOrderLineForm extends React.Component {
 
     const crossModelItems = this.updateCrossModels();
 
-    return(
+    return (
       <div id={`edit-form-${orderLine.id}`} className="form-container ol-form-container hidden">
         <h4>Edit Order Line</h4>
         <br />
@@ -185,17 +185,17 @@ class EditOrderLineForm extends React.Component {
         <div className="=order-line-form" onSubmit={this.handleSubmit}>
           <div className="section-container">
             <div className="section__left-section">
-              <h4 className="racket-section-title section__title">Racket</h4>
-              <div className="edit-racket-order section">
-                { this.racketImage() }
+              <h4 className="section__title">Racket</h4>
+              <div className="section section__racket-section">
+                {this.racketImage()}
                 <div className="racket-dropdowns">
                   <select onChange={this.update('racket_brand')}>
                     <option>-- Select a Brand --</option>
-                    { racketBrandItems }
+                    {racketBrandItems}
                   </select>
                   <select onChange={this.updateRacketId} id={`racket-model-${orderLine.id}`}>
                     <option>-- Select a Model --</option>
-                    { racketModelItems }
+                    {racketModelItems}
                   </select>
                 </div>
               </div>
@@ -205,35 +205,35 @@ class EditOrderLineForm extends React.Component {
               <div className="section section__strings-section__main">
                 <select onChange={this.update('main_brand')}>
                   <option>-- Select a Brand --</option>
-                  { mainBrandItems }
+                  {mainBrandItems}
                 </select>
                 <select onChange={this.updateMainId} id={`main-model-${orderLine.id}`}>
                   <option>-- Select a Model --</option>
-                  { mainModelItems }
+                  {mainModelItems}
                 </select>
                 <input
                   type="number"
                   value={this.state.main_tension}
                   placeholder="Main Tension (lbs.)"
                   onChange={this.update('main_tension')}
-                  />
+                />
               </div>
               <h4 className="section__title">Cross String</h4>
               <div className="section section__strings-section__cross">
                 <select onChange={this.update('cross_brand')}>
                   <option>-- Select a Brand --</option>
-                  { crossBrandItems }
+                  {crossBrandItems}
                 </select>
                 <select onChange={this.updateCrossId} id={`cross-model-${orderLine.id}`}>
                   <option>-- Select a Model --</option>
-                  { crossModelItems }
+                  {crossModelItems}
                 </select>
                 <input
                   type="number"
                   value={this.state.cross_tension}
                   placeholder="Cross Tension (lbs.)"
                   onChange={this.update('cross_tension')}
-                  />
+                />
               </div>
             </div>
           </div>
